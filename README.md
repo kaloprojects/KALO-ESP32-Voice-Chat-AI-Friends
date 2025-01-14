@@ -1,5 +1,21 @@
 -------------------- # KALO-ESP32-Voice-ChatGPT#
 # Summary
+Prototype of a ESP32 based voice chat dialog device, simiar ChatGPT. Just as an use case of my earlier published Voice Assistant libraries. User can record his questions (pressing a button as long speaking), then ESP32 sends audio to STT (SpeechToText) Transcrpiton server, sending transcrption to Open AI (LLM model e.g. "gpt-4o-mini"), and speaking the answer finally (using TTS / TextToSpeech) with multi-lingual Open AI voices. 
+
+All is coded in C++ native (no server based components, no NodJS or Phyton scripzs needed), AUDIO handling coded nativelly for I2S devices (microphone and speaker).
+
+Code supports an ongoing dialog, LLM memories chat history, supporting follow-up dialogs (e.g. 'who was Albert Einstein?' .. and later (after OpenAI response): 'was he also a musician?') 
+
+Device can be used stand-alone (just Wifi connection needed), triggered by user voice. In addition user can use Serial Monitor (I/O) as to enter requests and receiving Open AI reponse.
+
+chat to enter 
+
+Microphone 
+
+
+User  
+User can ask questions, sending to OpenAI API, speaking  
+, using 
 Code snippets showing how to _record I2S audio_ and store as .wav file on ESP32 with SD card, how to _transcribe_ pre-recorded audio via _STT (SpeechToText)_ Deepgram API, how to _generate audio_ from text via _TTS (TextToSpeech)_ API from Google TTS or OpenAI TTS or (new) SpeechGen.IO. Triggering ESP32 actions via Voice.
 
 The repository contains the Demo main sketch  'KALO_ESP32_Voice_Assistant.ino', demonstrating different use case of my libraries 'lib_audio_recording.ino', 'lib_audio_transcription.ino' and (new) 'lib_TTS_SpeechGen.ino' 
