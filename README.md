@@ -19,8 +19,8 @@ Explore the details in the .ino code, summary in a nutshell:
 Alternativelly (in addition / no STT & TTS needed):<br> 
 Enter any Open AI request in the Serial Monitor Input line, receiving text response in Serial Monitor
 
-The RGB led indicates the current status in workflow:
-(GREEN: Ready, RED: Recording, BLUE: Open AI LLM, CYAN: SST & TTS, MAGENTA: Speaking ..)
+The RGB led indicates the current status in workflow:<br>
+GREEN: Ready, RED: Recording, CYAN: SST & TTS, BLUE: Open AI LLM, MAGENTA: Speaking .. etc.
 
 
 In addition: 
