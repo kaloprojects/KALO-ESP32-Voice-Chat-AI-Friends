@@ -33,7 +33,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - RGB LED (status indicator) and optionally an Analog Poti (for audio volume)
 
 # Installation & Customizing
-- Required (Jan. 2025): Arduino IDE with ESP32 lib 3.1.x (based on ESP-IDF 5.3.x). Older 2.x ESP framework fail because new I2S driver missed
+- Required (Jan. 2025): Arduino IDE with ESP32 lib 3.1.x (based on ESP-IDF 5.3.x). Older 2.x ESP framework are not supported.
 - Required (for playing Audio on ESP32): AUDIO.H library [ESP32-audioI2S.zip](https://github.com/schreibfaul1/ESP32-audioI2S). Install latest zip  (3.0.11g from July 18, 2024 or newer)
 - Copy all .ino files of into same folder (it is one sketch, split into multiple Arduino IDE tabs)
 - Update your pin assignments & wlan settings (ssid, password) in the .ino header files
