@@ -30,8 +30,8 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - LLM & TTS: Open AI Registration needed (for personal API, same key for LLM & TTS), not free.
 
 # Installation & Customizing
-- Required (Jan. 2025): Arduino IDE with ESP32 lib 3.1.x (based on ESP-IDF 5.3.x). Older 2.x ESP framework are not supported.
-- Required (for playing Audio on ESP32): [AUDIO.H library zip](https://github.com/schreibfaul1/ESP32-audioI2S). Install v. 3.0.11g or newer)
+- Required: Arduino IDE with ESP32 lib 3.1.x (based on ESP-IDF 5.3.x). Older 2.x ESP framework are not supported.
+- Required (for TTS): [AUDIO.H library ESP32-audioI2S.zip](https://github.com/schreibfaul1/ESP32-audioI2S), version 3.0.11g or newer.
 - Copy all .ino files of into same folder (it is one sketch, split into multiple Arduino IDE tabs)
 - Update your pin assignments & wlan settings (ssid, password) in the .ino header files
 - Update headers with personal credentials (Deepgram API key, OpenAI API key)
