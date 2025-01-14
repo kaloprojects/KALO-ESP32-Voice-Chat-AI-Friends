@@ -38,7 +38,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - Update your pin assignments & wlan settings (ssid, password) in the .ino header files
 - Update headers with personal credentials (Deepgram API key, OpenAI API key)
 - Review the default recording parameter (SAMPLE_RATE, GAIN_BOOSTER_I2S etc) in lib_audio_recording.ino header
-- Define your language settings (Deepgram STT in lib_audio_transcription.ino header)
+- Define your STT language (Deepgram STT in lib_audio_transcription.ino header)
 - Define 'your' preferred "System Prompt" in global String MESSAGES (in lib_OpenAI_Chat.ino header)
 - Toggle DEBUG flag to true (displaying Serial.print details) or false (for final usage)
 
