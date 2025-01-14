@@ -1,11 +1,11 @@
 # Summary
 Prototype of a ESP32 based voice chat dialog device, _similar Open AI ChatGPT via Voice_. Just as an use case of my earlier published [KALO-ESP32-Voice-Assistant Libraries](https://github.com/kaloprojects/KALO-ESP32-Voice-Assistant). User can record questions with a microphone _(pressing a button as long speaking)_.<br> On button release: ESP32 is sending audio to _STT (SpeechToText) Deepgram server_, then sending transcription to _Open AI server_ (LLM model e.g. "gpt-4o-mini"), finally converting LLM answer with _TTS (TextToSpeech) server_ into AUDIO and playing response via speaker on ESP32.
 
-Code supports ongoing dialog seesions, means LLM memories the chat history. This allows follow-up dialogs, example: User Q1: 'who was Albert Einstein?' - and later (after OpenAI response) - User Q2: 'was _he_ also a musician and _did he_ have kids?'). 
+Code supports ongoing dialog sessions, means LLM memories the chat history. This allows follow-up dialogs, example: User Q1: 'who was Albert Einstein?' - and later (after OpenAI response) - User Q2: 'was _he_ also a musician and _did he_ have kids?'). 
 
-Architecture: All is coded in C++ native (no server based components needed, no Node.JS or Phyton scripts or websockets used), AUDIO handling coded nativelly in C++ for I2S devices (microphone and speaker). Just copy all .ino files into one folder and insert your personal credentials into the header sections.
+Architecture: All is coded in C++ native (no server based components needed, no Node.JS or Python scripts or websockets used), AUDIO handling coded natively in C++ for I2S devices (microphone and speaker). Just copy all .ino files into one folder and insert your personal credentials into the header sections.
 
-ESP32 chat device (Wifi connected) can be triggered by voice completelly (no Serial Monitor a/o keyboard a/o connected computer needed). Serial Monitor is optional, useful in case the device is used as _Text ChatGPT_ device only (no voice recording, no Deepgram registration needed).
+ESP32 chat device (Wifi connected) can be triggered by voice completely (no Serial Monitor a/o keyboard a/o connected computer needed). Serial Monitor is optional, useful in case the device is used as _Text ChatGPT_ device only (no voice recording, no Deepgram registration needed).
 
 # Workflow
 Explore the details in the .ino code, summary in a nutshell:
@@ -31,7 +31,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 
 # Installation & Customizing
 - Required (Jan. 2025): Arduino IDE with ESP32 lib 3.1.x (based on ESP-IDF 5.3.x). Older 2.x ESP framework are not supported.
-- Required (for playing Audio on ESP32): AUDIO.H library [ESP32-audioI2S.zip](https://github.com/schreibfaul1/ESP32-audioI2S). Install latest zip  (3.0.11g from July 18, 2024 or newer)
+- Required (for playing Audio on ESP32): [AUDIO.H library zip](https://github.com/schreibfaul1/ESP32-audioI2S). Install v. 3.0.11g or newer)
 - Copy all .ino files of into same folder (it is one sketch, split into multiple Arduino IDE tabs)
 - Update your pin assignments & wlan settings (ssid, password) in the .ino header files
 - Update headers with personal credentials (Deepgram API key, OpenAI API key)
@@ -54,4 +54,4 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 .
 
 # Demo Videos
-- coming next
+- Coming next
