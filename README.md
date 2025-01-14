@@ -1,7 +1,9 @@
 # Summary
 Prototype of a ESP32 based voice chat dialog device, _similar Open AI ChatGPT via Voice_. Just as an use case of my earlier published [KALO-ESP32-Voice-Assistant Libraries](https://github.com/kaloprojects/KALO-ESP32-Voice-Assistant). User can record questions with a microphone _(pressing a button as long speaking)_.<br> On button release: ESP32 is sending audio to _STT (SpeechToText) Deepgram server_, then sending transcription to _Open AI server_ (LLM model e.g. "gpt-4o-mini"), finally converting LLM answer with _TTS (TextToSpeech) server_ into AUDIO and playing response via speaker on ESP32.
 
-Code supports ongoing dialog seesions, means LLM memories the chat history. This allows follow-up dialogs, example: User Q1: 'who was Albert Einstein?' - and later (after OpenAI response) - User Q2: 'was _he_ also a musician and _did he_ have kids?'). All is coded in C++ native (no server based components neded, no Node.JS or Phyton scripts or websockets used), AUDIO handling coded nativelly in C++ for I2S devices (microphone and speaker).
+Code supports ongoing dialog seesions, means LLM memories the chat history. This allows follow-up dialogs, example: User Q1: 'who was Albert Einstein?' - and later (after OpenAI response) - User Q2: 'was _he_ also a musician and _did he_ have kids?'). 
+
+Architecture: All is coded in C++ native (no server based components needed, no Node.JS or Phyton scripts or websockets used), AUDIO handling coded nativelly in C++ for I2S devices (microphone and speaker). Just copy all .ino files into one folder and insert your personal credentials into the header sections.
 
 ESP32 chat device (Wifi connected) can be triggered by voice completelly (no Serial Monitor a/o keyboard a/o connected computer needed). Serial Monitor is optional (for alternative chats).
 
