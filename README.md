@@ -5,7 +5,7 @@ Code supports ongoing dialog seesions, means LLM memories the chat history. This
 
 Architecture: All is coded in C++ native (no server based components needed, no Node.JS or Phyton scripts or websockets used), AUDIO handling coded nativelly in C++ for I2S devices (microphone and speaker). Just copy all .ino files into one folder and insert your personal credentials into the header sections.
 
-ESP32 chat device (Wifi connected) can be triggered by voice completelly (no Serial Monitor a/o keyboard a/o connected computer needed). Serial Monitor is optional (for alternative 'text' chats).
+ESP32 chat device (Wifi connected) can be triggered by voice completelly (no Serial Monitor a/o keyboard a/o connected computer needed). Serial Monitor is optional (for alternative 'text' chats), useful in case the device is used only as _Text ChatGPT_ device only without voice (no Deepgram registration needed).
 
 # Workflow
 Explore the details in the .ino code, summary in a nutshell:
