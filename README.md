@@ -17,6 +17,7 @@ Explore the demo use case examples in main sketch, summary:
 - TTS (TextToSpeech): #NEW#: SpeechGen.IO voices (many voices, not free, payment needed)  
 
 # Hardware
+Same as in my other project [KALO-ESP32-Voice-Assistant](https://github.com/kaloprojects/KALO-ESP32-Voice-Assistant):
 - ESP32 development board (e.g. ESP32-WROOM-32), connected to Wifi
 - I2S digital microphone, e.g. INMP441 [I2S pins 22, 33, 35]          
 - I2S audio amplifier, e.g. MAX98357A [I2S pins 25,26,27] with speaker
