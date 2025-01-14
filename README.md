@@ -1,6 +1,6 @@
 -------------------- # KALO-ESP32-Voice-ChatGPT#
 # Summary
-Prototype of a ESP32 based voice chat dialog device, simiar ChatGPT. Just as an use case of my earlier published Voice Assistant libraries. User can record his questions with a microphone (pressing a button as long speaking), then ESP32 sends audio to _STT (SpeechToText) Deepgram server_, sending transcription to _Open AI server_ (LLM model e.g. "gpt-4o-mini"), finally converting LLM answer with _TTS (TextToSpeech) server into AUDIO and playing response via speaker. 
+Prototype of a ESP32 based voice chat dialog device, simiar ChatGPT. Just as an use case of my earlier published Voice Assistant libraries. User can record his questions with a microphone (pressing a button as long speaking), then ESP32 sends audio to _STT (SpeechToText) Deepgram server_, sending transcription to _Open AI server_ (LLM model e.g. "gpt-4o-mini"), finally converting LLM answer with _TTS (TextToSpeech) server_ into AUDIO and playing response via speaker. 
 
 All is coded in C++ native (no server based components neded, no Node.JS or Phyton scripts used), AUDIO handling coded nativelly in C++ for I2S devices (microphone and speaker).
 
@@ -16,9 +16,11 @@ Explore the details in the .ino code, summary in a nutshell:
 - Receiving AI response, generating 'human' sounding spoken answer (using the 9 multilingual Open AI voices)
 - Pessing record button again to proceed ongoing chat
 
-Alternativelly (in addition / no STT & TTS needed): Enter any Open AI request in the Serial Monitor Input line, receiving text response in Serial Monitor
+Alternativelly (in addition / no STT & TTS needed): 
+Enter any Open AI request in the Serial Monitor Input line, receiving text response in Serial Monitor
 
-The RGB led indicates the current status in workflow (GREEN: Ready, RED: Recording, BLUE: Open AI LLM, CYAN: SST & TTS, MAGENTA: Speaking ..)
+The RGB led indicates the current status in workflow:
+(GREEN: Ready, RED: Recording, BLUE: Open AI LLM, CYAN: SST & TTS, MAGENTA: Speaking ..)
 
 
 In addition: 
