@@ -1,29 +1,29 @@
 -------------------- # KALO-ESP32-Voice-ChatGPT#
 # Summary
-Prototype of a ESP32 based voice chat dialog device, simiar ChatGPT. Just as an use case of my earlier published Voice Assistant libraries. User can record his questions (pressing a button as long speaking), then ESP32 sends audio to STT (SpeechToText) Transcrpiton server, sending transcrption to Open AI (LLM model e.g. "gpt-4o-mini"), and speaking the answer finally (using TTS / TextToSpeech) with multi-lingual Open AI voices. 
+Prototype of a ESP32 based voice chat dialog device, simiar ChatGPT. Just as an use case of my earlier published Voice Assistant libraries. User can record his questions with a microphone (pressing a button as long speaking), then ESP32 sends audio to _STT (SpeechToText) Deepgram server_, sending transcription to _Open AI server_ (LLM model e.g. "gpt-4o-mini"), finally converting LLM answer with _TTS (TextToSpeech) server into AUDIO and playing response via speaker. 
 
-All is coded in C++ native (no server based components, no NodJS or Phyton scripzs needed), AUDIO handling coded nativelly for I2S devices (microphone and speaker).
+All is coded in C++ native (no server based components neded, no Node.JS or Phyton scripts used), AUDIO handling coded nativelly in C++ for I2S devices (microphone and speaker).
 
 Code supports an ongoing dialog, LLM memories chat history, supporting follow-up dialogs (e.g. 'who was Albert Einstein?' .. and later (after OpenAI response): 'was he also a musician?') 
 
 Device can be used stand-alone (just Wifi connection needed), triggered by user voice. In addition user can use Serial Monitor (I/O) as to enter requests and receiving Open AI reponse.
 
-chat to enter 
+# Workflow
+Explore the details in the .ino code, summary in a nutshell:
+- Recording user Voice with variable length (recording as long a button is pressed), storing as .wav file (with 44 byte header) on SD card  
+- Sending recorded WAV file to STT (SpeechToText) server (using Deepgram API service, registration needed)
+- Sending the received transcription text to Open AI (with user specified LLM model, e.g. "gpt-4o-mini")
+- Receiving AI response, generating 'human' sounding spoken answer (using the 9 multilingual Open AI voices)
+- Pessing record button again to proceed ongoing chat
 
-Microphone 
+Alternativelly (in addition / no STT & TTS needed): Enter any Open AI request in the Serial Monitor Input line, receiving text response in Serial Monitor
+
+The RGB led indicates the current status in workflow (GREEN: Ready, RED: Recording, BLUE: Open AI LLM, CYAN: SST & TTS, MAGENTA: Speaking ..)
 
 
-User  
-User can ask questions, sending to OpenAI API, speaking  
-, using 
-Code snippets showing how to _record I2S audio_ and store as .wav file on ESP32 with SD card, how to _transcribe_ pre-recorded audio via _STT (SpeechToText)_ Deepgram API, how to _generate audio_ from text via _TTS (TextToSpeech)_ API from Google TTS or OpenAI TTS or (new) SpeechGen.IO. Triggering ESP32 actions via Voice.
-
-The repository contains the Demo main sketch  'KALO_ESP32_Voice_Assistant.ino', demonstrating different use case of my libraries 'lib_audio_recording.ino', 'lib_audio_transcription.ino' and (new) 'lib_TTS_SpeechGen.ino' 
-
-# Features
-Explore the demo use case examples in main sketch, summary:
+In addition: 
+-
 - Recording and playing audio are working offline, online connection needed for STT, TTS and streaming services
-- Recording Voice Audio with variable length (recording as long a button is pressed), storing as .wav file (with 44 byte header) on SD card  
 - Replay your recorded audio (using Schreibfaul1 <audio.h> library) 
 - Playing Audio streams (e.g. playing music via radio streams with <audio.h> library)
 - Triggering ESP actions via voice (e.g. triggering GPIO LED pins, addressing dedicated voices by calling their name, playing music on request)
@@ -59,6 +59,18 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 # Next steps
 - cleaning code, fine adjustments
 
+----
+chat to enter 
+
+Microphone 
+
+
+User  
+User can ask questions, sending to OpenAI API, speaking  
+, using 
+Code snippets showing how to _record I2S audio_ and store as .wav file on ESP32 with SD card, how to _transcribe_ pre-recorded audio via _STT (SpeechToText)_ Deepgram API, how to _generate audio_ from text via _TTS (TextToSpeech)_ API from Google TTS or OpenAI TTS or (new) SpeechGen.IO. Triggering ESP32 actions via Voice.
+
+The repository contains the Demo main sketch  'KALO_ESP32_Voice_Assistant.ino', demonstrating different use case of my libraries 'lib_audio_recording.ino', 'lib_audio_transcription.ino' and (new) 'lib_TTS_SpeechGen.ino' 
 
 .
 .
