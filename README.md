@@ -14,12 +14,8 @@ Explore the details in the .ino code, summary in a nutshell:
 - Sending recorded WAV file to STT (SpeechToText) server (using Deepgram API service, registration needed)
 - Sending the received transcription text to Open AI (with user specified LLM model, e.g. "gpt-4o-mini")
 - Receiving AI response, printing in Serial Monitor, generating 'human' sounding spoken answer (using the 9 multilingual Open AI voices)
-- All worklfow steps are indicated with RGB led (GREEN: Ready,  RED: Recording,  CYAN: STT&TTS,  BLUE: Open AI LLM,  MAGENTA: Speaking .. etc.
+- All worklfow steps are indicated with RGB led (GREEN=Ready / RED=Recording,  CYAN: STT&TTS,  BLUE: Open AI LLM,  MAGENTA: Speaking .. etc.
 - Pressing record button again to proceed ongoing chat ...
-
-Alternativelly (in addition / no STT & TTS needed): Enter any Open AI request in the Serial Monitor Input line, receiving text response in Serial Monitor
-
-The RGB led indicates the current status, examples: GREEN: Ready,  RED: Recording,  CYAN: STT&TTS,  BLUE: Open AI LLM,  MAGENTA: Speaking .. etc.
 
 # Hardware requirements
 Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://github.com/kaloprojects/KALO-ESP32-Voice-Assistant):
