@@ -1,5 +1,5 @@
 # Summary
-Prototype of a ESP32 based voice chat dialog device, _similar Open AI ChatGPT_. Just as an use case of my earlier published Voice Assistant libraries. User can record questions with a microphone (pressing a button as long speaking), on button release: ESP32 sending audio to _STT (SpeechToText) Deepgram server_, sending transcription to _Open AI server_ (LLM model e.g. "gpt-4o-mini"), finally converting LLM answer with _TTS (TextToSpeech) server_ into AUDIO and playing response via speaker.
+Prototype of a ESP32 based voice chat dialog device, _similar Open AI ChatGPT via Voice_. Just as an use case of my earlier published Voice Assistant libraries. User can record questions with a microphone (pressing a button as long speaking), on button release: ESP32 sending audio to _STT (SpeechToText) Deepgram server_, sending transcription to _Open AI server_ (LLM model e.g. "gpt-4o-mini"), finally converting LLM answer with _TTS (TextToSpeech) server_ into AUDIO and playing response via speaker.
 
 All is coded in C++ native (no server based components neded, no Node.JS or Phyton scripts used), AUDIO handling coded nativelly in C++ for I2S devices (microphone and speaker).
 
