@@ -5,7 +5,7 @@ Code supports ongoing dialog seesions, means LLM memories the chat history. This
 
 Architecture: All is coded in C++ native (no server based components needed, no Node.JS or Phyton scripts or websockets used), AUDIO handling coded nativelly in C++ for I2S devices (microphone and speaker). Just copy all .ino files into one folder and insert your personal credentials into the header sections.
 
-ESP32 chat device (Wifi connected) can be triggered by voice completelly (no Serial Monitor a/o keyboard a/o connected computer needed). Serial Monitor is optional (for alternative chats).
+ESP32 chat device (Wifi connected) can be triggered by voice completelly (no Serial Monitor a/o keyboard a/o connected computer needed). Serial Monitor is optional (for alternative 'text' chats).
 
 # Workflow
 Explore the details in the .ino code, summary in a nutshell:
@@ -19,10 +19,6 @@ Alternativelly (in addition / no STT & TTS needed): Enter any Open AI request in
 
 The RGB led indicates the current status, examples: GREEN: Ready,  RED: Recording,  CYAN: STT&TTS,  BLUE: Open AI LLM,  MAGENTA: Speaking .. etc.
 
-# 3rd party Software licenses
-- STT: Deepgram API service Registration needed (for personal API key), not free.
-- LLM & TTS: Open AI Registration needed (for personal API, same key for LLM & TTS), not free.
-  
 # Hardware requirements
 Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://github.com/kaloprojects/KALO-ESP32-Voice-Assistant):
 - ESP32 development board (e.g. ESP32-WROOM-32), connected to Wifi
@@ -30,6 +26,10 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - I2S audio amplifier, e.g. MAX98357A [I2S pins 25,26,27] with speaker
 - Micro SD Card [VSPI Default pins 5,18,19,23] 
 - RGB LED (status indicator) and optionally an Analog Poti (for audio volume)
+
+# 3rd party Software licenses
+- STT: Deepgram API service Registration needed (for personal API key), not free.
+- LLM & TTS: Open AI Registration needed (for personal API, same key for LLM & TTS), not free.
 
 # Installation & Customizing
 - Required (Jan. 2025): Arduino IDE with ESP32 lib 3.1.x (based on ESP-IDF 5.3.x). Older 2.x ESP framework are not supported.
