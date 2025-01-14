@@ -9,10 +9,12 @@ ESP32 chat device (Wifi connected) can be triggered by voice completelly (no Ser
 
 # Workflow
 Explore the details in the .ino code, summary in a nutshell:
-- Recording user Voice with variable length (recording as long a button is pressed), storing as .wav file (with 44 byte header) on SD card  
+- Recording user Voice with variable length (recording as long a button is pressed), storing as .wav file (with 44 byte header) on SD card
+- (Alternative: User can enter Open AI request via text in Serial Monitor Input line)  
 - Sending recorded WAV file to STT (SpeechToText) server (using Deepgram API service, registration needed)
 - Sending the received transcription text to Open AI (with user specified LLM model, e.g. "gpt-4o-mini")
-- Receiving AI response, generating 'human' sounding spoken answer (using the 9 multilingual Open AI voices)
+- Receiving AI response, printing in Serial Monitor, generating 'human' sounding spoken answer (using the 9 multilingual Open AI voices)
+- All worklfow steps are indicated with RGB led (GREEN: Ready,  RED: Recording,  CYAN: STT&TTS,  BLUE: Open AI LLM,  MAGENTA: Speaking .. etc.
 - Pressing record button again to proceed ongoing chat ...
 
 Alternativelly (in addition / no STT & TTS needed): Enter any Open AI request in the Serial Monitor Input line, receiving text response in Serial Monitor
