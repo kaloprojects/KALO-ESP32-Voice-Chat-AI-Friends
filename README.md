@@ -1,4 +1,3 @@
--------------------- # KALO-ESP32-Voice-ChatGPT#
 # Summary
 Prototype of a ESP32 based voice chat dialog device, _similar Open AI ChatGPT_. Just as an use case of my earlier published Voice Assistant libraries. User can record questions with a microphone (pressing a button as long speaking), on button release: ESP32 sending audio to _STT (SpeechToText) Deepgram server_, sending transcription to _Open AI server_ (LLM model e.g. "gpt-4o-mini"), finally converting LLM answer with _TTS (TextToSpeech) server_ into AUDIO and playing response via speaker.
 
@@ -49,7 +48,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - 2025-01-14: First drop, already working, not finally cleaned up (just posted this drop on some folks request)
 
 # Next steps
-- cleaning code, fine adjustments
+- Cleaning code, detail adjustments
 
 ----
 
