@@ -34,22 +34,13 @@ Explore the demo use case examples in main sketch, summary:
 - Toggle DEBUG flag to true (displaying Serial.print details) or false (for final usage)
 
 # Known issues
-- Earlier WifiClientSecure connection issues seem solved (with KALO 2025-01-06 Update & arduino-esp32 3.1.x)
-- Google TTS support short sentences only (Google limitation), non-free services (OpenAI and SpeechGen.IO) are not limited in length.
-- TTS: Only OpenAI voices are multi-lingual (supporting multiple languages in same request), Google & SpeechGen.IO request language specific parameter/voices
+- N/A
 
 # Updates
-- 2025-01-06: NEW library for TTS Speechgen.IO (hundreds of voices) 
-- 2025-01-06: Cleaned code, connection reliability issues solved, response time improved
-- 2024-07-22: Misc. enhancements, WifiClientSecure reliability workarounds, code cleaned up
-- 2024-07-18: 'Play 8bit audio' issue solved (latest AUDIO.H support 8bit wav format)
-- 2024-07-14: WifiClientSecure connection reliablility improved (still not perfect)
-- 2024-07-14: STT Deepgram response faster (typical response time on e.g. 5 sec voice record: ~ 2.5 sec).
-- 2024-07-08: First drop, already working, not finally cleaned up (just posted this drop on some folks request)
+- 2025-01-14: First drop, already working, not finally cleaned up (just posted this drop on some folks request)
 
 # Next steps
-- currently no major updates planned, enjoy the libraries :)
-- I will add another project (repository) soon: 'ESP32 Voice OpenAI ChatGPT device' (using same C libraries)
+- cleaning code, fine adjustments
 
 
 .
@@ -57,15 +48,4 @@ Explore the demo use case examples in main sketch, summary:
 .
 
 # Demo Videos
-Short video clip, presenting Recording & SpeechToText & TextToSpeech (without Open AI, ESP32 is not 'answering', just parroting my voice with free Google TTS voice). Workflow: 
-- Recording user voice, storing audio .wav file (8KHz/8bit) to SD card,
-- STT: transcribe pre-recorded voice via Deepgram API,
-- TTS: repeat spoken sentence with Goggle TTS voice (a/o triggering e.g. LED via voice):
-
-[![Video Screenshot](https://github.com/user-attachments/assets/038905a8-3064-44c1-8eb7-e14cc6da94ab)](https://dark-controller.com/wp-content/uploads/2024/07/KALO_VoiceAssitant_Video01.mp4)
-
-<br>
-Featured video from other users & friends:<br>
-@techiesms: using my Deepgram transcription STT library in his IoT projects: <br>https://www.youtube.com/watch?v=j0EEFXmikvk- 
-
-
+- coming next
