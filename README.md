@@ -47,10 +47,6 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 
 # Next steps
 - Cleaning code, detail adjustments
-
-----
-
-
 .
 .
 .
