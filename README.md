@@ -16,7 +16,7 @@ Explore the details in the .ino code, summary in a nutshell:
 - Receiving AI response, generating 'human' sounding spoken answer (using the 9 multilingual Open AI voices)
 - Pessing record button again to proceed ongoing chat
 
-Alternativelly (in addition / no STT & TTS needed): 
+Alternativelly (in addition / no STT & TTS needed):<br> 
 Enter any Open AI request in the Serial Monitor Input line, receiving text response in Serial Monitor
 
 The RGB led indicates the current status in workflow:
