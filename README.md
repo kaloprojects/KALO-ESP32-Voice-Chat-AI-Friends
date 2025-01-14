@@ -22,7 +22,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - I2S digital microphone, e.g. INMP441 [I2S pins 22, 33, 35]          
 - I2S audio amplifier, e.g. MAX98357A [I2S pins 25,26,27] with speaker
 - Micro SD Card [VSPI Default pins 5,18,19,23] 
-- RGB LED (status indicator) and Analog Poti (audio volume)
+- RGB LED (status indicator) and optionally an Analog Poti (for audio volume)
 
 # Installation & Customizing
 - Required (Jan. 2025): Arduino IDE with ESP32 lib 3.1.x (based on ESP-IDF 5.3.x). Older 2.x ESP framework fail because new I2S driver missed
