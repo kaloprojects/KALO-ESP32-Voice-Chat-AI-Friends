@@ -1,12 +1,9 @@
 -------------------- # KALO-ESP32-Voice-ChatGPT#
 # Summary
 Prototype of a ESP32 based voice chat dialog device, simiar ChatGPT. Just as an use case of my earlier published Voice Assistant libraries. User can record his questions with a microphone (pressing a button as long speaking), then ESP32 sends audio to _STT (SpeechToText) Deepgram server_, sending transcription to _Open AI server_ (LLM model e.g. "gpt-4o-mini"), finally converting LLM answer with _TTS (TextToSpeech) server_ into AUDIO and playing response via speaker. 
-
 All is coded in C++ native (no server based components neded, no Node.JS or Phyton scripts used), AUDIO handling coded nativelly in C++ for I2S devices (microphone and speaker).
-
 Code supports an ongoing dialog, LLM memories chat history, supporting follow-up dialogs (e.g. 'who was Albert Einstein?' .. and later (after OpenAI response): 'was he also a musician?') 
-
-Device can be used stand-alone (just Wifi connection needed), triggered by user voice. In addition user can use Serial Monitor (I/O) as to enter requests and receiving Open AI reponse.
+ESP32 chat device (Wifi connected) can be triggered by voice completelly (no Serial Monitor a/o keyboard needed). Serial Monitor is optinal (for text chatting).
 
 # Workflow
 Explore the details in the .ino code, summary in a nutshell:
@@ -14,7 +11,7 @@ Explore the details in the .ino code, summary in a nutshell:
 - Sending recorded WAV file to STT (SpeechToText) server (using Deepgram API service, registration needed)
 - Sending the received transcription text to Open AI (with user specified LLM model, e.g. "gpt-4o-mini")
 - Receiving AI response, generating 'human' sounding spoken answer (using the 9 multilingual Open AI voices)
-- Pessing record button again to proceed ongoing chat
+- Pressing record button again to proceed ongoing chat ...
 
 Alternativelly (in addition / no STT & TTS needed):<br> 
 Enter any Open AI request in the Serial Monitor Input line, receiving text response in Serial Monitor
@@ -22,19 +19,11 @@ Enter any Open AI request in the Serial Monitor Input line, receiving text respo
 The RGB led indicates the current status in workflow:<br>
 GREEN: Ready,  RED: Recording,  CYAN: STT&TTS,  BLUE: Open AI LLM,  MAGENTA: Speaking .. etc.
 
-
-In addition: 
--
-- Recording and playing audio are working offline, online connection needed for STT, TTS and streaming services
-- Replay your recorded audio (using Schreibfaul1 <audio.h> library) 
-- Playing Audio streams (e.g. playing music via radio streams with <audio.h> library)
-- Triggering ESP actions via voice (e.g. triggering GPIO LED pins, addressing dedicated voices by calling their name, playing music on request)
-- STT (SpeechToText): Deepgram API service (registration needed)  
-- TTS (TextToSpeech): Google TTS free API (no registration needed)  
-- TTS (TextToSpeech): Open AI API (6 multilingual voices, registration needed)
-- TTS (TextToSpeech): #NEW#: SpeechGen.IO voices (many voices, not free, payment needed)  
-
-# Hardware
+# 3rd party Software licenses
+- STT: Deepgram API service Registration needed (for personal API key), not free.
+- LLM & TTS: Open AI Registration needed (for personal API, same key for LLM & TTS), not free.
+  
+# Hardware requirements
 Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://github.com/kaloprojects/KALO-ESP32-Voice-Assistant):
 - ESP32 development board (e.g. ESP32-WROOM-32), connected to Wifi
 - I2S digital microphone, e.g. INMP441 [I2S pins 22, 33, 35]          
@@ -80,3 +69,17 @@ The repository contains the Demo main sketch  'KALO_ESP32_Voice_Assistant.ino', 
 
 # Demo Videos
 - coming next
+
+
+In addition: 
+-
+- Recording and playing audio are working offline, online connection needed for STT, TTS and streaming services
+- Replay your recorded audio (using Schreibfaul1 <audio.h> library) 
+- Playing Audio streams (e.g. playing music via radio streams with <audio.h> library)
+- Triggering ESP actions via voice (e.g. triggering GPIO LED pins, addressing dedicated voices by calling their name, playing music on request)
+- STT (SpeechToText): Deepgram API service (registration needed)  
+- TTS (TextToSpeech): Google TTS free API (no registration needed)  
+- TTS (TextToSpeech): Open AI API (6 multilingual voices, registration needed)
+- TTS (TextToSpeech): #NEW#: SpeechGen.IO voices (many voices, not free, payment needed)
+
+- 
