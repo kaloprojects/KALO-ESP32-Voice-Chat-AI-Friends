@@ -48,34 +48,12 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - 2025-01-14: First drop, already working, not finally cleaned up (just posted this drop on some folks request)
 
 # Next steps
-- Cleaning code, detail adjustments
+- currently no major updates planned, enjoy the libraries :)
+- I will add another project (repository) soon: 'ESP32 Voice OpenAI ChatGPT device' (using same C libraries)
+
+
 .
 .
 .
 
 # Demo Videos
-- coming next
-
-
-In addition: 
--
-- Recording and playing audio are working offline, online connection needed for STT, TTS and streaming services
-- Replay your recorded audio (using Schreibfaul1 <audio.h> library) 
-- Playing Audio streams (e.g. playing music via radio streams with <audio.h> library)
-- Triggering ESP actions via voice (e.g. triggering GPIO LED pins, addressing dedicated voices by calling their name, playing music on request)
-- STT (SpeechToText): Deepgram API service (registration needed)  
-- TTS (TextToSpeech): Google TTS free API (no registration needed)  
-- TTS (TextToSpeech): Open AI API (6 multilingual voices, registration needed)
-- TTS (TextToSpeech): #NEW#: SpeechGen.IO voices (many voices, not free, payment needed)
-
-- chat to enter 
-
-Microphone 
-
-
-User  
-User can ask questions, sending to OpenAI API, speaking  
-, using 
-Code snippets showing how to _record I2S audio_ and store as .wav file on ESP32 with SD card, how to _transcribe_ pre-recorded audio via _STT (SpeechToText)_ Deepgram API, how to _generate audio_ from text via _TTS (TextToSpeech)_ API from Google TTS or OpenAI TTS or (new) SpeechGen.IO. Triggering ESP32 actions via Voice.
-
-The repository contains the Demo main sketch  'KALO_ESP32_Voice_Assistant.ino', demonstrating different use case of my libraries 'lib_audio_recording.ino', 'lib_audio_transcription.ino' and (new) 'lib_TTS_SpeechGen.ino' 
