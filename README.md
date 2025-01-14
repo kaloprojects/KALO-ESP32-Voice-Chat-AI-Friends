@@ -48,8 +48,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - 2025-01-14: First drop, already working, not finally cleaned up (just posted this drop on some folks request)
 
 # Next steps
-- currently no major updates planned, enjoy the libraries :)
-- I will add another project (repository) soon: 'ESP32 Voice OpenAI ChatGPT device' (using same C libraries)
+- Cleaning code, detail adjustments
 
 
 .
