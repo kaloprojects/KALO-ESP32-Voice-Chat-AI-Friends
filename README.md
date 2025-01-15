@@ -29,7 +29,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 
 # 3rd party Software licenses
 - STT: Deepgram API service for user voice transcription ([Registration free account](https://console.deepgram.com/signup) needed for personal API key)
-- LLM & TTS: Open AI Registration needed (for personal API, same key for LLM & TTS), not free.
+- LLM & TTS: Open AI Registration needed (needed for personal API key, same account for LLM & TTS), not free.
 
 # Installation & Customizing
 - Required (for i2s_std.h): Arduino IDE with ESP32 lib 3.1.x (based on ESP-IDF 5.3.x). Older 2.x ESP (i2s.h) are not supported.
