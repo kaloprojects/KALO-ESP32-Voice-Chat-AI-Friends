@@ -7,7 +7,7 @@ User can define his own "AI System Prompt" (in header of library 'lib_OpenAI_Cha
 
 Architecture: All is coded in C++ native (no server based components needed, no Node.JS or Python scripts or websockets used), AUDIO handling coded natively in C++ for I2S devices (microphone and speaker). Just copy all .ino files into one folder and insert your personal credentials into the header sections.
 
-ESP32 chat device (Wifi connected) can be triggered by voice completely (no Serial Monitor a/o keyboard a/o connected computer needed). Serial Monitor is optional, useful in case the device is used as _Text ChatGPT_ device only (no voice recording, no Deepgram registration needed).
+ESP32 chat device (Wifi connected) can be triggered by voice completely standalone (no Serial Monitor a/o keyboard a/o connected computer needed). Serial Monitor is optional, useful in case the device is used as _Text ChatGPT_ device only (no voice recording, no Deepgram registration needed).
 
 # Workflow
 Explore the details in the .ino code, summary in a nutshell:
