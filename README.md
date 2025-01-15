@@ -28,7 +28,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - RGB LED (status indicator) and optionally an Analog Poti (for audio volume)
 
 # 3rd party Software licenses
-- STT: Deepgram API service for user voice transcription (Registration needed for personal API key), not free.
+- STT: Deepgram API service for user voice transcription ([Registration free account](https://console.deepgram.com/signup) needed for personal API key)
 - LLM & TTS: Open AI Registration needed (for personal API, same key for LLM & TTS), not free.
 
 # Installation & Customizing
