@@ -17,7 +17,7 @@ Explore the details in the .ino code, summary in a nutshell:
 - (Alternative: User can enter Open AI request via text in Serial Monitor Input line)  
 - Sending recorded WAV file to STT (SpeechToText) server (using Deepgram API service, registration needed)
 - Sending the received transcription text to Open AI (with user specified LLM model, e.g. "gpt-4o-mini")
-- Receiving AI response, printing in Serial Monitor, speaking the answer with a 'human' sounding voice (using multilingual Open AI voices)
+- Receiving AI response, printing in Serial Monitor, speaking answer with a 'human' sounding voice (multilingual Open AI voices)
 - All steps are indicated with RGB led (GREEN=Ready / RED=Recording / CYAN=STT&TTS / BLUE=OpenAI / MAGENTA=Speaking)
 - Pressing record button again to proceed in loop for ongoing chat ...
 
