@@ -59,10 +59,8 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 .
 
 # Demo Videos
-Short video clip, presenting Recording & SpeechToText & TextToSpeech (without Open AI, ESP32 is not 'answering', just parroting my voice with free Google TTS voice). Workflow: 
-- Recording user voice, storing audio .wav file (8KHz/8bit) to SD card,
-- STT: transcribe pre-recorded voice via Deepgram API,
-- TTS: repeat spoken sentence with Goggle TTS voice (a/o triggering e.g. LED via voice):
+5 minute example chat. Using code default settings. Device responds with the role of a 'good old friend'. 
+Used voice: Open AI 'onyx'. Deepgram STT (user) language: English (en-US). Open TTS output language: Multilingual (Open AI default)
 
 [![Video - KALO-ESP32-Voice-ChatGPT](https://github.com/user-attachments/assets/8f236399-ff71-4dc3-9563-46cfe4e7fa91)](https://dark-controller.com/wp-content/uploads/2025/01/KALO-ESP32-Voice-ChatGPT-GQ.mp4)
 
