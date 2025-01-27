@@ -65,6 +65,8 @@ Short video clip, presenting Recording & SpeechToText & TextToSpeech (without Op
 - TTS: repeat spoken sentence with Goggle TTS voice (a/o triggering e.g. LED via voice):
 
 [![Video - KALO-ESP32-Voice-ChatGPT](https://github.com/user-attachments/assets/4f452201-b146-41ba-9ad4-dad0ca6f0fed)](https://dark-controller.com/wp-content/uploads/2025/01/KALO-ESP32-Voice-ChatGPT-GQ.mp4)
+[![Video - KALO-ESP32-Voice-ChatGPT](https://github.com/user-attachments/assets/8f236399-ff71-4dc3-9563-46cfe4e7fa91)](https://dark-controller.com/wp-content/uploads/2025/01/KALO-ESP32-Voice-ChatGPT-GQ.mp4)
+
 
 <br>
 ![Video - KALO-ESP32-Voice-ChatGPT_800](https://github.com/user-attachments/assets/8f236399-ff71-4dc3-9563-46cfe4e7fa91)
