@@ -64,12 +64,9 @@ Short video clip, presenting Recording & SpeechToText & TextToSpeech (without Op
 - STT: transcribe pre-recorded voice via Deepgram API,
 - TTS: repeat spoken sentence with Goggle TTS voice (a/o triggering e.g. LED via voice):
 
-[![Video - KALO-ESP32-Voice-ChatGPT](https://github.com/user-attachments/assets/4f452201-b146-41ba-9ad4-dad0ca6f0fed)](https://dark-controller.com/wp-content/uploads/2025/01/KALO-ESP32-Voice-ChatGPT-GQ.mp4)
 [![Video - KALO-ESP32-Voice-ChatGPT](https://github.com/user-attachments/assets/8f236399-ff71-4dc3-9563-46cfe4e7fa91)](https://dark-controller.com/wp-content/uploads/2025/01/KALO-ESP32-Voice-ChatGPT-GQ.mp4)
 
 
 <br>
-![Video - KALO-ESP32-Voice-ChatGPT_800](https://github.com/user-attachments/assets/8f236399-ff71-4dc3-9563-46cfe4e7fa91)
-
 Featured video from other users & friends:<br>
 @techiesms: using my Deepgram transcription STT library in his IoT projects: <br>https://www.youtube.com/watch?v=j0EEFXmikvk- 
