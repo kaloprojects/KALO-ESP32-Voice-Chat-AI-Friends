@@ -19,7 +19,7 @@ Explore the details in the .ino code, summary in a nutshell:
 - Sending the received transcription text to Open AI (with user specified LLM model, e.g. "gpt-4o-mini")
 - Receiving AI response, printing in Serial Monitor, speaking answer with a 'human' sounding voice (multilingual Open AI voices)
 - RGB led: indicating status (GREEN=Ready, RED=Recording, YELLOW=STT, BLUE=OpenAI, CYAN=TTS, PINK=Speaking)
-- BTN actions: 1. PRESS & HOLD for recording, 2. Short PRESS stops Open AI voice (when speaking) or 3. REPEAT last Open AI answer (when silent)  
+- BUTTON: 1. PRESS & HOLD for recording, 2. PRESS stops Open AI voice (when speaking), 3. REPEAT last answer (when silent)  
 - Pressing button again to proceed in loop for ongoing chat ...
 
 # Hardware requirements
