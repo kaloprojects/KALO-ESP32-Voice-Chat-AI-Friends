@@ -46,7 +46,8 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - Define 'your' preferred "System Prompt" in global String MESSAGES (in lib_OpenAI_Chat.ino header)
 
 # Known issues
-- Total Response time (Latency): STT (Deepgram transcription) meanwhile pretty fast (for prerecorded .wav, no streaming), typically ~ 2 secs. (after file sent). Open AI response time (model gpt-4o-mini) also improved (typically less 2-3 secs.). Still a bit annoying (in my opinion) is the TTS latency (voice starts often 1-2 seconds delayed, seems an AUDIO.H issue). Will do some investigation next
+- Total Response time (Latency): STT (Deepgram transcription) meanwhile pretty fast (for prerecorded .wav, no streaming), typically ~ 2 secs. (after file sent). Open AI response time (model gpt-4o-mini) also improved (typically less 2-3 secs.). Still a bit annoying (in my opinion) is the TTS latency (voice starts often 1-2 seconds delayed)
+- Minor issue: 'audio.isRunning()' keeps true for some moments even when playing Audio done (AUDIO.H issue, i will follow up) 
 
 # Updates
 - 2025-01-26: First drop, already working, not finally cleaned up (just posted this drop on some folks request)
