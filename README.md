@@ -59,14 +59,11 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 .
 
 # Demo Videos
-5 minute example chat. Using code default settings. Device responds with the role of a 'good old friend'. 
+5 minute example chat. Using code default settings. System Prompt: Role of a 'good old friend'. 
 - Deepgram STT language: English (en-US)
-- Open TTS output: Multilingual (Open AI default), used voice in video: 'onyx'
+- TTS voice: Multilingual (Open AI default), used voice in video: 'onyx'
 - Overlay window: Serial Monitor I/O in real time (using Terminal App PuTTY)
 <br>
 
 [![Video - KALO-ESP32-Voice-ChatGPT](https://github.com/user-attachments/assets/8f236399-ff71-4dc3-9563-46cfe4e7fa91)](https://dark-controller.com/wp-content/uploads/2025/01/KALO-ESP32-Voice-ChatGPT-GQ.mp4)
 
-<br>
-Featured video from other users & friends:<br>
-@techiesms: using my Deepgram transcription STT library in his IoT projects: <br>https://www.youtube.com/watch?v=j0EEFXmikvk- 
