@@ -9,7 +9,7 @@ Architecture: All is coded in C++ native (no server based components needed, no 
 
 Code Insights: After releasing Recording button, ESP32 is sending recorded audio.wav to _STT (SpeechToText) Deepgram server_ for text transcription, then sending this text as request to _Open AI server_ (LLM model e.g. "gpt-4o-mini"), finally converting the received Open AI answer with _TTS (TextToSpeech) server_ with an AI voice back to AUDIO and playing response via speaker on ESP32.
 
-ESP32 chat device (Wifi connected) can be triggered by voice completely standalone (no Serial Monitor a/o keyboard a/o connected computer needed). Serial Monitor is optional, useful in case the device is used as _Text ChatGPT_ device only (no voice recording, no Deepgram registration needed).
+ESP32 chat device (Wifi connected) can be triggered by voice completely standalone (no Serial Monitor a/o keyboard a/o connected computer needed). Serial Monitor is optional, useful in case the device is used as _Text ChatGPT_ device only (no voice recording, no Deepgram registration needed). Hint: Using a Terminal App (e.g. PuTTY) allows to use the ESP323 device without any IDE Serial Monitor. 
 
 # Workflow
 Explore the details in the .ino code, summary in a nutshell:
@@ -46,7 +46,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - Define 'your' preferred "System Prompt" in global String MESSAGES (in lib_OpenAI_Chat.ino header)
 
 # Known issues
-- Total Response time (Latency): STT (Deepgram transcription) meanwhile pretty fast (for prerecorded .wav, no streaming), typically ~ 2 secs (after file sent). Open AI response time (model gpt-4o-mini) pretty quickly (typically 2-3 secs). Still a bit annoying is the TTS latency (voice starts often 1-2 secs delayed, seems an AUDIO.H issue). Will do some investigation next
+- Total Response time (Latency): STT (Deepgram transcription) meanwhile pretty fast (for prerecorded .wav, no streaming), typically ~ 2 secs. (after file sent). Open AI response time (model gpt-4o-mini) pretty quickly (typically 2-3 secs.). Still a bit annoying is the TTS latency (voice starts often 1-2 seconds delayed, seems an AUDIO.H issue). Will do some investigation next
 
 # Updates
 - 2025-01-26: First drop, already working, not finally cleaned up (just posted this drop on some folks request)
