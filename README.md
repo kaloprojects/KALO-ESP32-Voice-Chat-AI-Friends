@@ -48,7 +48,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - N/A
 
 # Updates
-- 2025-01-18: First drop, already working, not finally cleaned up (just posted this drop on some folks request)
+- 2025-01-26: First drop, already working, not finally cleaned up (just posted this drop on some folks request)
 
 # Next steps
 - Cleaning code, detail adjustments
