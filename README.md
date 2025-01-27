@@ -3,7 +3,7 @@ Prototype of a ESP32 based voice chat dialog device, _similar Open AI ChatGPT vi
 
 _Code supports ongoing dialog sessions, keeping & sending the complete chat history (during session). This 'Chat Completions' workflow allows 'human-like' ongoing dialogs_. Also useful for simple 'facts' requests, as this supports follow up questions, example: User Q1: 'who was Albert Einstein?' - and later (after OpenAI response) - User Q2: 'was _he_ also a musician and _did he_ have kids?'). 
 
-User can define his own "AI System Prompt" (in header of library 'lib_OpenAI_Chat.ino'), allowing to build a ESP32 chat device with a self defined 'personality' for dedicated use cases/bots.
+User can define his own "AI System Prompt" (in header of library 'lib_OpenAI_Chat.ino'), allowing to build a ESP32 chat device with a self defined 'personality' for dedicated use cases/bots. My default prompt in demo code: role of a 'good old friend'
 
 Architecture: All is coded in C++ native (no server based components needed, no Node.JS or Python scripts or websockets used), AUDIO handling coded natively in C++ for I2S devices (microphone and speaker). Just copy all .ino files into one folder and insert your personal credentials into the header sections.
 
@@ -60,7 +60,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 .
 
 # Demo Videos
-5 minute example chat. Using code default settings. System Prompt: Role of a 'good old friend'. 
+5 minute example chat. Using code default settings, System Prompt: Role of a 'good old friend'. 
 - Deepgram STT language: English (en-US)
 - TTS voice: Multilingual (Open AI default), used voice in video: 'onyx'
 - Overlay window: Serial Monitor I/O in real time (using Terminal App PuTTY)
