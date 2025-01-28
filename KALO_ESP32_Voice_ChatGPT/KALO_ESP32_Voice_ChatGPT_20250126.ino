@@ -1,0 +1,338 @@
+
+// ------------------------------------------------------------------------------------------------------------------------------
+// ------------------                               KALO_ESP32_Voice_ChatGPT                                   ------------------
+// ------------------      Example Code snippet for an ESP32 voice dialog device for Open AI (ChatGPT)         ------------------
+// ------------------          [using KALO C++ libraries from github 'KALO-ESP32-Voice-Assistant']             ------------------
+// ------------------                             Latest Update: Jan 26, 2025                                  ------------------
+// ------------------                                                                                          ------------------
+// ------------------                                    > Workflow <                                          ------------------
+// ------------------             Entering User request via keyboard (Serial Monitor) OR Voice                 ------------------
+// ------------------         Voice RECORDING (on holding BTN) with variable length [KALO I2S code]            ------------------
+// ------------------                   STT SpeechToText [using Deepgram API service]                          ------------------
+// ------------------                    Call OpenAI LLM, remembering dialog history                           ------------------
+// ------------------                         TTS TextToSpeech with OpenAI voices                              ------------------
+// ------------------             Short BTN Touch: STOP Audio or REPEAT last OpenAI response                   ------------------
+// ------------------                                                                                          ------------------
+// ------------------                        > Hardware Requirements / Circuit <                               ------------------
+// ------------------                         ESP32 with connected Micro SD Card                               ------------------
+// ------------------                    SD Card: using VSPI Default pins 5,18,19,23                           ------------------
+// ------------------                   I2S Amplifier (e.g. MAX98357), pins see below                          ------------------
+// ------------------------------------------------------------------------------------------------------------------------------
+
+
+// *** HINT: in case of an 'Sketch too Large' Compiler Warning/ERROR in Arduino IDE (ESP32 Dev Module):
+// -> select a larger 'Partition Scheme' via menu > tools: e.g. using 'No OTA (2MB APP / 2MB SPIFFS) ***
+
+
+
+#define VERSION           "\n=== KALO ESP32 Voice ChatGPT (last update: Jan. 26, 2025) =========================="   
+
+#include <WiFi.h>         // only included here
+#include <SD.h>           // also needed in other tabs (.ino) 
+
+#include <Audio.h>        // needed for PLAYING Audio (via I2S Amplifier, e.g. MAX98357) with ..
+                          // Audio.h library from Schreibfaul1: https://github.com/schreibfaul1/ESP32-audioI2S
+                          // > ensure you have actual version (July 18, 2024 or newer needed for 8bit wav files!)
+                          // > [reason: bug fix for 8bit https://github.com/schreibfaul1/ESP32-audioI2S/issues/786]                          
+
+
+// --- PRIVATE credentials -----
+
+const char* ssid =        "...";    // ### INSERT your wlan ssid 
+const char* password =    "...";    // ### INSERT your password  
+const char* OPENAI_KEY =  "...";    // ### INSERT your OpenAI key
+
+ 
+// --- user preferences -------- 
+
+String  favorite_VOICE =  "";  /*"onyx";*/  // forcing voice (DemoVideo: "onyx"), keep EMPTY "" if you want to hear all by random
+                                            // Multilingual Voices (Jan. 2025): alloy,ash,coral,echo,fable,onyx,nova,sage,shimmer
+
+#define AUDIO_FILE        "/Audio.wav"    // mandatory, filename for the AUDIO recording
+#define WELCOME_FILE      "/Welcome.wav"  // optionally, 'Hello' file will be played once on start (e.g. a gong or voice)
+
+
+// --- PIN assignments ---------
+
+#define pin_RECORD_BTN    36    // primary RECORD button
+#define pin_TOUCH         13    // alternative RECORD touch pin (just for Demo purposes)
+#define pin_VOL_POTI      34    
+
+#define pin_LED_RED       15    // 3 pins for LED (LOW for Color ON)
+#define pin_LED_GREEN     21    // 
+#define pin_LED_BLUE      4     // 
+
+#define pin_I2S_DOUT      25    // 3 pins for I2S Audio Output
+#define pin_I2S_LRC       26
+#define pin_I2S_BCLK      27
+
+
+// --- global Objects ----------
+
+Audio audio_play;
+
+int gl_TOUCH_RELEASED;    // measured once in setup(), once is enough because ESP32 Touch stable untouched signal 
+                          // typical values: untouched/empty ~50, when touched about 10-30
+                          // Rule (by own tests): we trigger if current value is below 80% of gl_TOUCH_RELEASED
+
+
+// declaration of functions in other modules (not mandatory but ensures compiler checks correctly)
+// splitting Sketch into multiple tabs see e.g. here: https://www.youtube.com/watch?v=HtYlQXt14zU
+
+bool    I2S_Record_Init(); 
+bool    Record_Start( String filename ); 
+bool    Record_Available( String filename, float* audiolength_sec ); 
+
+String  SpeechToText_Deepgram( String filename );
+
+String  Open_AI( String UserRequest, const char* LLM_API_key );  
+
+
+
+// ******************************************************************************************************************************
+
+void setup() 
+{   
+  // Initialize serial communication
+  Serial.begin(115200); 
+  Serial.setTimeout(100);    // 10 times faster reaction after CR entered (default is 1000ms)
+
+  // Pin assignments:
+  pinMode(pin_LED_RED, OUTPUT);  pinMode(pin_LED_GREEN, OUTPUT);  pinMode(pin_LED_BLUE, OUTPUT);
+  pinMode(pin_RECORD_BTN, INPUT );  // use INPUT_PULLUP if no external Pull-Up connected ##
+    
+  // on INIT: walk 1 sec thru 3 RGB colors (RED -> GREEN -> BLUE) 
+  led_RGB(LOW,HIGH,HIGH); delay (330);  led_RGB(HIGH,LOW,HIGH); delay (330);  led_RGB(HIGH,HIGH,LOW); delay (330); 
+   
+  // Hello World
+  Serial.println( VERSION );  
+   
+  // Connecting to WLAN
+  WiFi.mode(WIFI_STA);                                 
+  WiFi.begin(ssid, password);         
+  Serial.print("> Connecting WLAN " );
+  while (WiFi.status() != WL_CONNECTED)                 
+  { Serial.print(".");  delay(500); 
+  } 
+  Serial.println(". Done, device connected.");
+  led_RGB( HIGH,LOW,HIGH );   // LED ## GREEN: device connected
+
+  // Initialize SD card
+  if (!SD.begin()) 
+  { Serial.println("ERROR - SD Card initialization failed!"); 
+    return; 
+  }
+  
+  // initialize KALO I2S Recording Services (don't forget!)
+  I2S_Record_Init();        
+    
+  // INIT Audio Output (via Audio.h, see here: https://github.com/schreibfaul1/ESP32-audioI2S)
+  audio_play.setPinout( pin_I2S_BCLK, pin_I2S_LRC, pin_I2S_DOUT);
+  
+  // Calibration: measure initial TOUCH value (later on: all below e.g. 80% of this 'un-touched' value will trigger TOUCH) 
+  gl_TOUCH_RELEASED = touchRead(pin_TOUCH);
+  
+  // Optional (Demo purpose): Say 'Hello' - Playing a optional WELCOME_FILE wav file once
+  if ( SD.exists( WELCOME_FILE ) )
+  {  audio_play.setVolume( map(analogRead(pin_VOL_POTI),0,4095,0,21) );  
+     audio_play.connecttoFS( SD, WELCOME_FILE );  
+     // using 'isRunning()' trick to wait in setup() until PLAY is done:
+     while (audio_play.isRunning())
+     { audio_play.loop();
+     }     
+  }
+  
+  // INIT done, starting user interaction
+  Serial.println( "> Hold or Touch button during recording VOICE .. OR enter request in Serial Monitor" );  
+  Serial.println( "  [command '#': chat history, keyword 'RADIO' or 'DAILY NEWS/Tagesschau': streaming]\n" );  
+  
+}
+
+
+
+// ******************************************************************************************************************************
+
+void loop() 
+{
+  String UserRequest;                     // user request, initialized new each loop pass 
+  String LLM_Feedback;                    // Open AI response
+  
+  static String LLM_Feedback_before;      // static var to keep information from last request (as alternative to global var)
+  static bool flg_UserStoppedAudio;       // both static vars are used for 'Press button' actions (stop Audio a/o repeat LLM)
+  
+  
+  // ------ Read USER INPUT via Serial Monitor (fill String UserRequest and ECHO after CR entered) ------------------------------
+  // ESP32 as TEXT Chat device: this allows to use the Serial Monitor as an Open AI text chat device  
+  // (hidden feature, covered in lib_OpenAI_Chat.ino: enter '#' in Serial Monitor to list the history of complete chat dialog)
+  
+  while (Serial.available() > 0)                        // definition: returns numbers ob chars after CR done
+  { // we end up here only after Input done             // this 'while loop' is a NOT blocking loop script :)
+    UserRequest = Serial.readStringUntil('\n');                                                                     
+   
+    // Clean the input line first:
+    UserRequest.replace("\r", "");  UserRequest.replace("\n", "");   UserRequest.trim();
+    
+    // then ECHO in monitor in [brackets] (in case the user entered more than spaces or CR only): 
+    if (UserRequest != "")
+    {  Serial.println( "\nYou> [" + UserRequest + "]" );      
+    }  
+  }  
+
+
+  // ------ Read USER INPUT via Voice recording & Deepgram transcription --------------------------------------------------------
+  // ESP32 as VOICE chat device: Recording & Transcription (same result: filling String 'UserRequest' with spoken text)  
+  // Pressing a button (or touching a pin) as long speaking. Code below supports buttons & touch pins (just for demo purposes) 
+  // 3 different BTN actions:  PRESS & HOLD for recording || STOP (Interrupt) Open AI speaking || REPEAT last Open AI answer  
+
+  int current_touch = touchRead(pin_TOUCH);                       
+  bool flg_touched  = (current_touch <= (int) (gl_TOUCH_RELEASED * 0.8)) ? true : false;     
+  
+  if (digitalRead(pin_RECORD_BTN) == LOW || flg_touched)          // # Recording started, supporting btn and touch sensor
+  {  delay(30);                                                   // unbouncing & suppressing finger button 'click' noise 
+ 
+     if (audio_play.isRunning())                                  // Before we start any recording: always stop earlier Audio 
+     {  audio_play.connecttohost("");                             // 'audio_play.stopSong()' won't work (collides with STT)
+        flg_UserStoppedAudio = true;
+        Serial.println( "< STOP AUDIO >" );
+     }   
+     else flg_UserStoppedAudio = false;                           // trick allows to distinguish between STOP and REPEAT  
+         
+     // Now Starting Recording (no blocking, not waiting)
+     Record_Start(AUDIO_FILE);                                    // that's the main task: Recording AUDIO (ongoing)  
+  }
+
+  if (digitalRead(pin_RECORD_BTN) == HIGH && !flg_touched)        // # Recording not started yet OR stopped (on release button)
+  {  
+     float recorded_seconds; 
+     if (Record_Available( AUDIO_FILE, &recorded_seconds ) )      // true ONCE when recording finalized (.wav file available)
+     {  if (recorded_seconds > 0.4)                               // using short btn TOUCH (<0.4 secs) for other actions
+        {  led_RGB(LOW,LOW,HIGH);                                 // LED: ## YELLOW indicating Deepgram STT starting 
+           Serial.print( "\nYou {STT}> " );                       // function SpeechToText_Deepgram will append '...'
+                   
+           UserRequest = SpeechToText_Deepgram( AUDIO_FILE );     // Action happens here! (WAITING until Deepgram done)
+           
+           if (UserRequest != "")                                 // Done!. In case we got a valid spoken transcription:   
+           {  led_RGB(LOW,LOW,LOW); delay(200);                   // LED: ## WHITE FLASH (200ms)
+              led_RGB(HIGH,HIGH,HIGH); delay(100);                    
+           }    
+           Serial.println( " [" + UserRequest + "]" );            // printing result in Serial Monitor always              
+        }
+        else                                                      // 2 additional Actions on short button PRESS (< 0.4 secs):
+        { if (!flg_UserStoppedAudio)                              // - STOP AUDIO when playing (done above, if Btn == LOW)
+          {  Serial.print( "< REPEAT TTS > " );                   // - REPEAT last LLM answer (if currently not playing)
+             LLM_Feedback = LLM_Feedback_before;                  
+          }
+        }
+     }      
+  }  
+
+
+  // ------ USER REQUEST found -> Check gimmicks first (Playing RADIO or TV NEWS ------------------------------------------------
+  
+  String cmd = UserRequest;
+  cmd.toUpperCase();
+
+  // Gimmick 1: Check for keyword 'RADIO' inside the user request -> Playing German RADIO Live Stream: SWR3
+  if (cmd.indexOf("RADIO") >=0 )
+  {  Serial.println( "< Streaming German RADIO: SWR3 >" );   
+     audio_play.connecttohost( "https://liveradio.swr.de/sw282p3/swr3/play.mp3" ); 
+     UserRequest = "";
+  } 
+
+  // Gimmik 2: Check for keyword 'DAILY NEWS' or German 'TAGESSCHAU' -> Playing German TV News: Tagesschau24
+  if (cmd.indexOf("DAILY NEWS") >=0 || cmd.indexOf("TAGESSCHAU") >=0 ) 
+  {  Serial.println( "< Streaming German Daily News TV: Tagesschau24 >" );   
+     audio_play.connecttohost( "https://icecast.tagesschau.de/ndr/tagesschau24/live/mp3/128/stream.mp3"  ); 
+     UserRequest = "";
+  }
+
+   
+  // ------ USER REQUEST found -> Call Open AI LLM ------------------------------------------------------------------------------
+  
+  if (UserRequest != "" ) 
+  { 
+    led_RGB(HIGH,HIGH,LOW);                               // LED: ## BLUE indicating Open AI Request starting
+    Serial.print( "OpenAI LLM> " );                       // function Open_AI(UserRequest) will append '...'
+    
+    LLM_Feedback = Open_AI( UserRequest, OPENAI_KEY );    // Action happens here! (WAITING until Open AI done) 
+      
+    if (LLM_Feedback != "")                               // in case we got a valid feedback -> LED: ## WHITE FLASH (200ms)  
+    { led_RGB(LOW,LOW,LOW); delay(200);                
+      led_RGB(HIGH,HIGH,HIGH); delay(100);  
+      
+      Serial.println( " [" + LLM_Feedback + "]" );    
+      LLM_Feedback_before = LLM_Feedback;                           
+    }           
+    else Serial.print("\n");   
+  }
+
+
+  // ------ Speak LLM answer with Open AI voices (9 multi-lingual voices per random) --------------------------------------------
+  // also printing in Serial Monitor
+   
+  if (LLM_Feedback != "") 
+  {   
+     led_RGB(HIGH,LOW,LOW);             // LED: ## CYAN indicating 'TTS' (with Open AI vice) starting
+     
+     // [TextToSpeech OpenAI] - Repeat your sentence with 'human sounding' voices 
+     // All voices are multi-lingual (!), available voices (Jan. 2025): alloy, ash, coral, echo, fable, onyx, nova, sage, shimmer
+     // More info, testing voice samples here: https://platform.openai.com/docs/guides/text-to-speech/text-to-speech
+
+     String Voices[9] = { "alloy", "ash", "coral", "echo", "fable", "onyx", "nova", "sage", "shimmer" }; 
+     String Voice = Voices[random(9)];   // speak with different voices always (just for demo purposes)  
+       
+     if (favorite_VOICE != "") {Voice = favorite_VOICE;}      // or stay with user favorite voice in case defined in header 
+
+     // Print in Serial Monitor
+     Serial.println( "OpenAI Voice = [" + Voice + "]" );     
+           
+     // Action: Play TTS OpenAI via connected I2S Speaker:
+     // (hint: supported formats for '.openai_speech()': aac | mp3 | wav (sample rate issue) | flac (PSRAM needed) )
+     // known AUDIO.H issue: Latency delay (~1 sec) before voice starts speaking 
+           
+     audio_play.openai_speech(OPENAI_KEY, "tts-1", LLM_Feedback.c_str(), Voice, "aac", "1");    
+  }
+
+
+  // ----------------------------------------------------------------------------------------------------------------------------
+  // readjust Audio Volume Poti (reading POTI, only 5 times per second to avoid unnecessary calls or flickering)
+  
+  static long millis_before = millis();  
+  static int  volume_before;
+  if (millis() > (millis_before + 200))  // each 200ms
+  { millis_before = millis(); 
+    int volume = map( analogRead(pin_VOL_POTI), 0, 4095, 0, 21 );
+    if (volume != volume_before)
+    {  /* Serial.println( "Volume: " + (String) volume);  // for debugging */
+       audio_play.setVolume(volume);  // values from 0 to 21
+       volume_before = volume;
+    }    
+  } 
+
+  
+  // ----------------------------------------------------------------------------------------------------------------------------
+  // Play AUDIO (Schreibfaul1 loop for Play Audio (details here: https://github.com/schreibfaul1/ESP32-audioI2S))
+  // and updating LED status
+  
+  audio_play.loop();  
+  vTaskDelay(1); 
+
+  // update LED status always (in addition to WHITE flashes + YELLOW on STT + BLUE on LLM + CYAN on TTS)
+  if (digitalRead(pin_RECORD_BTN)==LOW || flg_touched) { led_RGB(LOW,HIGH,HIGH); }   // led RED as long the record ongoing
+  else if (audio_play.isRunning())      { led_RGB(LOW,HIGH,LOW);  }   // led MAGENTA when Open AI voice is speaking 
+  else                                  { led_RGB(HIGH,LOW,HIGH); }   // led GREEN (default) when ready for next user request
+    
+}
+
+
+
+
+// ******************************************************************************************************************************
+
+void led_RGB( bool red, bool green, bool blue ) 
+{ static bool red_before, green_before, blue_before;  
+  // writing to real pin only if changed (increasing performance for frequently repeated calls)
+  if (red   != red_before)   { digitalWrite(pin_LED_RED,red);     red_before=red;     } 
+  if (green != green_before) { digitalWrite(pin_LED_GREEN,green); green_before=green; } 
+  if (blue  != blue_before)  { digitalWrite(pin_LED_BLUE,blue);   blue_before=blue;   } 
+}
