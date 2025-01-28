@@ -78,6 +78,5 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 .
 
 Recommended links to other users & friends:
-
-- Advanced ESP32 AI device using streaming sockets for lowest latency: [Github StarmoonAI/Starmoon project](https://github.com/StarmoonAI/Starmoon) 
+- Advanced ESP32 AI device, using streaming sockets for lowest latency: [Github StarmoonAI/Starmoon project](https://github.com/StarmoonAI/Starmoon) 
 
