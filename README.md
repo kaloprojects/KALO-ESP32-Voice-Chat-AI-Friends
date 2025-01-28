@@ -64,7 +64,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 5 minute example chat. Using code default settings, System Prompt: Role of a 'good old friend'. 
 - Deepgram STT language: English (en-US)
 - TTS voice: Multilingual (Open AI default), used voice in video: 'onyx'
-- Overlay window: Serial Monitor I/O in real time (using Terminal App PuTTY)
+- Overlay window: Serial Monitor I/O in real time (using Terminal App PuTTY, just for demo purposes)
 <br>
 
 [![Video - KALO-ESP32-Voice-ChatGPT](https://github.com/user-attachments/assets/8f236399-ff71-4dc3-9563-46cfe4e7fa91)](https://dark-controller.com/wp-content/uploads/2025/01/KALO-ESP32-Voice-ChatGPT-GQ.mp4)
