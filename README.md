@@ -72,3 +72,19 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 
 [![Video - KALO-ESP32-Voice-ChatGPT](https://github.com/user-attachments/assets/8f236399-ff71-4dc3-9563-46cfe4e7fa91)](https://dark-controller.com/wp-content/uploads/2025/01/KALO-ESP32-Voice-ChatGPT-GQ.mp4)
 
+
+.
+.
+.
+
+Recommended links to other users & friends:
+
+- Advanced ESP32 AI device using streaming sockets for lowest latency: [Github](https://github.com/StarmoonAI/Starmoon)
+
+- 
+- 
+- https://github.com/StarmoonAI/starmoon
+-  
+- @techiesms (August 2024): [Github](https://github.com/StarmoonAI/Starmoon)
+- @techiesms (August 2024): [Portable AI Voice Assistant using ESP32 & Gemini AI](https://www.youtube.com/watch?v=zvR9DTfMwPE)
+
