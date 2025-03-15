@@ -20,7 +20,7 @@ Explore the details in the .ino code, summary in a nutshell:
 - Sending recorded WAV file to STT (SpeechToText) server (using Deepgram API service, registration needed)
 - Sending the received transcription text to Open AI (with user specified LLM model, e.g. "gpt-4o-mini")
 - Receiving AI response, printing in Serial Monitor, speaking answer with a 'human' sounding voice (multilingual Open AI voices)
-- RGB led: indicating status (GREEN=Ready, RED=Recording, YELLOW=STT, BLUE=OpenAI, CYAN=TTS, PINK=Speaking)
+- RGB led: indicating status (GREEN=Ready, RED=Recording, CYAN=STT, BLUE=OpenAI, YELLOW=TTS, PINK=Speaking)
 - BUTTON: PRESS & HOLD for recording + PRESS stops Open AI voice (when speaking) or repeats last answer (when silent)  
 - Pressing button again to proceed in loop for ongoing chat ...
 
@@ -55,7 +55,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 
 # Updates
 - 2025-03-14: Major enhancements: Supporting techiesms's hardware/pcb [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/). Code Insights: New toggle '#define TECHIESMS_PCB true' assign all pins automatically (no additional code changes needed) 
-- 2025-03-14: Minor enhancements: Welcome Voice (Open AI) added, RGB led colors updated,  
+- 2025-03-14: Minor enhancements: Welcome Voice (Open AI) added, RGB led colors updated  
 - 2025-01-26: First drop, already working, not finally cleaned up (just posted this drop on some folks request)
 
 # Next steps
