@@ -52,6 +52,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - Minor issue: 'audio.isRunning()' keeps true some moments after PLAY Audio done (AUDIO.H issue, led 'pink') 
 
 # Updates
+- 2025-03-14: Latest version, supporting techiesms's hardware/pcb [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/)
 - 2025-01-26: First drop, already working, not finally cleaned up (just posted this drop on some folks request)
 
 # Next steps
