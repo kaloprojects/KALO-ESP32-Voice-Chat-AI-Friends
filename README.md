@@ -54,7 +54,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - Minor issue: 'audio.isRunning()' keeps true some moments after PLAY Audio done (AUDIO.H issue, led 'pink') 
 
 # Updates
-- 2025-03-14: Major enhancements: Supporting techiesms's hardware/pcb [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/). Code Insights: New toggle '#define TECHIESMS_PCB true' assign all pins automatically.
+- 2025-03-14: Major enhancements: Supporting techiesms's hardware/pcb [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/). Code Insights: New toggle '#define TECHIESMS_PCB true' assign all pins automatically (no additional code changes needed) 
 - 2025-03-14: Minor enhancements: Welcome Voice (Open AI) added, RGB led colors updated,  
 - 2025-01-26: First drop, already working, not finally cleaned up (just posted this drop on some folks request)
 
