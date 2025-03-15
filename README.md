@@ -31,7 +31,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - I2S audio amplifier, e.g. MAX98357A [I2S pins 25,26,27] with speaker
 - Micro SD Card [VSPI Default pins 5,18,19,23] 
 - RGB LED (status indicator) and optionally an Analog Poti (for audio volume)
-- NEW: Ready to Go hardware with aligned pins, example: [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/).
+- NEW: Ready to Go hardware (example): [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/).
 
 # 3rd party Software licenses
 - STT: Deepgram API service for user voice transcription ([Registration free account](https://console.deepgram.com/signup) needed for personal API key)
