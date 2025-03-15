@@ -41,7 +41,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - Required (for i2s_std.h): Arduino IDE with ESP32 lib 3.1.x (based on ESP-IDF 5.3.x). Older 2.x ESP (i2s.h) are not supported.
 - Required (for TTS): [AUDIO.H library ESP32-audioI2S.zip](https://github.com/schreibfaul1/ESP32-audioI2S), version 3.0.11g or newer.
 - Copy all .ino files of into same folder (it is one sketch, split into multiple Arduino IDE tabs)
-- Optionally (NEW): Copy Audio file 'Welcome.wav' to ESP32 SD card, played on Power On (my posted welcome.wav offers a 'gong' sound) 
+- Optionally (NEW): Copy Audio file 'Welcome.wav' to ESP32 SD card, played on Power On (posted welcome.wav is a 'gong' sound) 
 - Update your pin assignments & wlan settings (ssid, password) in the .ino header files
 - Update headers with personal credentials (Deepgram API key, OpenAI API key)
 - Toggle DEBUG flag to true (displaying Serial.print details) or false (for final usage)
