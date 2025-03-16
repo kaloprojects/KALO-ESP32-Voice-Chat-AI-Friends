@@ -20,7 +20,7 @@ Explore the details in the .ino code, summary in a nutshell:
 - Sending recorded WAV file to STT (SpeechToText) server (using Deepgram API service, registration needed)
 - Sending the received transcription text to Open AI (with user specified LLM model, e.g. "gpt-4o-mini")
 - Receiving AI response, printing in Serial Monitor, speaking answer with a 'human' sounding voice (multilingual Open AI voices)
-- RGB led (updated): indicating status (GREEN=Ready, RED=Recording, CYAN=STT, BLUE=OpenAI, YELLOW=TTS, PINK=Speaking)
+- RGB status led (updated): GREEN=Ready, RED=Recording, CYAN=STT, BLUE=OpenAI, YELLOW=TTS, PINK=Speaking
 - BUTTON: PRESS & HOLD for recording + PRESS stops Open AI voice (when speaking) or repeats last answer (when silent)  
 - Pressing button again to proceed in loop for ongoing chat ...
 
@@ -30,7 +30,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - I2S digital microphone, e.g. INMP441 [I2S pins 22, 33, 35]          
 - I2S audio amplifier, e.g. MAX98357A [I2S pins 25,26,27] with speaker
 - Micro SD Card [VSPI Default pins 5,18,19,23] 
-- RGB LED (status indicator) and optionally an Analog Poti (for audio volume)
+- RGB status LED and optionally an Analog Poti (for audio volume)
 - NEW: Ready to Go hardware (example): [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/).
 
 # 3rd party Software licenses
