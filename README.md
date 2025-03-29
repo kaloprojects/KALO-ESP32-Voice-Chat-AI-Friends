@@ -62,7 +62,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 
 .
 .
-.
+. <br>
 
 # Demo Videos
 5 minute example chat. Using code default settings, System Prompt: Role of a 'good old friend'. 
