@@ -58,7 +58,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - 2025-01-26: First drop, already working, not finally cleaned up (just posted this drop on some folks request)
 
 # Next steps
-- Plan is to add Live Information Request capabilities (Real-time Research). Supporting user questions like 'what date is today, and will it rain tomorrow in my reagion ?'
+- Plan is to add Live Information Request capabilities (Real-time web search feature). <br>Supporting user questions like _'what date is today, and will it rain tomorrow in my region ?'_
 
 .
 .
