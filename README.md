@@ -57,6 +57,8 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - 2025-03-14: Major enhancements: Supporting techiesms's hardware/pcb [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/). Code Insights: New toggle '#define TECHIESMS_PCB true' assigns all specific pins automatically (no user code changes needed). Minor enhancements: Welcome Voice (Open AI) added, RGB led colors updated, code clean up done
 - 2025-01-26: First drop, already working, not finally cleaned up (just posted this drop on some folks request)
 
+# Next steps
+- Plan is to add Live Information Request capabilities (Real-time Research). Supporting user questions like 'what date is today, and will it rain tomorrow in my reagion ?'
 
 .
 .
