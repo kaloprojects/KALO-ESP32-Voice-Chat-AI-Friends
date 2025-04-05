@@ -23,8 +23,9 @@ Explore the details in the .ino code, summary in a nutshell:
 - Sending recorded WAV file to STT (SpeechToText) server (using Deepgram API service, registration needed)
 - Sending the received transcription text to Open AI (with user specified LLM model, e.g. "gpt-4o-mini")
 - Receiving AI response, printing in Serial Monitor, answering with a 'human' sounding voice (multilingual Open AI voices)
-- RGB status led (updated): GREEN=Ready, RED=Recording, CYAN=STT, BLUE=OpenAI, YELLOW=TTS start, PINK=Speaking
-- BUTTON: PRESS & HOLD for recording + PRESS stops Open AI voice (when speaking) or repeats last answer (when silent)  
+- RGB status led (updated): GREEN=Ready, RED=Recording, CYAN=STT, BLUE=OpenAI CHAT, NEW: PINK=Open AI WEB, YELLOW=TTS start, PINK=Speaking
+- BUTTON: PRESS & HOLD for recording + PRESS stops Open AI voice (when speaking) or repeats last answer (when silent)
+- NEW: Start a sentence with 'Question..' to launch web search with TTS response
 - Pressing button again to proceed in loop for ongoing chat ...
 
 # Hardware requirements
@@ -46,8 +47,8 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - Copy all .ino files of into same folder (it is one sketch, split into multiple Arduino IDE tabs)
 - Copy Audio file 'Welcome.wav' to ESP32 SD card, played on Power On (posted welcome.wav is a 'gong') 
 - Update your hardware pin assignments in sketches 'KALO_ESP32_Voice_ChatGPT.ino' & 'lib_audio_recording.ino'
-- NEW: Update your credentials and all user settings in main sketch in header of 'KALO_ESP32_Voice_ChatGPT.ino'
-- Define your preferred AI "System Prompt" (String MESSAGES in header of 'lib_OpenAI_Chat.ino')
+- NEW: Update your credentials and all user settings in header of main sketch 'KALO_ESP32_Voice_ChatGPT.ino'
+- Define your own 'AI character' via "System Prompt" (String MESSAGES in header of 'lib_OpenAI_Chat.ino')
 - Optional: Toggle DEBUG flag to true (displaying Serial.print details) or false (for final usage)
 - Optional: Review default recording parameter (SAMPLE_RATE, GAIN_BOOSTER_I2S etc) in lib_audio_recording.ino header
 
