@@ -58,9 +58,9 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - Minor issue: 'audio.isRunning()' keeps true some moments after PLAY Audio done (AUDIO.H issue, led 'pink') 
 
 # Updates
-_Code will be posted tomorrow (April 6)_
-- 2024-04-04: Live Information Request capabilities added (supporting new Open AI web search features). Mixed support of chat model (e.g. "gpt-4o-mini") and web search models (e.g. "gpt-4o-mini-search-preview"). User queries with the leading keyword 'Question..' initiate a web search and embed the result in the ongoing chat.
-- 2024-04-04: Minor changes: all user specific credits are moved to header of Main sketch (KALO_ESP32_Voice_ChatGPT_20250404.ino), additional parameter added to function Open_AI(..) and SpeechToText_Deepgram(..). Code further cleaned up, detailed comments added in 'lib_OpenAI_Chat.ino'.
+_2025-04-04 release will be published asap (April 6)_
+- 2025-04-04: Live Information Request capabilities added (supporting new Open AI web search features). Mixed support of chat model (e.g. "gpt-4o-mini") and web search models (e.g. "gpt-4o-mini-search-preview"). User queries with the leading keyword 'Question..' initiate a web search and embed the result in the ongoing chat.
+- 2025-04-04: Minor changes: all user specific credits are moved to header of Main sketch (KALO_ESP32_Voice_ChatGPT_20250404.ino), additional parameter added to function Open_AI(..) and SpeechToText_Deepgram(..). Code further cleaned up, detailed comments added in 'lib_OpenAI_Chat.ino'.
 - 2025-03-14: Major enhancements: Supporting techiesms's hardware/pcb [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/). Code Insights: New toggle '#define TECHIESMS_PCB true' assigns all specific pins automatically (no user code changes needed). Minor enhancements: Welcome Voice (Open AI) added, RGB led colors updated, code clean up done
 - 2025-01-26: First drop, already working, not finally cleaned up (just posted this drop on some folks request)
 
