@@ -56,11 +56,14 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - Minor issue: 'audio.isRunning()' keeps true some moments after PLAY Audio done (AUDIO.H issue, led 'pink') 
 
 # Updates
+- 2024-04-04: Live Information Request capabilities added (supporting new Open AI web search featues). Mixed support of chat model (e.g. "gpt-4o-mini") and web search models (e.g. "gpt-4o-mini-search-preview"). User queries with the leading keyword 'Question..' initiate a web search and embed the result in the ongoing chat.
+- 2024-04-04: Minor changes: all user specific credits are moved to header of Main.ino (KALO_ESP32_Voice_ChatGPT_20250404.ino), additional parameter added to function Open_AI(..) and SpeechToText_Deepgram(..). Code further cleaned up, detailed comments added in 'lib_OpenAI_Chat.ino'.
 - 2025-03-14: Major enhancements: Supporting techiesms's hardware/pcb [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/). Code Insights: New toggle '#define TECHIESMS_PCB true' assigns all specific pins automatically (no user code changes needed). Minor enhancements: Welcome Voice (Open AI) added, RGB led colors updated, code clean up done
 - 2025-01-26: First drop, already working, not finally cleaned up (just posted this drop on some folks request)
 
 # Next steps
-- Plan is to add Live Information Request capabilities (Real-time web search feature) via keyword (e.g. 'Question:..'). Supporting user requests like _'Question: what date is today?'_ or _'Question: will it rain in my region tomorrow?'_
+- Plan is to add Live Information Request capabilities (Real-time web search feature) via keyword (e.g. 'Question:..'). Supporting user requests like _'Question: what date is today?'_ or _'Question: will it rain in my region tomorrow?'_. -> Update: DONE with latest verion (April 4, 2025)
+- No concrete plans in moment
 
 .
 .
