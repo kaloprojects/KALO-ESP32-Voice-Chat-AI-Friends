@@ -13,6 +13,8 @@ Code Insights: After releasing Recording button, ESP32 is sending recorded audio
 
 ESP32 chat device (Wifi connected) can be triggered by voice completely standalone (no Serial Monitor a/o keyboard a/o connected computer needed). Serial Monitor is optional, useful in case the device is used as _Text ChatGPT_ device only (no voice recording, no Deepgram registration needed). Hint: Using a Terminal App (e.g. PuTTY) allows to use the ESP323 as Text Chat device without any IDE Serial Monitor. 
 
+**Update (April 4, 2025)**: Open AI _Web Search_ LLM model added, this allows to include _actual_ and location related Live Information (Real-time web searches) as part of the chat dialog. Triggered via keyword (e.g. using leading word 'Question' in my code). Examples: _'Question: what date is today?'_ or _'Question: will it rain in my region tomorrow?'_. Mixed model usage of both models supported (default chat & new web search model), this allows also follow up requests (e.g. 'please summarize!') also to prevoius web search questions.
+
 # Workflow
 Explore the details in the .ino code, summary in a nutshell:
 - Recording user Voice with variable length (as long holding a btn), storing as .wav file (with 44 byte header) on SD card
