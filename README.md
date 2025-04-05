@@ -44,13 +44,13 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - Required (for i2s_std.h): Arduino IDE with ESP32 lib 3.1.x (based on ESP-IDF 5.3.x). Older 2.x ESP (i2s.h) are not supported.
 - Required (for TTS): [AUDIO.H library ESP32-audioI2S.zip](https://github.com/schreibfaul1/ESP32-audioI2S), version 3.0.11g or newer.
 - Copy all .ino files of into same folder (it is one sketch, split into multiple Arduino IDE tabs)
-- Optionally (NEW): Copy Audio file 'Welcome.wav' to ESP32 SD card, played on Power On (posted welcome.wav is a 'gong') 
-- Update your pin assignments & wlan settings (ssid, password) in the .ino header files
-- Update headers with personal credentials (Deepgram API key, OpenAI API key)
-- Toggle DEBUG flag to true (displaying Serial.print details) or false (for final usage)
-- Review default recording parameter (SAMPLE_RATE, GAIN_BOOSTER_I2S etc) in lib_audio_recording.ino header
-- Define 'your' STT language (Deepgram STT in lib_audio_transcription.ino header)
-- Define your preferred "System Prompt" in global String MESSAGES (in lib_OpenAI_Chat.ino header)
+- Copy Audio file 'Welcome.wav' to ESP32 SD card, played on Power On (posted welcome.wav is a 'gong') 
+- Update your hardware pin assignments in sketches 'KALO_ESP32_Voice_ChatGPT.ino' & 'lib_audio_recording.ino'
+- NEW: Update your credentials and all user settings in main sketch in header of 'KALO_ESP32_Voice_ChatGPT.ino'
+- Define your preferred AI "System Prompt" (String MESSAGES in header of 'lib_OpenAI_Chat.ino')
+- Optional: Toggle DEBUG flag to true (displaying Serial.print details) or false (for final usage)
+- Optional: Review default recording parameter (SAMPLE_RATE, GAIN_BOOSTER_I2S etc) in lib_audio_recording.ino header
+
 
 # Known issues
 - Total Response time (Latency): STT (Deepgram transcription) meanwhile pretty fast (for prerecorded .wav, no streaming), typically ~ 1-2 secs. (after file sent). To visualize latency: count the '.' in demo video below (printing a '.' each 250ms). Open AI response time (model gpt-4o-mini) also improved (typically less 2-3 secs.). Still a bit annoying (in my opinion) is the TTS latency (voice starts often 1-2 seconds delayed)
