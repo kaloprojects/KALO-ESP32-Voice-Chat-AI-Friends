@@ -317,11 +317,11 @@ void loop()
   
   if (UserRequest != "" ) 
   {     
-    // # NEW #: launch Open AI WEB SEARCH feature if user request starts with keyword 'Question' (or e.g. German 'Frage')
+    // # NEW #: launch Open AI WEB SEARCH feature if user request STARTS with keyword 'Question' (or e.g. German 'Frage')
     // supporting User requests like 'Question: what day is today?' .. or 'Question: will it rain tomorrow in my reagion?'
     // 
     // Alternativelly (just as an idea): You also could trigger web search if a 'key word' (e.g. 'Google') is included at ANY 
-    // position, similar i did with 'RADIO' above, coding: 'if (UserRequest.indexOf("Google") >=0)..), hint: and removing
+    // position, similar i did with 'RADIO' above, coding: 'if (UserRequest.indexOf("Google") >=0)..), hint: and maybe removing
     // word 'Google' with "" via 'UserRequest.replace("Google", "")' prior final sending to Open_AI :)
     
     if ( UserRequest.startsWith("Question") || UserRequest.startsWith("Frage") )                          
