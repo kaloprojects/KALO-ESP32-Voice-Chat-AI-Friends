@@ -54,7 +54,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 
 
 # Known issues
-- Total Response time (Latency): STT (Deepgram transcription response) meanwhile is pretty fast (for prerecorded .wav, no streaming), typically ~ 0.5-1 sec. (after file sent). To visualize latency: count the '.' in demo video below (printing a '.' each 250ms). The reason why total SST time still seems high is the well known slow SD card access on a ESP32 (e.g. reading & sending a 10 sec record with 8bit/16kHz needs about 5 secs). Open AI response time (model gpt-4o-mini) also improved (typically less 2-3 secs.). Still a bit annoying (in my opinion) is the TTS latency (voice starts often 1-2 seconds delayed)
+- Total Response time (Latency): STT (Deepgram transcription response) is pretty fast already (for prerecorded .wav, no streaming), typically ~ 0.5-1 sec. (after file sent). To visualize latency: count the '.' in demo video below (printing a '.' each 250ms). The reason why total SST time still seems high is the well known slow SD card access on a ESP32 (e.g. reading & sending a 10 sec record with 8bit/16kHz needs about 5 secs). Open AI response time (model gpt-4o-mini) also improved (typically less 2-3 secs.). Still a bit annoying (in my opinion) is the TTS latency (voice starts often 1-2 seconds delayed)
 - Minor issue: 'audio.isRunning()' keeps true some moments after PLAY Audio done (AUDIO.H issue, led 'pink') 
 
 # Updates
