@@ -64,7 +64,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 
 # Next steps
 - Plan is to add Live Information Request capabilities (Real-time web search feature) via keyword (e.g. 'Question:..'). Supporting user requests like _'Question: what date is today?'_ or _'Question: will it rain in my region tomorrow?'_. -> Update: DONE with latest version (April 4, 2025)
-- Currently thinking about a further version using PSRAM (instead SD card reader) for recording & transcription. This could speed up the STT transcription. -> Update (April 28, 2025): _PSRAM working well (on my internal updates), but unfortunalty speed of SST not significantly improved_, bottleneck seems an issue in ESP32 WifiClientSecure.write(). I will discuss my tests with Espressif ESP32 folks next. Ongoing.
+- Currently thinking about a further version using PSRAM (instead SD card reader) for recording & transcription. This could speed up the STT transcription. -> Update (April 28, 2025): _Good news: PSRAM working well (on my internal updates), but unfortunalty speed of SST not significantly improved_, bottleneck seems an issue in ESP32 WifiClientSecure.write(). I will discuss my tests with Espressif ESP32 folks next. Ongoing.
 
 .
 .
