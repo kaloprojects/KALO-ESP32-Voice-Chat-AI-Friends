@@ -63,9 +63,9 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - **2025-01-26:** First drop, already working, not finally cleaned up (just posted this drop on some folks request)
 
 # Next steps
-- Plan is to add Live Information Request capabilities (Real-time web search feature) via keyword (e.g. 'Question:..'). Supporting user requests like _'Question: what date is today?'_ or _'Question: will it rain in my region tomorrow?'_. -> Update: DONE with latest version (April 4, 2025)
-- Currently thinking about a further version using PSRAM (instead SD card reader) for recording & transcription. This could speed up the STT transcription. -> Update (April 28, 2025): _Good news: PSRAM working well (on my internal updates), no longer need of a SD card, but unfortunalty speed of STT not significantly improved_, bottleneck seems an issue in ESP32 WifiClientSecure.write(). I will discuss my tests with Espressif ESP32 folks next. Ongoing.
-- Additional Speech-To-Text (STT) function will be added. Supporting ElevenLabs Scribe STT (high performance, high accuracy, multilingual, using free API key)
+- NEW (plamned): further version using PSRAM (instead SD card reader) for recording & transcription. This could speed up the STT transcription. -> Update (April 28, 2025): _Good news: PSRAM working well (on my internal updates), no longer need of a SD card, but unfortunalty speed of STT not significantly improved_, bottleneck seems an issue in ESP32 WifiClientSecure.write(). I will discuss my tests with Espressif ESP32 folks next. Ongoing.
+- NEW (planned): Additional Speech-To-Text (STT) function will be added. Supporting ElevenLabs Scribe STT (high performance, high accuracy, multilingual, using free API key)
+- DONE (Plan was to add Live Information Request capabilities (Real-time web search feature) via keyword (e.g. 'Question:..'). Supporting user requests like _'Question: what date is today?'_ or _'Question: will it rain in my region tomorrow?'_. -> Update: DONE with latest version from April 4, 2025)
 
 .
 .
