@@ -65,7 +65,7 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 # Next steps
 - NEW (planned): next version will support PSRAM (as alternative to SD card reader) for recording & transcription. This could speed up the STT transcription. -> Update (April 28, 2025): _Good news: PSRAM working well (on my internal updates), using an ESP32 Wrover DevKit (instead Wroom), no longer need of a SD card, but unfortunalty speed of STT not significantly improved_, bottleneck seems an issue in ESP32 WifiClientSecure.write(). I will discuss my tests with Espressif ESP32 folks next. Ongoing.
 - NEW (planned): Additional Speech-To-Text (STT) function will be added. Supporting ElevenLabs Scribe STT (high performance, high accuracy, multilingual, using free API key)
-- DONE (Plan was to add Live Information Request capabilities (Real-time web search feature) via keyword (e.g. 'Question:..'). Supporting user requests like _'Question: what date is today?'_ or _'Question: will it rain in my region tomorrow?'_. -> Update: DONE with latest version from April 4, 2025)
+- DONE: Plan was to add Live Information Request capabilities (Real-time web search feature) via keyword (e.g. 'Question:..'). Supporting user requests like _'Question: what date is today?'_ or _'Question: will it rain in my region tomorrow?'_. -> Update: DONE with latest version from April 4, 2025)
 
 .
 .
