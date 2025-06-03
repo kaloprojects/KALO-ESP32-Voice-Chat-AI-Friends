@@ -1,0 +1,2 @@
+ESP32-audioI2S-3.0.11g.zip (older AUDIO.H library) is intended only for ESP32 without PSRAM. 
+ESP32 with PSRAM: Download latest AUDIO.H version here: https://github.com/schreibfaul1/ESP32-audioI2S 
