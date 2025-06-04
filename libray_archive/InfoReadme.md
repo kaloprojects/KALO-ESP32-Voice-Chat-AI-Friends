@@ -1,4 +1,4 @@
-- ESP32-audioI2S-3.0.11g.zip (older AUDIO.H library from July 18, 2024) is recommended and intended only for _ESP32 without PSRAM_. Later AUDIO.H versions don't support ESP32 without PSRAM any longer and won't work properly ! (e.g. Open AI TTS not speaking audio). 
+- ESP32-audioI2S-3.0.11g.zip (older AUDIO.H library from July 18, 2024) is recommended and intended for _ESP32 without PSRAM_. Later AUDIO.H versions don't support ESP32 without PSRAM any longer and won't work properly ! (e.g. Open AI TTS not speaking audio). 
 - ESP32 with PSRAM: Download always latest AUDIO.H version from @Schreibfaul1's github here: https://github.com/schreibfaul1/ESP32-audioI2S 
 
 Recommendation (after installing zip file):
