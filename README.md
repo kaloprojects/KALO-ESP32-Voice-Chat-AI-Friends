@@ -64,7 +64,7 @@ Similar to my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - Additional **parameter added** to Recording and transcription functions: 'Recording_Stop()' and 'SpeechToText_xy()'
 - Additional STT added: supporting **ElevenLabs Scribe v1 SpeechToText** API (as alternative to Deepgram STT). Multilingual support (also mixed languages in same record supported), country codes no longer needed. Registration for API KEY needed [link](https://elevenlabs.io/de/pricing#pricing-table), cost free account supported 
 - **Speed of SpeechToText significantly improved** (using Elevenlabs STT), in particular on **long sentences!**. Example: Short user voice recordings (e.g. 5 secs) are transcribed in ~ 0.5-2 secs (compared to ~7 sec with Deepgram), long user records (e.g. 20 secs!) transcribed in ~3 secs (compared to > 15 secs with Deepgram)  
-- SpeechToText is multi lingual, detects your spoken language automatically (~ 100 languages supported). As longer your spoken sentence (audio), as better the correct language detection 
+- SpeechToText is **multi lingual**, detecting your spoken language automatically (~ 100 languages supported). As longer your spoken sentence (audio), as better the correct language detection 
 - New Key word '**GOOGLE**': Activates Open AI **web search model** for Live Information requests 
 - New Key word '**VOICE**': Enabling the new **Voice Instruction** parameter of Open AI TTS (user can force TTS character, e.g. "you are whispering"). _PSRAM needed_
 - 'isRunning()' bug fix: Correct audio end detection (in past the LED still indicated Playing 1-2 secs after audio finished), solved with latest AUDIO.H version. _PSRAM needed_
