@@ -1,71 +1,82 @@
 # Summary
 Prototype of a ESP32 based voice chat dialog device, _similar Open AI ChatGPT via Voice_. Just as an use case of my earlier published [KALO-ESP32-Voice-Assistant Libraries](https://github.com/kaloprojects/KALO-ESP32-Voice-Assistant) and the additional 'lib_OpenAI_Chat.ino'. 
 
-User can ask questions and following conversation via microphone _(pressing a button or touch pin as long speaking)_, Open AI bot will repeat via AI voice. 
+User can ask questions and following conversation via microphone _(pressing a button or touch pin as long speaking)_, Open AI bot will repeat via AI voice. _Code supports ongoing dialog sessions_, keeping & sending the complete chat history. 'Chat Completions' workflow allows 'human-like' ongoing dialogs, supporting chat history & follow up questions. Example: Q1: _"who was Albert Einstein?"_ - and later (after OpenAI response) - Q2: _"was he also a musician and _did he_ have kids?"_. 
 
-_Code supports ongoing dialog sessions, keeping & sending the complete chat history (during session). This 'Chat Completions' workflow allows 'human-like' ongoing dialogs_. Also useful for simple 'facts' requests, as this supports follow up questions, example: User Q1: 'who was Albert Einstein?' - and later (after OpenAI response) - User Q2: 'was _he_ also a musician and _did he_ have kids?'). 
+With latest code update also actual and location related Live Information requests (Real-time web searches) supported. User defined key word (e.g. GOOGLE) toggles LLM to web search models as part of the memorized chat dialog. Example: _"will it rain in my region tomorrow?, please ask Google! "_, or _"Please check with GOOGLE, what are the latest projections for the elections tomorrow?"_. Mixed model usage of both models supported, allowing follow up requests (e.g. _"Please summarize the search in few sentences, skip any boring details!"_) also to previous web searches.
 
-User can define his own "AI System Prompt" (in header of library 'lib_OpenAI_Chat.ino'), allowing to build a ESP32 chat device with a self defined 'personality' for dedicated use cases/bots (default in code: role of a 'good old friend')
+User can define his own 'AI System Prompt' (in header of library 'lib_OpenAI_Chat.ino'), allowing to build ESP32 chat devices with a self defined 'personality' for dedicated use cases/bots (default in code: role of a 'good old friend'). You could start a virtual conversation e.g. with a human warm up question: _"Hi my friend, tell me, how was your week, any exiting stories?"_.
 
-Architecture: All is coded in C++ native (no server based components needed, no Node.JS or Python scripts or websockets used), AUDIO handling coded natively in C++ for I2S devices (microphone and speaker). Just copy all .ino files into one folder and insert your personal credentials into the header sections.
+**Architecture:** All is coded in C++ native (no server based components needed, no Node.JS or Python scripts or websockets used), audio recording and transcription are coded natively in C++ for I2S devices (microphone and speaker). ESP32 chat device (Wifi connected) can be used stand-alone (no Serial Monitor a/o keyboard a/o connected computer needed). Sketch might be also useful for a _Text ChatGPT_ device (no voice recording, no STT, no TTS needed) using a Terminal App (e.g. PuTTY) or the Serial Monitor to enter text requests. 
 
-Code Insights: After releasing Recording button, ESP32 is sending recorded audio.wav to _STT (SpeechToText) Deepgram server_ for text transcription, then sending this text as request to _Open AI server_ (LLM model e.g. "gpt-4o-mini"), finally converting the received Open AI answer with _TTS (TextToSpeech) server_ with an AI voice back to AUDIO and playing response via speaker on ESP32.
-
-ESP32 chat device (Wifi connected) can be triggered by voice completely standalone (no Serial Monitor a/o keyboard a/o connected computer needed). Serial Monitor is optional, useful in case the device is used as _Text ChatGPT_ device only (no voice recording, no Deepgram registration needed). Hint: Using a Terminal App (e.g. PuTTY) allows to use the ESP323 as Text Chat device without any IDE Serial Monitor. 
-
-**Update (April 4, 2025): Open AI Web Search LLM model added**, this allows to include _actual and location related Live Information (Real-time web searches) requests_ into chat dialogs. 
-User queries with a user defined leading 'keyword' initiate a web search and embed the result in the ongoing chat. Examples: using keyword 'Question': _'Question: what date is today?'_ or _'Question: will it rain in my region tomorrow?'_. Mixed model usage of both models supported (default chat & new web search model), this allows follow up requests (e.g. _'please summarize!'_) also to previous web search questions.
+**Major Update Summaries:** Update _June 2025_ added **PSRAM support** (as alternative to SD Card), and **ElevenLabs STT** for **5-10x faster** SpeechToText transcription. Update _April 2025_ added Open AI Web Search LLM model added, supporting actual and location related **Live Information capabilities** (Real-time web searches) into chat dialogs. User queries with a user defined leading 'keyword' initiate a web search and embed the result in the ongoing chat. Update _March 2025_ added **hardware support** for [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/).
 
 # Workflow
-Explore the details in the .ino code, summary in a nutshell:
-- Recording user Voice with variable length (as long holding a btn), storing as .wav file (with 44 byte header) on SD card
-- (Alternative: User can enter Open AI request via text in Serial Monitor Input line or COM: Terminal Apps e.g. PuTTY)  
-- Sending recorded WAV file to STT (SpeechToText) server (using Deepgram API service, registration needed)
-- Sending the received transcription text to Open AI (with user specified LLM model, e.g. "gpt-4o-mini")
+Explore the details in the .ino libraries, summary in a nutshell:
+- Recording user Voice with variable length (as long holding a btn), storing as .wav file (with 44 byte header) on SD card or (NEW) in PSRAM
+- User can enter Open AI request also via text in Serial Monitor Input line or COM: Terminal Apps e.g. PuTTY)  
+- Sending recorded WAV file to STT (SpeechToText) server, using Deepgram API or (NEW) ElevenLabs API (registration needed)
+- Sending the received transcription text to Open AI (with user specified LLM models for CHAT COMPLETION and WEB SEARCH)
 - Receiving AI response, printing in Serial Monitor, answering with a 'human' sounding voice (multilingual Open AI voices)
-- RGB led: GREEN=Ready, RED=Recording, CYAN=STT, BLUE=Open AI CHAT, PINK=Open AI WEB, YELLOW=Audio pending, PINK=Speaking. Short WHITE flashes after successfull STT & Open AI response
-- BUTTON: PRESS & HOLD for recording + PRESS stops Open AI voice (when speaking) or repeats last answer (when silent)
-- NEW: Start a sentence with 'Question..' to launch web search with TTS response
-- Pressing button again to proceed in loop for ongoing chat ...
+- RGB led indicating status: GREEN=Ready. -> RED=Recording -> CYAN=STT -> BLUE=Open AI CHAT -> PINK=Open AI WEB, YELLOW=Audio pending -> PINK=TTS Speaking. Short WHITE flashes indicate successful STT & Open AI response, short RED flash indicate successful keyword detection
+- BUTTON: PRESS & HOLD for recording + _short_ PRESS stops Open AI voice (when speaking) - OR - repeats last answer (when silent)
+- Pressing button again to proceed in loop for ongoing chat.
 
 # Hardware requirements
-Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://github.com/kaloprojects/KALO-ESP32-Voice-Assistant):
-- ESP32 development board (e.g. ESP32-WROOM-32), connected to Wifi
+Similar to my other project [KALO-ESP32-Voice-Assistant Libraries](https://github.com/kaloprojects/KALO-ESP32-Voice-Assistant):
+- ESP32 (e.g. ESP32-WROOM-32) with connected Micro SD Card (VSPI Default pins 5,18,19,23)
+- Alternatively _(NEW)_: ESP32 with PSRAM (tested with ESP32-WROVER), no longer SD Card reader needed
 - I2S digital microphone, e.g. INMP441 [I2S pins 22, 33, 35]          
 - I2S audio amplifier, e.g. MAX98357A [I2S pins 25,26,27] with speaker
-- Micro SD Card [VSPI Default pins 5,18,19,23] 
-- RGB status LED and optionally an Analog Poti (for audio volume)
-- NEW: Ready to Go hardware (example): [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/).
+- RGB status LED and optionally (recommended) an Analog Poti (for audio volume)
+- Ready to Go hardware (example): [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/).
 
 # 3rd party Software licenses
-- STT: Deepgram API service for user voice transcription ([Registration free account](https://console.deepgram.com/signup) needed for personal API key)
-- LLM & TTS: Open AI Registration needed (needed for personal API key, same account for LLM & TTS), not free.
+- STT: **ElevenLabs** API KEY or alternatively **Deepgram** API KEY needed, Registration info: [ElevenLabs](https://elevenlabs.io/de/pricing#pricing-table) (STT free 0$) or [Deepgram](https://console.deepgram.com/signup) 
+- LLM & TTS: Open AI Registration needed (same API KEY used for LLM & TTS), registration is not free of charge.
 
+# Library Dependencies
+- KALO-ESP32-Voice-ChatGPT does _not_ need any 3rd party libraries _zip files_ to be installed (except AUDIO.H), all functions are in all lib_xy.ino’s are self-coded (WiFiClientSecure.h / i2s_std.h / SD.h are part of esp32 core libraries). AUDIO.H in main.ino is used for TTS playing audio (not needed for audio recording & transcription), no AUDIO.H needed in 'lib_xy.ino' libraries
+- ESP32 core library (Arduino DIE): use latest [arduino-esp32](https://github.com/espressif/arduino-esp32) e.g. 3.2.0 (based on ESP-IDF 5.4.1) or later. Older 2.x ESP are _not_ supported.
+- AUDIO.H library / ESP32 **with** PSRAM: Install latest [ESP32-audioIS](https://github.com/schreibfaul1/ESP32-audioI2S) zip, version 3.3.0 or later.
+- AUDIO.H library / ESP32 **without** PSRAM: IMPORTANT! - Actual AUDIO.H libraries require PSRAM, ESP32 without PSRAM are no longer supported!. So you need to install last version which did not require PSRAM. Recommended version is **3.0.11g** (from July 18, 2024)!. Mirror link to 3.0.11g version [here]( https://github.com/kaloprojects/KALO-ESP32-Voice-ChatGPT/tree/main/libray_archive).
+- Last-not-least: Sending a big THANK YOU and a huge shout out to @Schreibfaul1 for his great AUDIO.H library and all his support!. 
+ 
 # Installation & Customizing
-- Required (for i2s_std.h): Arduino IDE with ESP32 lib 3.1.x (based on ESP-IDF 5.3.x). Older 2.x ESP (i2s.h) are not supported.
-- Required (for TTS): [AUDIO.H library ESP32-audioI2S.zip](https://github.com/schreibfaul1/ESP32-audioI2S), version 3.0.11g or newer.
+- Libraries see above. Use latest esp32 core for Arduino IDE: [arduino-esp32](https://github.com/espressif/arduino-esp32). AUDIO.H: Download the correct library zip file (with PSRAM [here](https://github.com/schreibfaul1/ESP32-audioI2S), without PSRAM [3.0.11g here]( https://github.com/kaloprojects/KALO-ESP32-Voice-ChatGPT/tree/main/libray_archive)), and add it in Arduino IDE via Sketch -> Include Library -> Add .ZIP Library 
 - Copy all .ino files of into same folder (it is one sketch, split into multiple Arduino IDE tabs)
-- Copy Audio file 'Welcome.wav' to ESP32 SD card, played on Power On (posted welcome.wav is a 'gong') 
 - Update your hardware pin assignments in sketches 'KALO_ESP32_Voice_ChatGPT.ino' & 'lib_audio_recording.ino'
-- NEW: Update your credentials and all user settings in header of main sketch 'KALO_ESP32_Voice_ChatGPT.ino'
-- Define your own 'AI character' via "System Prompt" (String MESSAGES in header of 'lib_OpenAI_Chat.ino')
-- Optional: Toggle DEBUG flag to true (displaying Serial.print details) or false (for final usage)
-- Optional: Review default recording parameter (SAMPLE_RATE, GAIN_BOOSTER_I2S etc) in lib_audio_recording.ino header
-
+- Define the hardware dependent setting (using PSRAM a/o SD Card) for the audio processing, update both #define RECORD_PSRAM & RECORD_SDCARD in 'lib_audio_recording.ino' header
+- Insert your credentials (ssid, password, Open AI API KEY) and preferences (TTS voice) in header of _main sketch_ 'KALO_ESP32_Voice_ChatGPT.ino'
+- Insert your SpeechToText API KEYS in header of main sketch. ElevenLabs -or- Deepgram API keys needed
+- Define your own 'AI character' via SYSTEM PROMPT (String MESSAGES in header of 'lib_OpenAI_Chat.ino')
+- Toggle DEBUG flag to true (displaying Serial.print details) or false (for final usage, limited info printed)
+- Optional: Review default recording parameter (SAMPLE_RATE, GAIN_BOOSTER_I2S etc) in 'lib_audio_recording.ino' header
+- Optional: Copy Audio file 'Welcome.wav' to ESP32 SD card, played on Power On (posted welcome.wav is a 'gong').
+- In case of COMPILER ERROR on _audio_play.openai_speech()_: Check/update the last line of code in main sketch (KALO-ESP32-Voice-ChatGPT.ino). Background: the amount of openai_speech() parameter changed with latest AUDIO.H versions.
 
 # Known issues
-- Total Response time (Latency): STT (Deepgram transcription response) is pretty fast already (for prerecorded .wav, no streaming), typically ~ 0.5-1 sec. (after file sent). To visualize latency: count the '.' in demo video below (printing a '.' each 250ms). The reason why total SST time still seems high is the time consuming sending of .wav data (e.g. file bulk reading of a 10 sec record with 8bit/16kHz from SD card needs about 5 secs). Open AI response time (model gpt-4o-mini) also improved (typically less 2-3 secs.). Still a bit annoying (in my opinion) is the TTS latency (voice starts often 1-2 seconds delayed)
-- Minor issue: 'audio.isRunning()' keeps true some moments after PLAY Audio done (AUDIO.H issue, led 'pink') 
+- Script is tested with ESP32-WROOM-32 (no PSRAM) and ESP32-WROVER (with 4MB PSRAM), both working well. The ESP32-S3 currently produces a Compiler Error ('_.. has no non-static data member named 'msb_right_'). I will follow up on this next (assuming an slightly different i2s_std_slot_config_t struct definition on ESP32-S3)
+- Voice instruction not working and 'isRunning()' still exist (LED still indicated Playing 1-2 secs after audio finished): Both is fixed already, but ESP32 with PSRAM needed (due AUDIO.H dependencies, see below)
 
-# Updates
-- **2025-04-04:** Live Information Request capabilities added (supporting new **Open AI web search features**). Mixed support of chat model (e.g. "gpt-4o-mini") and web search models (e.g. "gpt-4o-mini-search-preview"). User queries with the leading keyword 'Question..' initiate a web search and embed the result in the ongoing chat. Minor changes: all user specific credits are moved to header of Main sketch (KALO_ESP32_Voice_ChatGPT_20250404.ino), additional parameter added to function Open_AI(..) and SpeechToText_Deepgram(..). Code further cleaned up, detailed comments added in 'lib_OpenAI_Chat.ino'.
-- **2025-03-14:** Major enhancements: **Supporting techiesms's hardware/pcb** [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/). Code Insights: New toggle '#define TECHIESMS_PCB true' assigns all specific pins automatically (no user code changes needed). Minor enhancements: Welcome Voice (Open AI) added, RGB led colors updated, code clean up done
-- **2025-01-26:** First drop, already working, not finally cleaned up (just posted this drop on some folks request)
+# New features & changes in 2025-06-05 version
+- **PSRAM supported** for audio recording and transcription. SD Card no longer mandatory for ESP32 with PSRAM (tested with ESP32-WROVER). User defined #define settings for audio processing (#define RECORD_PSRAM & RECORD_SDCARD)
+- Additional **parameter added** to Recording and transcription functions: 'Recording_Stop()' and 'SpeechToText_xy()'
+- Additional STT added: supporting **ElevenLabs Scribe v1 SpeechToText** API (as alternative to Deepgram STT). Multilingual support (also mixed languages in same record supported), country codes no longer needed. Registration for API KEY needed [link](https://elevenlabs.io/de/pricing#pricing-table), cost free account supported 
+- **Speed of SpeechToText significantly improved** (using Elevenlabs STT), in particular on **long sentences!**. Example: Short user voice recordings (e.g. 5 secs) are transcribed in ~ 0.5-2 secs (compared to ~7 sec with Deepgram), long user records (e.g. 20 secs!) transcribed in ~3 secs (compared to > 15 secs with Deepgram)  
+- SpeechToText is multi lingual, detects your spoken language automatically (~ 100 languages supported). As longer your spoken sentence (audio), as better the correct language detection 
+- New Key word '**GOOGLE**': Activates Open AI **web search model** for Live Information requests 
+- New Key word '**VOICE**': Enabling the new **Voice Instruction** parameter of Open AI TTS (user can force TTS character, e.g. "you are whispering"). _PSRAM needed_
+- 'isRunning()' bug fix: Correct audio end detection (in past the LED still indicated Playing 1-2 secs after audio finished), solved with latest AUDIO.H version. _PSRAM needed_
+- Updated to **latest models**. Open AI LLM: 'gpt-4.1-nano' & 'gpt-4o-mini-search-preview'. Deepgram STT: new MULTI lingual model 'nova-3-general' added, 'nova-2-general' still used for MONO lingual. ElevenLabs STT: 'scribe_v1'. Open AI TTS: 'gpt-4o-mini-tts' (for voice instruction) and 'tts-1' (default)
+- Open AI TTS improved: **Audio streaming quality improved** (no longer clicking artefacts on beginning, letter cut offs at end resolved). _PSRAM needed_
+- minor bugs resolved, added more detailed comments into sketch, code cleaned up.
 
-# Next steps
-- NEW (planned): next version will support PSRAM (as alternative to SD card reader) for recording & transcription. This could speed up the STT transcription. -> Update (April 28, 2025): _Good news: PSRAM working well (on my internal updates), using an ESP32 Wrover DevKit (instead Wroom), no longer need of a SD card, but unfortunalty speed of STT not significantly improved_, bottleneck seems an issue in ESP32 WifiClientSecure.write(). I will discuss my tests with Espressif ESP32 folks next. Ongoing.
-- NEW (planned): Additional Speech-To-Text (STT) function will be added. Supporting ElevenLabs Scribe STT (high performance, high accuracy, multilingual, using free API key)
-- DONE: Plan was to add Live Information Request capabilities (Real-time web search feature) via keyword (e.g. 'Question:..'). Supporting user requests like _'Question: what date is today?'_ or _'Question: will it rain in my region tomorrow?'_. -> Update: DONE with latest version from April 4, 2025)
+# History of older Updates:
+- **2025-04-04:** Live Information Request capabilities added (supporting new **Open AI web search features**). Mixed support of chat model (e.g. 'gpt-4o-mini') and web search models (e.g. 'gpt-4o-mini-search-preview'). User queries with a user defined keyword initiate a web search and embed the result in the ongoing chat. Minor changes: all user specific credits are moved to header of main.ino sketch (KALO_ESP32_Voice_ChatGPT_20250404.ino), additional parameter added to function Open_AI(..) and SpeechToText_Deepgram(..). Code further cleaned up, detailed comments added in 'lib_OpenAI_Chat.ino'
+- **2025-03-14:** Major enhancements: **Supporting techiesms hardware/pcb** [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/). Code Insights: New toggle '#define TECHIESMS_PCB true' assigns all specific pins automatically (no user code changes needed). Minor enhancements: Welcome Voice (Open AI) added, RGB led colors updated, code clean up done
+- **2025-01-26:** First drop, already working, not finally cleaned up (just posted this drop on some folks request).
+
 
 .
 .
@@ -86,6 +97,5 @@ Same as in my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 .
 .
 
-Links of interest, featuring friends projects:
-- Advanced ESP32 AI device, using streaming sockets for lowest latency: [Github StarmoonAI/Starmoon project](https://github.com/StarmoonAI/Starmoon) 
-
+Links of interest, featuring friend’s projects:
+- Advanced ESP32 AI device, using streaming sockets for lowest latency: [Github ElatoAI](https://github.com/akdeb/ElatoAI/tree/main/firmware-arduino), [Github StarmoonAI](https://github.com/StarmoonAI/Starmoon)  
