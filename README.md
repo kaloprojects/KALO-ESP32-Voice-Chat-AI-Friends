@@ -57,7 +57,7 @@ Similar to my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 
 # Known issues
 - Script is tested with ESP32-WROOM-32 (no PSRAM) and ESP32-WROVER (with 4MB PSRAM), both working well. The ESP32-S3 currently produces a Compiler Error ('_.. has no non-static data member named 'msb_right_'). I am assuming a slightly different i2s_std_slot_config_t struct definition on ESP32-S3). If someone with an ESP32-S3 has an idea/bug fix, then just let us know, opening a ticket [here](https://github.com/kaloprojects/KALO-ESP32-Voice-ChatGPT/issues) ;)
-- Voice instruction not working and 'isRunning()' issue not solved (LED still indicated Playing 1-2 secs after audio finished): Both issues _are_ fixed already, but ESP32 with PSRAM needed (due AUDIO.H dependencies, see below)
+- Voice instruction not working and 'isRunning()' issue not solved (LED still indicated Playing 1-2 secs after audio finished): Both issues _are_ fixed already, but ESP32 with PSRAM needed (due AUDIO.H dependencies, see above)
 
 # New features & changes in 2025-06-05 version
 - **PSRAM supported** for audio recording and transcription. SD Card no longer mandatory for ESP32 with PSRAM (tested with ESP32-WROVER). User defined #define settings for audio processing (#define RECORD_PSRAM & RECORD_SDCARD)
