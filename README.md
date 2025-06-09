@@ -33,7 +33,7 @@ Similar to my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 
 # 3rd party Software licenses
 - STT: **ElevenLabs** or alternatively **Deepgram** API KEY needed, Links: [ElevenLabs](https://elevenlabs.io/pricing#pricing-table) (STT 0$) / [Deepgram](https://console.deepgram.com/signup) (200$ free)
-- LLM & TTS: Open AI Registration needed (same API KEY used for LLM & TTS), creating [Open AI account](https://platform.openai.com) (5$ free).
+- LLM & TTS: **Open AI** API KEY needed (same API KEY for LLM & TTS), registration: [Open AI account](https://platform.openai.com) (5$ free).
 
 # Library Dependencies
 - KALO-ESP32-Voice-ChatGPT does _not_ need any 3rd party libraries _zip files_ to be installed (except AUDIO.H), all functions are in all lib_xy.ino’s are self-coded (WiFiClientSecure.h / i2s_std.h / SD.h are part of esp32 core libraries). AUDIO.H in main.ino is used for TTS playing audio (not needed for audio recording & transcription), no AUDIO.H needed in 'lib_xy.ino' libraries
