@@ -52,7 +52,7 @@ Similar to my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - Define your own 'AI character' via SYSTEM PROMPT (String MESSAGES in header of 'lib_OpenAI_Chat.ino')
 - Toggle DEBUG flag to true (displaying Serial.print details) or false (for final usage, limited info printed)
 - Optional: Review default recording parameter (SAMPLE_RATE, GAIN_BOOSTER_I2S etc) in 'lib_audio_recording.ino' header
-- Optional: Copy Audio file 'Welcome.wav' to ESP32 SD card, played on Power On (posted welcome.wav is a 'gong').
+- Optional: Copy Audio file 'Welcome.wav' to ESP32 SD card, played on Power On ('gong' sound).
 - In case of COMPILER ERROR on _audio_play.openai_speech()_: Check/update the last line of code in main sketch (KALO-ESP32-Voice-ChatGPT.ino). Background: the amount of openai_speech() parameter changed with latest AUDIO.H versions.
 
 # Known issues
