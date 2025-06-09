@@ -17,7 +17,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - User can enter Open AI request also via text in Serial Monitor Input line or COM: Terminal Apps e.g. PuTTY)  
 - Sending recorded WAV file to STT (SpeechToText) server, using Deepgram API or (NEW) ElevenLabs API (registration needed)
 - Sending the received transcription text to Open AI (with user specified LLM models for CHAT and WEB SEARCH)
-- Receiving AI response, printing in Serial Monitor, answering with a 'human' sounding (multi-lingual) Open AI voice
+- Receiving AI response, printing in Serial Monitor, answering with a 'human' like (multi-lingual) Open AI voice
 - RGB led indicating status: GREEN=Ready. -> RED=Recording -> CYAN=STT -> BLUE=Open AI CHAT -> PINK=Open AI WEB, YELLOW=Audio pending -> PINK=TTS Speaking. Short WHITE flashes indicate successful STT & Open AI response, short RED flash indicate successful keyword detection
 - BUTTON: PRESS & HOLD for recording + _short_ PRESS stops Open AI voice (when speaking) - OR - repeats last answer (when silent)
 - Pressing button again to proceed in loop for ongoing chat.
