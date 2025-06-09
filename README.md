@@ -32,7 +32,7 @@ Similar to my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - Ready to Go hardware (example): [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/).
 
 # 3rd party Software licenses
-- STT: **ElevenLabs** or alternatively **Deepgram** API KEY needed, Registration info: [ElevenLabs](https://elevenlabs.io/de/pricing#pricing-table) (STT free 0$) / [Deepgram](https://console.deepgram.com/signup) 
+- STT: **ElevenLabs** or alternatively **Deepgram** API KEY needed, Links: [ElevenLabs](https://elevenlabs.io/pricing#pricing-table) (STT 0$) / [Deepgram](https://console.deepgram.com/signup) (200$ free)
 - LLM & TTS: Open AI Registration needed (same API KEY used for LLM & TTS), registration is not free of charge.
 
 # Library Dependencies
