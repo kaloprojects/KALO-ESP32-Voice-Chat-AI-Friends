@@ -56,7 +56,7 @@ Similar to my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - In case of COMPILER ERROR on _audio_play.openai_speech()_: Check/update the last line of code in main sketch (KALO-ESP32-Voice-ChatGPT.ino). Background: the amount of openai_speech() parameter changed with latest AUDIO.H versions.
 
 # Known issues
-- Script is tested with ESP32-WROOM-32 (no PSRAM) and ESP32-WROVER (with 4MB PSRAM), both working well. The ESP32-S3 currently produces a Compiler Error ('_.. has no non-static data member named 'msb_right_'). 2025-06-12 Update: Issue found (reason was a slightly different i2s_std_slot_config_t struct definition on ESP32-S3), resolved in my latest (internal) code, will be published soon
+- Script is tested with ESP32-WROOM-32 (no PSRAM) and ESP32-WROVER (with 4MB PSRAM), both working well. The **ESP32-S3** currently produces a Compiler Error ('_.. has no non-static data member named 'msb_right_'). 2025-06-12 Update: Issue found (reason was a slightly different i2s_std_slot_config_t struct definition on ESP32-S3), resolved in my latest (internal) code, _will be published asap (upcoming days)_
 - Voice instruction not working and 'isRunning()' issue not solved (LED still indicated Playing 1-2 secs after audio finished): Both issues _are_ fixed already, but ESP32 with PSRAM needed (due AUDIO.H dependencies, see below)
 
 # New features since 2025-06-05
