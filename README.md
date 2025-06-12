@@ -59,7 +59,7 @@ Similar to my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - Script is tested with ESP32-WROOM-32 (no PSRAM) and ESP32-WROVER (with 4MB PSRAM), both working well. The ESP32-S3 currently produces a Compiler Error ('_.. has no non-static data member named 'msb_right_'). 2025-06-12 Update: Issue found (reason was a slightly different i2s_std_slot_config_t struct definition on ESP32-S3), resolved in my latest (internal) code, will be published soon
 - Voice instruction not working and 'isRunning()' issue not solved (LED still indicated Playing 1-2 secs after audio finished): Both issues _are_ fixed already, but ESP32 with PSRAM needed (due AUDIO.H dependencies, see below)
 
-# New features & changes since 2025-06-05 update
+# New features since 2025-06-05
 - **PSRAM supported** for audio recording and transcription. SD Card no longer mandatory for ESP32 with PSRAM (tested with ESP32-WROVER). User defined #define settings for audio processing (#define RECORD_PSRAM & RECORD_SDCARD)
 - Additional **parameter added** to Recording and transcription functions: 'Recording_Stop()' and 'SpeechToText_xy()'
 - Additional STT added: supporting **ElevenLabs Scribe v1 SpeechToText** API (as alternative to Deepgram STT). Multilingual support (also mixed languages in same record supported), country codes no longer needed. Registration for API KEY needed [link](https://elevenlabs.io/de/pricing#pricing-table), cost free account supported 
@@ -73,6 +73,7 @@ Similar to my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - minor bugs resolved, added more detailed comments into sketch, code cleaned up.
 
 # History of older Updates:
+- **2025-06-05:** Major update, detail see above (PSRAM support, STT performance increased)
 - **2025-04-04:** Live Information Request capabilities added (supporting new **Open AI web search features**). Mixed support of chat model (e.g. 'gpt-4o-mini') and web search models (e.g. 'gpt-4o-mini-search-preview'). User queries with a user defined keyword initiate a web search and embed the result in the ongoing chat. Minor changes: all user specific credits are moved to header of main.ino sketch (KALO_ESP32_Voice_ChatGPT_20250404.ino), additional parameter added to function Open_AI(..) and SpeechToText_Deepgram(..). Code further cleaned up, detailed comments added in 'lib_OpenAI_Chat.ino'
 - **2025-03-14:** Major enhancements: **Supporting techiesms hardware/pcb** [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/). Code Insights: New toggle '#define TECHIESMS_PCB true' assigns all specific pins automatically (no user code changes needed). Minor enhancements: Welcome Voice (Open AI) added, RGB led colors updated, code clean up done
 - **2025-01-26:** First drop, already working, not finally cleaned up (just posted this drop on some folks request).
