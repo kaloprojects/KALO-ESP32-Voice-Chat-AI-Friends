@@ -59,7 +59,7 @@ Similar to my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - Script is tested with ESP32-WROOM-32 (no PSRAM) and ESP32-WROVER (with 4MB PSRAM), both working well. The ESP32-S3 currently produces a Compiler Error ('_.. has no non-static data member named 'msb_right_'). 2025-06-12 Update: Issue found (reason was a slightly different i2s_std_slot_config_t struct definition on ESP32-S3), resolved in my latest (internal) code, will be published soon
 - Voice instruction not working and 'isRunning()' issue not solved (LED still indicated Playing 1-2 secs after audio finished): Both issues _are_ fixed already, but ESP32 with PSRAM needed (due AUDIO.H dependencies, see below)
 
-# New features & changes in 2025-06-05 version
+# New features & changes since 2025-06-05 update
 - **PSRAM supported** for audio recording and transcription. SD Card no longer mandatory for ESP32 with PSRAM (tested with ESP32-WROVER). User defined #define settings for audio processing (#define RECORD_PSRAM & RECORD_SDCARD)
 - Additional **parameter added** to Recording and transcription functions: 'Recording_Stop()' and 'SpeechToText_xy()'
 - Additional STT added: supporting **ElevenLabs Scribe v1 SpeechToText** API (as alternative to Deepgram STT). Multilingual support (also mixed languages in same record supported), country codes no longer needed. Registration for API KEY needed [link](https://elevenlabs.io/de/pricing#pricing-table), cost free account supported 
