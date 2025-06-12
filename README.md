@@ -99,4 +99,5 @@ Similar to my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 .
 
 Links of interest, featuring friend’s projects:
-- Advanced ESP32 AI device, using streaming sockets for lowest latency: [Github ElatoAI](https://github.com/akdeb/ElatoAI/tree/main/firmware-arduino), [Github StarmoonAI](https://github.com/StarmoonAI/Starmoon)  
+- Advanced ESP32 AI device, using streaming sockets for lowest latency: [Github ElatoAI](https://github.com/akdeb/ElatoAI/tree/main/firmware-arduino), [Github StarmoonAI](https://github.com/StarmoonAI/Starmoon)
+- Ready to Go hardware: [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/)
