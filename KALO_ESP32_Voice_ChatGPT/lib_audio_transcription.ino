@@ -80,8 +80,7 @@
 // - current used model: "scribe_v1", server endpoint: "api.elevenlabs.io" 
 //
 // CALL:     Call function on demand at any time, no Initializing needed (function initializes/connects/closes websocket)
-// Params:   Multiple values are returned via pointer (var declaration and instance have to be done in calling function!)
-//           - String audio_filename: Filename of audio file on SD Card | or empty "" if source is RAM/PSRAM buffer 
+// Params:   - String audio_filename: Filename of audio file on SD Card | or empty "" if source is RAM/PSRAM buffer 
 //           - uint8_t* PSRAM:        Pointer to PSRAM buffer (including wav header) | or NULL if audio source is file on SD Card 
 //           - long PSRAM_length:     Amount of audio bytes in PSRAM | ignored if audio source is file on SD Card    
 //           - String language:       ISO 639 codes. Recommendation: keep empty ! [default] to keep ElevenLabs powerfull 
@@ -299,8 +298,7 @@ String SpeechToText_ElevenLabs( String audio_filename, uint8_t* PSRAM, long PSRA
 // - current used model: "nova-3-general" (MULTI lingual) and "nova-2-general" (if language), server endpoint: "api.deepgram.com" 
 //
 // CALL:     Call function on demand at any time, no Initializing needed (function initializes/connects/closes websocket)
-// Params:   Multiple values are returned via pointer (var declaration and instance have to be done in calling function!)
-//           - String audio_filename: Filename of audio file on SD Card | or empty "" if source is RAM/PSRAM buffer 
+// Params:   - String audio_filename: Filename of audio file on SD Card | or empty "" if source is RAM/PSRAM buffer 
 //           - uint8_t* PSRAM:        Pointer to PSRAM buffer (including wav header) | or NULL if audio source is file on SD Card 
 //           - long PSRAM_length:     Amount of audio bytes in PSRAM | ignored if audio source is file on SD Card    
 //           - String language:       Keep empty "" MULTI-lingual (Server detects language automatically) or define dedicated
