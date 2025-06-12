@@ -72,7 +72,7 @@ Similar to my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - Open AI TTS improved: **Audio streaming quality improved** (no longer clicking artefacts on beginning, letter cut offs at end resolved). _PSRAM needed_
 - minor bugs resolved, added more detailed comments into sketch, code cleaned up.
 
-# History of older Updates:
+# Updates history:
 - **2025-06-05:** Major update, detail see above (**PSRAM** support, **ElevenLabs Scrivbe v1 STT** added support, STT **performance** increased)
 - **2025-04-04:** Live Information Request capabilities added (supporting new **Open AI web search features**). Mixed support of chat model (e.g. 'gpt-4o-mini') and web search models (e.g. 'gpt-4o-mini-search-preview'). User queries with a user defined keyword initiate a web search and embed the result in the ongoing chat. Minor changes: all user specific credits are moved to header of main.ino sketch (KALO_ESP32_Voice_ChatGPT_20250404.ino), additional parameter added to function Open_AI(..) and SpeechToText_Deepgram(..). Code further cleaned up, detailed comments added in 'lib_OpenAI_Chat.ino'
 - **2025-03-14:** Major enhancements: **Supporting techiesms hardware/pcb** [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/). Code Insights: New toggle '#define TECHIESMS_PCB true' assigns all specific pins automatically (no user code changes needed). Minor enhancements: Welcome Voice (Open AI) added, RGB led colors updated, code clean up done
