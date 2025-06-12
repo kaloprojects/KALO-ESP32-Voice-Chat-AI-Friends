@@ -84,7 +84,7 @@ Similar to my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 . <br>
 <br>
 # Demo Videos
-5 minute example chat. Using code default settings, System Prompt: Role of a 'good old friend'. Recorded video uses the older (slower) Deepgram STT, latest code update (using Elevenlabs STT) is answering significantly faster
+5 minute example chat. Using code default settings, System Prompt: Role of a 'good old friend'. Recorded video uses the older (slower) Deepgram STT, latest code update (using ElevenLabs STT) is answering significantly faster
 - Deepgram STT language: English (en-US)
 - TTS voice: Multilingual (Open AI default), used voice in video: 'onyx'
 - Overlay window: Serial Monitor I/O in real time (using Terminal App PuTTY, just for demo purposes)
