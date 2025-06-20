@@ -1,5 +1,5 @@
 # Summary
-Prototype of a ESP32 based voice chat dialog device, _similar Open AI ChatGPT via Voice_. Just as an use case of my earlier published [KALO-ESP32-Voice-Assistant Libraries](https://github.com/kaloprojects/KALO-ESP32-Voice-Assistant) and the additional 'lib_OpenAI_Chat.ino'. 
+Prototype of a ESP32 based voice chat dialog device, _similar Open AI ChatGPT via Voice_. Just as a use case and update of my older published [KALO-ESP32-Voice-Assistant Libraries](https://github.com/kaloprojects/KALO-ESP32-Voice-Assistant) and the additional 'lib_OpenAI_Chat.ino'. 
 
 User can ask questions and following conversation via microphone _(pressing a button or touch pin as long speaking)_, Open AI bot will repeat via AI voice. _Code supports ongoing dialog sessions_, keeping & sending the complete chat history. 'Chat Completions' workflow allows 'human-like' ongoing dialogs, supporting chat history & follow up questions. Example: Q1: _"who was Albert Einstein?"_ - and later (after OpenAI response) - Q2: _"was he also a musician and _did he_ have kids?"_. 
 
