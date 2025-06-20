@@ -9,7 +9,7 @@ User can define a own 'AI System Prompt' (in header of library 'lib_OpenAI_Chat.
 
 **Architecture:** All is coded in C++ native (no server based components needed, no Node.JS or Python scripts or websockets used), audio recording and transcription are coded natively in C++ for I2S devices (microphone and speaker). ESP32 chat device (Wifi connected) can be used stand-alone (no Serial Monitor a/o keyboard a/o connected computer needed). Sketch might be also useful for a _Text ChatGPT_ device (no voice recording, no STT, no TTS needed) using a Terminal App (e.g. PuTTY) or the Serial Monitor to enter text requests. 
 
-**Major Update Summaries:** Update _June 2025_ added **PSRAM support** (as alternative to SD Card), and **ElevenLabs STT** for **5-10x faster** SpeechToText transcription. Update _April 2025_ added Open AI Web Search LLM model added, supporting actual and location related **Live Information capabilities** (Real-time web searches) into chat dialogs. User queries with a user defined leading 'keyword' initiate a web search and embed the result in the ongoing chat. Update _March 2025_ added **hardware support** for [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/).
+**Major Update Summaries:** Update _June 2025_ added **PSRAM support** (as alternative to SD Card), **ESP32-S3** support and **ElevenLabs STT** for **5-10x faster** SpeechToText transcription. Also added **hardware support** for [Elato AI PCB](https://github.com/akdeb/ElatoAI). Update _April 2025_ added Open AI Web Search LLM model added, supporting actual and location related **Live Information capabilities** (Real-time web searches) into chat dialogs. User queries with a user defined leading 'keyword' initiate a web search and embed the result in the ongoing chat. Update _March 2025_ added **hardware support** for [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/).
 
 # Workflow
 Explore the details in the .ino libraries, summary in a nutshell:
@@ -23,9 +23,8 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - Pressing button again to proceed in loop for ongoing chat.
 
 # Hardware requirements
-Similar to my other project [KALO-ESP32-Voice-Assistant Libraries](https://github.com/kaloprojects/KALO-ESP32-Voice-Assistant):
 - ESP32 (e.g. ESP32-WROOM-32) with connected Micro SD Card (VSPI Default pins 5,18,19,23)
-- Alternatively _(NEW)_: ESP32 with PSRAM (tested with ESP32-WROVER), no longer SD Card reader needed
+- Alternatively _(NEW)_: ESP32 with PSRAM (tested with ESP32-WROVER and _new_ ESP32-S3), no longer SD Card reader needed
 - I2S digital microphone, e.g. INMP441 [I2S pins 22, 33, 35]          
 - I2S audio amplifier, e.g. MAX98357A [I2S pins 25,26,27] with speaker
 - RGB status LED and optionally (recommended) an Analog Poti (for audio volume)
@@ -56,11 +55,12 @@ Similar to my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - In case of COMPILER ERROR on _audio_play.openai_speech()_: Check/update the last line of code in main sketch (KALO-ESP32-Voice-ChatGPT.ino). Background: the amount of openai_speech() parameter changed with latest AUDIO.H versions.
 
 # Known issues
-- Script is tested with ESP32-WROOM-32 (no PSRAM) and ESP32-WROVER (with 4MB PSRAM), both working well. The **ESP32-S3** currently produces a Compiler Error ('_.. has no non-static data member named 'msb_right_'). 2025-06-12 Update: Issue found (reason was a slightly different i2s_std_slot_config_t struct definition on ESP32-S3), resolved in my latest (internal) code, _will be published asap (upcoming days)_
-- Voice instruction not working and 'isRunning()' issue not solved (LED still indicated Playing 1-2 secs after audio finished): Both issues _are_ fixed already, but ESP32 with PSRAM needed (due AUDIO.H dependencies, see below)
+- Compiler Error on ESP32-S3 ('msb_right' in i2s_std_slot_config_t): _solved_ with latest 2025-06-19 update
+- Voice instruction not working and 'isRunning()' issue not solved (LED still indicated Playing 1-2 secs after audio finished): Both issues _are fixed already_, but ESP32 with PSRAM needed (due AUDIO.H dependencies, see below)
+- Url streaming (keyword 'radio' or 'daily news') not working, TTS stopped: know issue on some ESP32 without PSRAM (limited heap), working well on ESP32 with PSRAM. User with ESP32 (without PSRAM) can try the workaround in reducing stack size (see global SET_LOOP_TASK_STACK_SIZE(7*1024) statement prior setup()) 
 
-# New features since 2025-06-05
-- **PSRAM supported** for audio recording and transcription. SD Card no longer mandatory for ESP32 with PSRAM (tested with ESP32-WROVER). User defined #define settings for audio processing (#define RECORD_PSRAM & RECORD_SDCARD)
+# New features since June 2025
+- **PSRAM supported** for audio recording and transcription. SD Card no longer needed for ESP32 with PSRAM (tested with **ESP32**-WROVER and **ESP32-S3**). User defined #define settings for audio processing (#define RECORD_PSRAM & RECORD_SDCARD)
 - Additional **parameter added** to Recording and transcription functions: 'Recording_Stop()' and 'SpeechToText_xy()'
 - Additional STT added: supporting **ElevenLabs Scribe v1 SpeechToText** API (as alternative to Deepgram STT). Multilingual support (also mixed languages in same record supported), country codes no longer needed. Registration for API KEY needed [link](https://elevenlabs.io/de/pricing#pricing-table), cost free account supported 
 - **Speed of SpeechToText significantly improved** (using ElevenLabs STT), in particular on **long sentences!**. Example: Short user voice recordings (e.g. 5 secs) are transcribed in ~ 0.5-2 secs (compared to ~5 sec with Deepgram), long user records (e.g. 20 secs!) transcribed in ~3 secs (compared to ~ 15 secs with Deepgram)  
@@ -73,6 +73,7 @@ Similar to my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 - minor bugs resolved, added more detailed comments into sketch, code cleaned up.
 
 # Updates history:
+- **2025-06-19:** Supporting **ESP32-S3** with PSRAM, also supporting **Elato AI devices** [DIY pcb](https://github.com/akdeb/ElatoAI), [Elato AI products](https://www.elatoai.com)
 - **2025-06-05:** Major update, detail see above (**PSRAM** support, **ElevenLabs Scrivbe v1 STT** added support, STT **performance** increased)
 - **2025-04-04:** Live Information Request capabilities added (supporting new **Open AI web search features**). Mixed support of chat model (e.g. 'gpt-4o-mini') and web search models (e.g. 'gpt-4o-mini-search-preview'). User queries with a user defined keyword initiate a web search and embed the result in the ongoing chat. Minor changes: all user specific credits are moved to header of main.ino sketch (KALO_ESP32_Voice_ChatGPT_20250404.ino), additional parameter added to function Open_AI(..) and SpeechToText_Deepgram(..). Code further cleaned up, detailed comments added in 'lib_OpenAI_Chat.ino'
 - **2025-03-14:** Major enhancements: **Supporting techiesms hardware/pcb** [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/). Code Insights: New toggle '#define TECHIESMS_PCB true' assigns all specific pins automatically (no user code changes needed). Minor enhancements: Welcome Voice (Open AI) added, RGB led colors updated, code clean up done
@@ -100,4 +101,5 @@ Similar to my other project [KALO-ESP32-Voice-Assistant Libraries](https://githu
 
 Links of interest, featuring friend’s projects:
 - Advanced ESP32 AI device, using streaming sockets for lowest latency: [Github ElatoAI](https://github.com/akdeb/ElatoAI/tree/main/firmware-arduino), [Github StarmoonAI](https://github.com/StarmoonAI/Starmoon)
-- Ready to Go hardware (just upload my latest Github code instead): [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/)
+- Ready to Go hardware (just replace original code with my Github code): [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/) 
+- Ready to Go hardware (just replace original code with my Github code): [Elato AI DIY](https://github.com/akdeb/ElatoAI), [Elato AI products](https://www.elatoai.com)
