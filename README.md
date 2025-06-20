@@ -74,7 +74,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - minor bugs resolved, added more detailed comments into sketch, code cleaned up.
 
 # Updates history:
-- **2025-06-19:** Supporting **ESP32-S3** with PSRAM, also supporting **Elato AI devices** [DIY pcb](https://github.com/akdeb/ElatoAI), [Elato AI products](https://www.elatoai.com)
+- **2025-06-19:** Supporting **ESP32-S3** I2S audio recording, supporting **Elato AI devices** [DIY pcb](https://github.com/akdeb/ElatoAI), [Elato AI products](https://www.elatoai.com)
 - **2025-06-05:** Major update, detail see above (**PSRAM** support, **ElevenLabs Scrivbe v1 STT** added support, STT **performance** increased)
 - **2025-04-04:** Live Information Request capabilities added (supporting new **Open AI web search features**). Mixed support of chat model (e.g. 'gpt-4o-mini') and web search models (e.g. 'gpt-4o-mini-search-preview'). User queries with a user defined keyword initiate a web search and embed the result in the ongoing chat. Minor changes: all user specific credits are moved to header of main.ino sketch (KALO_ESP32_Voice_ChatGPT_20250404.ino), additional parameter added to function Open_AI(..) and SpeechToText_Deepgram(..). Code further cleaned up, detailed comments added in 'lib_OpenAI_Chat.ino'
 - **2025-03-14:** Major enhancements: **Supporting techiesms hardware/pcb** [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/). Code Insights: New toggle '#define TECHIESMS_PCB true' assigns all specific pins automatically (no user code changes needed). Minor enhancements: Welcome Voice (Open AI) added, RGB led colors updated, code clean up done
@@ -102,5 +102,5 @@ Explore the details in the .ino libraries, summary in a nutshell:
 
 Links of interest, featuring friend’s projects:
 - Advanced ESP32 AI device, using streaming sockets for lowest latency: [Github ElatoAI](https://github.com/akdeb/ElatoAI/tree/main/firmware-arduino), [Github StarmoonAI](https://github.com/StarmoonAI/Starmoon)
-- Ready to Go hardware (just replace original code with my Github code): [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/) 
-- Ready to Go hardware (just replace original code with my Github code): [Elato AI DIY](https://github.com/akdeb/ElatoAI), [Elato AI products](https://www.elatoai.com)
+- Ready to Go hardware: [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/) 
+- Ready to Go hardware: [Elato AI DIY](https://github.com/akdeb/ElatoAI), [Elato AI products](https://www.elatoai.com)
