@@ -28,8 +28,8 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - I2S digital microphone, e.g. INMP441 [I2S pins 22, 33, 35]          
 - I2S audio amplifier, e.g. MAX98357A [I2S pins 25,26,27] with speaker
 - RGB status LED and optionally (recommended) an Analog Poti (for audio volume)
-- Ready to Go devices/examples: ESP32 & SD: [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/), 
- ESP32-S3 PSRAM: [Elato AI DIY](https://github.com/akdeb/ElatoAI).
+- Ready to Go devices (examples) with ESP32 & SD card reader: [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/)
+- Ready to Go devices (examples) with ESP32-S3 (PSRAM): [Elato AI DIY](https://github.com/akdeb/ElatoAI).
 
 # 3rd party Software licenses
 - STT: **ElevenLabs** or alternatively **Deepgram** API KEY needed, Links: [ElevenLabs](https://elevenlabs.io/pricing#pricing-table) (STT 0$) / [Deepgram](https://console.deepgram.com/signup) (200$ free)
