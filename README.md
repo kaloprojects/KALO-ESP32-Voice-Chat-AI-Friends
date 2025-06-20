@@ -9,7 +9,7 @@ User can define a own 'AI System Prompt' (in header of library 'lib_OpenAI_Chat.
 
 **Architecture:** All is coded in C++ native (no server based components needed, no Node.JS or Python scripts or websockets used), audio recording and transcription are coded natively in C++ for I2S devices (microphone and speaker). ESP32 chat device (Wifi connected) can be used stand-alone (no Serial Monitor a/o keyboard a/o connected computer needed). Sketch might be also useful for a _Text ChatGPT_ device (no voice recording, no STT, no TTS needed) using a Terminal App (e.g. PuTTY) or the Serial Monitor to enter text requests. 
 
-**Major Update Summaries:** Update _June 2025_ added **PSRAM support** (as alternative to SD Card), **ESP32-S3** support and **ElevenLabs STT** for **5-10x faster** SpeechToText transcription. Also added **hardware support** for [Elato AI PCB](https://github.com/akdeb/ElatoAI). Update _April 2025_ added Open AI Web Search LLM model added, supporting actual and location related **Live Information capabilities** (Real-time web searches) into chat dialogs. User queries with a user defined leading 'keyword' initiate a web search and embed the result in the ongoing chat. Update _March 2025_ added **hardware support** for [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/).
+**Major Update Summaries:** Update _June 2025_ added **PSRAM support** (as alternative to SD Card), **ESP32-S3** support and **ElevenLabs STT** for **5-10x faster** SpeechToText transcription. Supporting additional hardware **Elato AI ESP32-S3 devices**. Update _April 2025_ added Open AI Web Search LLM model added, supporting actual and location related **Live Information capabilities** (Real-time web searches) into chat dialogs. User queries with a user defined leading 'keyword' initiate a web search and embed the result in the ongoing chat. Update _March 2025_ added hardware support for **Techiesms ESP32 Portable AI Voice Assistant**.
 
 # Workflow
 Explore the details in the .ino libraries, summary in a nutshell:
@@ -28,7 +28,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - I2S digital microphone, e.g. INMP441 [I2S pins 22, 33, 35]          
 - I2S audio amplifier, e.g. MAX98357A [I2S pins 25,26,27] with speaker
 - RGB status LED and optionally (recommended) an Analog Poti (for audio volume)
-- Ready to Go hardware (example): [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/).
+- Ready to Go hardware (examples): [Portable AI Voice Assistant/ESP32](https://techiesms.com/product/portable-ai-voice-assistant/),  [Elato AI circuit/ESP32-S3](https://github.com/akdeb/ElatoAI).
 
 # 3rd party Software licenses
 - STT: **ElevenLabs** or alternatively **Deepgram** API KEY needed, Links: [ElevenLabs](https://elevenlabs.io/pricing#pricing-table) (STT 0$) / [Deepgram](https://console.deepgram.com/signup) (200$ free)
