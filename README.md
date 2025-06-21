@@ -80,11 +80,8 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - **2025-03-14:** Major enhancements: **Supporting techiesms hardware/pcb** [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/). Code Insights: New toggle '#define TECHIESMS_PCB true' assigns all specific pins automatically (no user code changes needed). Minor enhancements: Welcome Voice (Open AI) added, RGB led colors updated, code clean up done
 - **2025-01-26:** First drop, already working, not finally cleaned up (just posted this drop on some folks request).
 
+. . .
 
-.
-.
-. <br>
-<br>
 # Demo Videos
 Video 01 (Jan. 27, 2025):
 
@@ -106,14 +103,9 @@ STT: Faster (multilingual) ElevenLabs scribe v1, TTS: Open AI voice 'onyx'. Open
 - Hardware: Using the battery powered [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/) with ESP32 & SD card. Mounted on a Lasercut Acryl chassis (3.7V Li-Po battery placed inside double bottom), added a (fixed) metal control (steel button) as TOUCH button (connected to GPIO-12).
 - Details of interest: Playing gong audio (welcome.wav on SD card), then real-time created (German) TTS welcome voice. Multilingual: Requesting Open AI to jump from (my) default 'German' to English language (min:sec 0:25). Recording long sentences, STT transcription still  < 2 secs (confirmed with short white led flashes). Live Information request: Key word 'Google' (min:sec 1:55) activates Open AI web search model _once_ (weather forecast 'today', June 19), embedded into the follow up dialog until end of session. Detail (min:sec 2:32) short record touch 'interrupts' TTS (2nd touch would 'repeat' last TTS again).
 
+. . .
+
 #
-
-
-.
-.
-.
-
-
 Links of interest, featuring friend’s projects:
 - Advanced ESP32 AI device, using streaming sockets for lowest latency: [Github ElatoAI](https://github.com/akdeb/ElatoAI/tree/main/firmware-arduino), [Github StarmoonAI](https://github.com/StarmoonAI/Starmoon)
 - Ready to Go hardware: [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/) 
