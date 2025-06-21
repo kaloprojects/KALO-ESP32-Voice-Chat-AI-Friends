@@ -99,7 +99,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - Hardware: Using the battery powered PCB from Techiesms [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/) with ESP32 with SD card. Mounted on a Lasercut acryl chassis (3.7V Li-Po battery placed inside double bottom), added a (fixed) metal control (steel button) as TOUCH button (connected to GPIO-3).
 - Details of interest: Playing gong audio (welcome.wav on SD card), then server created TTS welcome voice. Multilingual: Requesting Open AI to jump from (my) default 'German' to English language. Recording longer sentences, STT transcription done after 1-2 secs (led short WHITE flash). Live Information request (min/sec 1:55): Key word 'Google' activates Open AI web search model (weather forecast 'today'), embedded into the follow up dialog (memorized until eof dialog)
 
-![2025-06-19 Video - KALO-ESP32-Voice-ChatGPT - Picture_800](https://github.com/user-attachments/assets/a02cb561-a114-4a9a-9787-796239f79f71)
+[![2025-06-19 Video - KALO-ESP32-Voice-ChatGPT - Picture_800](https://github.com/user-attachments/assets/a02cb561-a114-4a9a-9787-796239f79f71)](https://dark-controller.com/wp-content/uploads/2025/06/2025-06-19-Video-KALO-ESP32-Voice-ChatGPT-FINAL.mp4)
 
 #
 
