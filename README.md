@@ -100,7 +100,7 @@ Video 02 (June 19, 2025):
 
 _3:30 minute dialog, using latest code with default settings. Same system prompt (role of a 'good old friend'). <br>
 STT: Faster (multilingual) ElevenLabs scribe v1, TTS: Open AI voice 'onyx'. Open AI LLM: web search included._
-- Hardware: Using the battery powered [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/) with ESP32 & SD card. Mounted on a Lasercut Acryl chassis (3.7V Li-Po battery placed inside double bottom), added a (fixed) metal control (steel button) as TOUCH button (connected to GPIO-12).
+- Hardware: Using the battery powered [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/) with ESP32 & SD card. Mounted on a Lasercut Acryl chassis (3.7V Li-Po battery placed inside double bottom), added a metal control (fixed steel button) as TOUCH button (connected to GPIO-12).
 - Details of interest: Playing gong audio (welcome.wav on SD card), then real-time created (German) TTS welcome voice. Multilingual: Requesting Open AI to jump from (my) default 'German' to English language (min:sec 0:25). Recording long sentences, STT transcription still  < 2 secs (confirmed with short white led flashes). Live Information request: Key word 'Google' (min:sec 1:55) activates Open AI web search model _once_ (weather forecast 'today', June 19), embedded into the follow up dialog until end of session. Detail (min:sec 2:32) short record touch 'interrupts' TTS (2nd touch would 'repeat' last TTS again).
 
 . . .
