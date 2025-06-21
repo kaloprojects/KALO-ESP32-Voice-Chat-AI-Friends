@@ -86,20 +86,24 @@ Explore the details in the .ino libraries, summary in a nutshell:
 . <br>
 <br>
 # Demo Videos
-**Video 01** (Jan. 27, 2025): 5 minute example chat. Using code default settings, System Prompt: Role of a 'good old friend'. Recorded video uses the older (slower) Deepgram STT, latest code update (using ElevenLabs STT) is answering significantly faster
+Video 01 (Jan. 27, 2025):
+
+[![Video - KALO-ESP32-Voice-ChatGPT](https://github.com/user-attachments/assets/8f236399-ff71-4dc3-9563-46cfe4e7fa91)](https://dark-controller.com/wp-content/uploads/2025/01/KALO-ESP32-Voice-ChatGPT-GQ.mp4)
+
+_5 minute example chat. Using code default settings, System Prompt: Role of a 'good old friend'. Recorded video uses the older (slower) Deepgram STT, latest code update (using ElevenLabs STT) is answering significantly faster_
 - Deepgram STT language: English (en-US)
 - TTS voice: Multilingual (Open AI default), used voice in video: 'onyx'
 - Overlay window: Serial Monitor I/O in real time (using Terminal App PuTTY, just for demo purposes)
 - Details of interest (m:ss): 1:35 (BTN stops Audio), 2:05 (Radio gimmick), 3:15 (multi-lingual capabilities)
 
-[![Video - KALO-ESP32-Voice-ChatGPT](https://github.com/user-attachments/assets/8f236399-ff71-4dc3-9563-46cfe4e7fa91)](https://dark-controller.com/wp-content/uploads/2025/01/KALO-ESP32-Voice-ChatGPT-GQ.mp4)
-
 #
-**Video 02** (June 19, 2025): 3:30 minute example chat, using latest code with default settings. Same system prompt (role of a 'good old friend'). STT: Multilingual ElevenLabs scribe v1, TTS: Open AI with voice 'onyx'.
-- Hardware: Using the battery powered [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/) with ESP32 & SD card. Mounted on a Lasercut Acryl chassis (3.7V Li-Po battery placed inside double bottom), added a (fixed) metal control (steel button) as TOUCH button (connected to GPIO-12).
-- Details of interest: Playing gong audio (welcome.wav on SD card), then real-time created (German) TTS welcome voice. Multilingual: Requesting Open AI to jump from (my) default 'German' to English language (min:sec 0:25). Recording long sentences, STT transcription still  < 2 secs (confirmed with short white led flashes). Live Information request: Key word 'Google' (min:sec 1:55) activates Open AI web search model _once_ (weather forecast 'today', June 19), embedded into the follow up dialog until end of session. Detail (min:sec 2:32) short record touch 'interrupts' TTS (2nd touch would 'repeat' last TTS again).
+Video 02 (June 19, 2025):
 
 [![2025-06-19 Video - KALO-ESP32-Voice-ChatGPT - Picture_800](https://github.com/user-attachments/assets/a02cb561-a114-4a9a-9787-796239f79f71)](https://dark-controller.com/wp-content/uploads/2025/06/2025-06-19-Video-KALO-ESP32-Voice-ChatGPT-FINAL.mp4)
+
+_3:30 minute dialog, using latest code with default settings. Same system prompt (role of a 'good old friend'). STT: Multilingual ElevenLabs scribe v1, TTS: Open AI with voice 'onyx'._
+- Hardware: Using the battery powered [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/) with ESP32 & SD card. Mounted on a Lasercut Acryl chassis (3.7V Li-Po battery placed inside double bottom), added a (fixed) metal control (steel button) as TOUCH button (connected to GPIO-12).
+- Details of interest: Playing gong audio (welcome.wav on SD card), then real-time created (German) TTS welcome voice. Multilingual: Requesting Open AI to jump from (my) default 'German' to English language (min:sec 0:25). Recording long sentences, STT transcription still  < 2 secs (confirmed with short white led flashes). Live Information request: Key word 'Google' (min:sec 1:55) activates Open AI web search model _once_ (weather forecast 'today', June 19), embedded into the follow up dialog until end of session. Detail (min:sec 2:32) short record touch 'interrupts' TTS (2nd touch would 'repeat' last TTS again).
 
 #
 
