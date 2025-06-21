@@ -107,6 +107,6 @@ STT: Faster (multilingual) ElevenLabs scribe v1, TTS: Open AI voice 'onyx'. Open
 
 #
 Links of interest, featuring friend’s projects:
-- Advanced ESP32 AI device, using streaming sockets for lowest latency: [Github ElatoAI](https://github.com/akdeb/ElatoAI/tree/main/firmware-arduino), [Github StarmoonAI](https://github.com/StarmoonAI/Starmoon)
+- Advanced ESP32 AI service, using streaming sockets for lowest latency: [Github ElatoAI](https://github.com/akdeb/ElatoAI/tree/main/firmware-arduino), [Github StarmoonAI](https://github.com/StarmoonAI/Starmoon)
 - Ready to Go hardware: [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/) 
 - Ready to Go hardware: [Elato AI DIY](https://github.com/akdeb/ElatoAI), [Elato AI products](https://www.elatoai.com)
