@@ -86,7 +86,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 . <br>
 <br>
 # Demo Videos
-5 minute example chat. Using code default settings, System Prompt: Role of a 'good old friend'. Recorded video uses the older (slower) Deepgram STT, latest code update (using ElevenLabs STT) is answering significantly faster
+**Video 01** (Jan. 27, 2025): 5 minute example chat. Using code default settings, System Prompt: Role of a 'good old friend'. Recorded video uses the older (slower) Deepgram STT, latest code update (using ElevenLabs STT) is answering significantly faster
 - Deepgram STT language: English (en-US)
 - TTS voice: Multilingual (Open AI default), used voice in video: 'onyx'
 - Overlay window: Serial Monitor I/O in real time (using Terminal App PuTTY, just for demo purposes)
@@ -95,10 +95,22 @@ Explore the details in the .ino libraries, summary in a nutshell:
 
 [![Video - KALO-ESP32-Voice-ChatGPT](https://github.com/user-attachments/assets/8f236399-ff71-4dc3-9563-46cfe4e7fa91)](https://dark-controller.com/wp-content/uploads/2025/01/KALO-ESP32-Voice-ChatGPT-GQ.mp4)
 
+#
+**Video 02** (June 19, 2025): 3:30 minute example chat, using latest code with default settings. Same system prompt (role of a 'good old friend'). STT: Multilingual ElevenLabs scribe v1, TTS: Open AI with voice 'onyx'.
+- Hardware: Using the amazing battery powered PCB from Techiesms [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/) with ESP32 with SD card. Mounted on a Lasercut acryl chassis (3.7V Li-Po battery placed inside double bottom), added a (fixed) metal control (steel button) as TOUCH button (connected to GPIO-3).
+- Details of interest: Playing gong audio (welcome.wav on SD card), then server created TTS welcome voice. Multilingual: Requesting Open AI to jump from (my) default 'German' to English language. Recording longer sentences, STT transcription done after 1-2 secs (led short WHITE flash).
+- Live Information request (min/sec 1:55): Key word 'Google' activates Open AI web search model (weather forecast 'today'), embedded into the follow up dialog (memorized until eof dialog)
+
+![2025-06-19 Video - KALO-ESP32-Voice-ChatGPT - Picture_800](https://github.com/user-attachments/assets/a02cb561-a114-4a9a-9787-796239f79f71)
+
+#
+
+
 
 .
 .
 .
+
 
 Links of interest, featuring friend’s projects:
 - Advanced ESP32 AI device, using streaming sockets for lowest latency: [Github ElatoAI](https://github.com/akdeb/ElatoAI/tree/main/firmware-arduino), [Github StarmoonAI](https://github.com/StarmoonAI/Starmoon)
