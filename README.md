@@ -28,7 +28,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - I2S digital microphone, e.g. INMP441 [I2S pins 22, 33, 35]          
 - I2S audio amplifier, e.g. MAX98357A [I2S pins 25,26,27] with speaker
 - RGB status LED and optionally (recommended) an Analog Poti (for audio volume)
-- Ready to Go devices (examples) with ESP32 & SD card reader: [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/)
+- Ready to Go devices (examples) with ESP32 & SD card reader: [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/{:target="_blank"})
 - Ready to Go devices (examples) with ESP32-S3 (PSRAM): [Elato AI DIY](https://github.com/akdeb/ElatoAI), [Elato AI devices](https://www.elatoai.com).
 
 # 3rd party Software licenses
