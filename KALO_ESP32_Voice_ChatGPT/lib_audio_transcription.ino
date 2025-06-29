@@ -2,7 +2,7 @@
 // ------------------------------------------------------------------------------------------------------------------------------
 // ----------------       KALO Library - SpeechToText (STT) transcription library (for pre-recorded audio)       ---------------- 
 // ----------------                          via DEEPGRAM API - or - ELEVENLABS API                              ---------------- 
-// ----------------                               Latest Update: June 19, 2025                                   ----------------
+// ----------------                               Latest Update: June 28, 2025                                   ----------------
 // ----------------                                                                                              ----------------   
 // ----------------                                       Coded by KALO                                          ----------------
 // ----------------                  Thanks to @Sandra from Deepgram Developer team (June 2024)                  ---------------- 
