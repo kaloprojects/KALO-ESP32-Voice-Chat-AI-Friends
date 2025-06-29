@@ -74,7 +74,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - minor bugs resolved, added more detailed comments into sketch, code cleaned up.
 
 # Updates history:
-- **2025-06-28:** Hardware pin assignments cleaned up (3 PCB examples in main.ino), Techiesms [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/) supported by default (no longer #define TECHIESMS_PCB true needed). Added VOL_BTN toggle feature to all devices
+- **2025-06-28:** Hardware **pin assignments** cleaned up (3 PCB examples in main.ino), Techiesms [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/) supported by default (no longer #define TECHIESMS_PCB true needed). Added VOL_BTN toggle feature to all devices
 - **2025-06-19:** Supporting **ESP32-S3** I2S audio recording, supporting **Elato AI devices** [DIY pcb](https://github.com/akdeb/ElatoAI), [Elato AI products](https://www.elatoai.com)
 - **2025-06-05:** Major update, detail see above (**PSRAM** support, **ElevenLabs Scrivbe v1 STT** added support, STT **performance** increased)
 - **2025-04-04:** Live Information Request capabilities added (supporting new **Open AI web search features**). Mixed support of chat model (e.g. 'gpt-4o-mini') and web search models (e.g. 'gpt-4o-mini-search-preview'). User queries with a user defined keyword initiate a web search and embed the result in the ongoing chat. Minor changes: all user specific credits are moved to header of main.ino sketch (KALO_ESP32_Voice_ChatGPT_20250404.ino), additional parameter added to function Open_AI(..) and SpeechToText_Deepgram(..). Code further cleaned up, detailed comments added in 'lib_OpenAI_Chat.ino'
