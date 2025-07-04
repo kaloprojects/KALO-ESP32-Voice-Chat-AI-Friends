@@ -187,7 +187,7 @@ void setup()
   led_RGB(LOW,LOW,LOW);   // init function led_RGB()  
   led_RGB(LOW,HIGH,HIGH); delay (330);  // ## RED 
   led_RGB(HIGH,LOW,HIGH); delay (330);  // ## GREEN
-  led_RGB(HIGH,HIGH,LOW); delay (330);  // ## RED
+  led_RGB(HIGH,HIGH,LOW); delay (330);  // ## BLUE
   led_RGB(LOW,LOW,HIGH);                // ## YELLOW ...
 
   // Digital INPUT pin assignments (not needed for analogue pin_VOL_POTI & pin_TOUCH)
