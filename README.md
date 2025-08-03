@@ -82,7 +82,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - **2025-01-26:** First drop, already working, not finally cleaned up (just posted this drop on some folks request).
 
 # Next steps
-- Next upgrade will add some additional AI features (and some minor bug fixes), also performance will be increased, planned in upcoming 2 weeks. Stay tuned ;)
+- Next upgrade will add some additional AI features (and some minor bug fixes), also performance will be increased, planned in August. Stay tuned ;)
 
 . . .
 
