@@ -36,7 +36,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 
 # API Keys (Registration needed)
 - STT (fast): **ElevenLabs** API KEY, Links: [ElevenLabs](https://elevenlabs.io/pricing#pricing-table) (see model STT for 0$, 2.5h/month free). <br>Alternative (slower STT): **Deepgram** API KEY [Deepgram](https://console.deepgram.com/signup) (200$ free)
-- LLM & TTS: **Open AI** API KEY needed (same API KEY for LLM & TTS), registration: [Open AI account](https://platform.openai.com) (5$ free).
+- LLM & TTS: **Open AI** API KEY needed (same API KEY for LLM & TTS), registration: [Open AI account](https://platform.openai.com) (5$ free)
 - GroqCloud LLM (fast): **GroqCloud** API KEY needed, registration: [groqcloud](https://console.groq.com/login) (using free account, token limited).
 
 # Library Dependencies
@@ -126,7 +126,7 @@ _6:13 minute dialog, latest August code with multiple AI friends on an ESP32S3 E
 - Hardware: Using a battery powered [older version](https://github.com/StarmoonAI/Starmoon/blob/main/usecases.png) of the [Elato AI](https://www.elatoai.com) device, ESP32S3 with PSRAM (no SD card). Hint: I mounted a tiny metal screw as TOUCH record button (original side btn on side is used for audio volume)
 - Details of interest: Chatting with 3 of my friends (Onyx, Veggi, Fred), waking up the buddies with calling by name. Using PSRAM and latest AUDIO.H allows to create voices with emotions.
 - Some moments of interest: Jumping from 'good old default friend' ONYX to the 'food specialist' VEGGI (min:sec 0:28), interrupting VEGGI on demand (1:57), waking-up FRED (the annoyed and aggressive buddy with an aggressive voice (2:00), listen to his emotions in voice! e.g. on 3:30 (hint: PSRAM is mandatory), waking up my earlier friendly ONYX again (fails on 3:50, no big deal: just calling him again on 4:09), and finally starting Google Search by request (4:18) to request latest data from TODAY (August 15!). Also might be of interest: Google websearch is embedded into Chat (ONYX himself speaks about Google on 5:30). Coding hint (RGB): 2x RED flashes indicate AI friend changes (wakeups).
-- RGB color (recap):  STT (cyan) -> LLM AI (blue) -> TTS (pink).  _WHITE_ flash on success, _Double RED flash_ if calling another _FRIEND_
+- RGB color (recap):  STT (cyan) -> LLM AI (blue) -> TTS (yellow>pink).  WHITE flash = Success. _NEW_: Double RED flash = calling _FRIEND_
 
 . . .
 
