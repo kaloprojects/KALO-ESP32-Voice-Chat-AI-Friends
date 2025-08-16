@@ -2,11 +2,11 @@
 
 ESP32 based voice chat dialog device, successor of the earlier project KALO-ESP32-Voice-_ChatGPT_. With latest August 2025 update the ESP32 device allows to create _multiple custom chatbots/FRIENDS (similar to Open AI's Custom GPT's or Google's Gems)_. Just call any FRIEND by name, the device will activate the AI personality (custom system prompt) and answer with friend’s assigned voice.
 
-User can ask questions and following conversation via microphone _(pressing a button or touch pin as long speaking)_. Code supports ongoing dialog sessions, keeping & sending the complete chat history. 'Chat Completions' workflow allows 'human-like' ongoing dialogs, supporting chat history & follow up questions. Example: Q1: _"who was Albert Einstein?"_ - and later (after OpenAI response) - Q2: _"was he also a musician and _did he_ have kids?"_. 
+User can ask questions and following conversation via microphone _(pressing a button or touch pin as long speaking, no length limit, dynamic duration)_. Code supports ongoing dialog sessions, keeping & sending the complete chat history. 'Chat Completions' workflow allows 'human-like' ongoing dialogs, supporting chat history & follow up questions. Example: Q1: _"who was Albert Einstein?"_ - and later (after LLM response) - Q2: _"was he also a musician and _did he_ have kids?"_. 
 
-**New since August 2025**: supporting _1-N chatbots/FRIENDS_ with user defined personality (System Prompts), TTS voice parameter allow to assign _different voices_ to each friend. The LLM AI response latency significantly improved (about _2x faster than before)_, using _GroqCloud_ API services. Groq sever API also allow to use LLM models from different sources (e.g. Meta, DeepSeek, Open AI). Github code should support all models. Project name changed from KALO-ESP32-Voice-**ChatGPT** (supporting Open AI only) to KALO-ESP32-Voice-**AI_Friends** (multiple models, multiple custom chatbots).
+**New since August 2025**: supporting _1-N chatbots/FRIENDS_ with user defined personality (System Prompts), custom defined TTS voice parameter allow to assign _different voices_ to each friend. The LLM AI response latency significantly improved (about _2x faster than before)_, using _GroqCloud_ API services. Groq sever API also allow to use LLM models from different sources (e.g. Meta, DeepSeek, Open AI). Project name changed from KALO-ESP32-Voice-**ChatGPT** (supporting Open AI only) to KALO-ESP32-Voice-**AI_Friends** (multiple models, multiple custom chatbots).
 
-Included chatbot friends can be used as template for your custom chatbots, coded examples: _ONYX_ (role of a 'good old friend'), _FRED_ (a constantly annoyed guy), _GlaDOS_ (the aggressive egocentric bot), or _VEGGI_ (best friend of vegan and healthy food). You could start a virtual conversation e.g. with a human warm up question: _"Hi my friend, tell me, how was your week, any exiting stories?"_. or waking up another friend with a statement like _"Hi FRED, are you online?"_ 
+The included chatbot friends serve as template for your own custom chatbots, coded examples: _ONYX_ (role of a 'good old friend'), _FRED_ (a constantly annoyed guy), _GlaDOS_ (the aggressive egocentric bot), or _VEGGI_ (best friend of vegan and healthy food). You could start a virtual conversation e.g. with a human warm up question: _"Hi my friend, tell me, how was your week, any exiting stories?"_. or waking up another friend with a statement like _"Hi FRED, are you online?"_ 
 
 **Since June 2025**: Live Information requests _(Real-time web searches)_ supported. User defined key word (e.g. _GOOGLE_) toggles LLM to web search models as part of the memorized chat dialog. Example: _"will it rain in my region tomorrow?, please ask Google! "_, or _"Please check with GOOGLE, what are the latest projections for the elections tomorrow?"_. Mixed model usage of both models supported, allowing follow up requests (e.g. _"Please summarize the search in few sentences, skip any boring details!"_) also to previous web searches. Key word GOOGLE works with all AI chatbots/FRIENDS.
 
@@ -18,15 +18,15 @@ Included chatbot friends can be used as template for your custom chatbots, coded
 Explore the details in the .ino libraries, summary in a nutshell:
 - Recording user Voice with variable length (as long holding a btn), storing as .wav file (with 44 byte header) on SD card or (NEW) in PSRAM
 - User can enter LLM AI request also via text in Serial Monitor Input line or COM: Terminal Apps e.g. PuTTY)  
-- Sending recorded WAV file to STT (SpeechToText) server, using Deepgram API or fast ElevenLabs API (registration needed)
+- Sending recorded WAV file to STT (SpeechToText) server, using fast ElevenLabs API (or slower Deepgram)
 - Sending the received transcription text to Open AI or (new) GroqCloud server (with user specified LLM models for CHAT and WEB SEARCH)
 - Receiving AI response, printing in Serial Monitor, answering with a 'human' like (multi-lingual) Open AI voice
-- RGB led indicating status: GREEN=Ready. -> RED=Recording -> CYAN=STT -> BLUE=Open AI CHAT -> PINK=Open AI WEB, YELLOW=Audio pending -> PINK=TTS Speaking. Short WHITE flashes indicate successful STT & Open AI response, short RED flash indicate successful keyword detection. _New: double RED flash on waking up another FRIEND_
-- BUTTON: PRESS & HOLD for recording + _short_ PRESS stops Open AI voice (when speaking) - OR - repeats last answer (when silent)
+- RGB led indicating status: GREEN=Ready -> RED=Recording -> CYAN=STT -> BLUE=LLM AI CHAT -> PINK=Open AI WEB -> YELLOW=Audio pending -> PINK=TTS Speaking. Short WHITE flashes indicate success, RED flashes indicate keyword detection. _New: double RED flashes on waking up another FRIEND_
+- BUTTON: PRESS & HOLD for recording + _short_ PRESS interrupts TTS/Audio (when speaking) - OR - repeats last answer (when silent)
 - Pressing button again to proceed in loop for ongoing chat.
 
 # Hardware requirements
-- _Recommended:_ ESP32 with (!)  PSRAM (tested with ESP32-WROVER and ESP32-S3), no longer SD Card reader needed
+- _Recommended:_ ESP32 with (!)  PSRAM (tested with ESP32-WROVER and ESP32-S3), no SD Card needed
 - Alternatively ESP32 (e.g. ESP32-WROOM-32) with connected Micro SD Card (VSPI Default pins 5,18,19,23)
 - I2S digital microphone, e.g. INMP441 [I2S pins 22, 33, 35]          
 - I2S audio amplifier, e.g. MAX98357A [I2S pins 25,26,27] with speaker
@@ -35,15 +35,15 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - Ready to Go devices (examples) with ESP32-S3 (PSRAM): [Elato AI DIY](https://github.com/akdeb/ElatoAI), [Elato AI devices](https://www.elatoai.com).
 
 # API Keys (Registration needed)
-- STT (fast): **ElevenLabs** API KEY, Links: [ElevenLabs](https://elevenlabs.io/pricing#pricing-table) (see model STT for 0$, 2.5h/month free). <br>Alternative (slower STT): **Deepgram** API KEY [Deepgram](https://console.deepgram.com/signup) (200$ free)
+- STT (fast): **ElevenLabs** API KEY, Links: [ElevenLabs](https://elevenlabs.io/pricing#pricing-table) (free STT includes 2.5h/month). <br>Alternative (slower STT): **Deepgram** API KEY [Deepgram](https://console.deepgram.com/signup) (200$ free)
 - LLM & TTS: **Open AI** API KEY needed (same API KEY for LLM & TTS), registration: [Open AI account](https://platform.openai.com) (5$ free)
 - GroqCloud LLM (fast): **GroqCloud** API KEY needed, registration: [groqcloud](https://console.groq.com/login) (using free account, token limited).
 
 # Library Dependencies
 - KALO-ESP32-Voice-ChatGPT does _not_ need any 3rd party libraries _zip files_ to be installed (_except AUDIO.H!_), all functions in all lib_xy.ino’s are self-coded (WiFiClientSecure.h / i2s_std.h / SD.h are part of esp32 core libraries). AUDIO.H in main.ino is used for TTS playing audio (not needed for audio recording & transcription), no AUDIO.H needed in 'lib_xy.ino' libraries
-- ESP32 core library (Arduino DIE): use latest [arduino-esp32](https://github.com/espressif/arduino-esp32) e.g. 3.2.0 (based on ESP-IDF 5.4.1) or later. Older 2.x ESP are _not_ supported.
-- AUDIO.H library / ESP32 **with** PSRAM: Install latest [ESP32-audioIS](https://github.com/schreibfaul1/ESP32-audioI2S) zip, version 3.3.0 or later.
-- AUDIO.H library / ESP32 **without** PSRAM: IMPORTANT! - Actual AUDIO.H libraries require PSRAM, ESP32 without PSRAM are no longer supported!. So you need to install last version which did not require PSRAM. Recommended version is **3.0.11g** (from July 18, 2024)!. Mirror link to 3.0.11g version [here]( https://github.com/kaloprojects/KALO-ESP32-Voice-ChatGPT/tree/main/libray_archive).
+- ESP32 core library (Arduino DIE): use latest [arduino-esp32](https://github.com/espressif/arduino-esp32) e.g. 3.2.0 (based on ESP-IDF 5.4.1) or later 
+- AUDIO.H library / ESP32 **with** PSRAM: Install latest [ESP32-audioIS](https://github.com/schreibfaul1/ESP32-audioI2S) zip, version 3.3.0 or later
+- AUDIO.H library / ESP32 **without** PSRAM: IMPORTANT! - Actual AUDIO.H libraries require PSRAM, ESP32 without PSRAM are no longer supported!. So you need to install last version which did not require PSRAM. Recommended version is **3.0.11g** (from July 18, 2024)!. Mirror link to 3.0.11g version [here]( https://github.com/kaloprojects/KALO-ESP32-Voice-ChatGPT/tree/main/libray_archive)
 - Last-not-least: Sending a big THANK YOU and a huge shout out to @Schreibfaul1 for his great AUDIO.H library and all his support!. 
  
 # Installation & Customizing
@@ -63,7 +63,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 # New features since August 2025
 - Supporting multiple custom chatbots/FRIENDS, activating any friend by call his/her name
 - Assigning TTS parameter (voice characteristics) as part of the FRIENDS[] Agent structure
-- Faster LLM AI response due supporting fast GroqCloud server API websockets (~ 2x faster than earlier Open AI models)
+- Faster LLM AI response due supporting fast GroqCloud server API websockets (~ 2x faster than Open AI)
 - GroqCloud server API allows to use LLM models from various provider (e.g. Meta, OpenAI, DeepSeek, PlayAI, Alibaba etc.), more details here: [models](https://console.groq.com/docs/models). Posted code (default settings): using Meta "llama-3.1-8b-instant" as CHAT model (low costs, high performance), for WEBSEARCH using Open AI 'gpt-4o..search' models
 - New Commands, e.g. “DEBUG ON|OFF” to toggle print details, speaking "HASHTAG" to trigger "#" command
 - Several minor bug fixes, e.g.: Sending LLM AI payload in chunks, keeping websockets open only on ESP32 with PSRAM
