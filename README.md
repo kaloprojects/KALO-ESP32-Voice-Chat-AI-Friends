@@ -8,19 +8,19 @@ User can ask questions and following conversation via microphone _(pressing a bu
 
 The included chatbot friends serve as template for your own custom chatbots, coded examples: _ONYX_ (role of a 'good old friend'), _FRED_ (a constantly annoyed guy), _GlaDOS_ (the aggressive egocentric bot), or _VEGGI_ (best friend of vegan and healthy food). You could start a virtual conversation e.g. with a human warm up question: _"Hi my friend, tell me, how was your week, any exiting stories?"_. or waking up another friend with a statement like _"Hi FRED, are you online?"_ 
 
-**Since June 2025**: Live Information requests _(Real-time web searches)_ supported. User defined key word (e.g. _GOOGLE_) toggles LLM to web search models as part of the memorized chat dialog. Example: _"will it rain in my region tomorrow?, please ask Google! "_, or _"Please check with GOOGLE, what are the latest projections for the elections tomorrow?"_. Mixed model usage of both models supported, allowing follow up requests (e.g. _"Please summarize the search in few sentences, skip any boring details!"_) also to previous web searches. Key word GOOGLE works with all AI chatbots/FRIENDS.
+**Since June 2025**: Live Information requests _(Real-time web searches)_ supported. User defined key word (e.g. _GOOGLE_) toggles LLM to web search models as part of the memorized chat dialog. Example: _"will it rain in my region tomorrow?, please ask Google! "_, or _"Please check with Google, what are the latest projections for the elections tomorrow?"_. Mixed model usage of both models supported, allowing follow up requests (e.g. _"Please summarize the search in few sentences, skip any boring details!"_) also to previous web searches. Key word GOOGLE works with all AI chatbots/FRIENDS.
 
 **Architecture**: All is coded in C++ native (no server based components needed, no Node.JS or Python scripts or websockets used), audio recording and transcription are coded natively in C++ for I2S devices (microphone and speaker). ESP32 chat device (Wifi connected) can be used stand-alone (no Serial Monitor a/o keyboard a/o connected computer needed). Sketch might be also useful for a _Text Chat_ device (no voice recording, no STT, no TTS needed) using a Terminal App (e.g. PuTTY) or the Serial Monitor to enter text requests. 
 
-**Major Update Summaries**: Update _August 2025_ added **multiple custom chatbots/FRIENDS**, LLM AI response **2x faster**, using **Groq server** with multiple **models**. Update _June 2025_ added **PSRAM support** (as alternative to SD Card), **ESP32-S3** support and **ElevenLabs STT** for **5-10x faster** SpeechToText transcription. Supporting additional hardware **Elato AI ESP32-S3 devices**. Update _April 2025_ added Open AI Web Search LLM model added, supporting actual and location related **Live Information capabilities** (Real-time web searches) into chat dialogs. User queries with a user defined leading 'keyword' initiate a web search and embed the result in the ongoing chat. Update _March 2025_ added hardware support for **Techiesms ESP32 Portable AI Voice Assistant**.
+**Major Update Summaries**: Update _August 2025_ added **multiple custom chatbots/FRIENDS**, LLM AI response **2x faster**, using **Groq server** with multiple **models**. Update _June 2025_ added **PSRAM support** (as alternative to SD Card), **ESP32-S3** support and **ElevenLabs STT** for **5-10x faster** SpeechToText transcription. Supporting additional hardware **Elato AI ESP32-S3 devices**. Update _April 2025_ added Open AI Web Search LLM model added, supporting actual and location related **Live Information capabilities** (Real-time web searches) into chat dialogs. Update _March 2025_ added hardware support for **Techiesms ESP32 Portable AI Voice Assistant**.
 
 # Workflow
 Explore the details in the .ino libraries, summary in a nutshell:
-- Recording user Voice with variable length (as long holding a btn), storing as .wav file (with 44 byte header) on SD card or (NEW) in PSRAM
+- Recording user Voice with variable length (as long holding a btn), storing as .wav file (with 44 byte header) in PSRAM or on SD card
 - User can enter LLM AI request also via text in Serial Monitor Input line or COM: Terminal Apps e.g. PuTTY)  
 - Sending recorded WAV file to STT (SpeechToText) server, using fast ElevenLabs API (or slower Deepgram)
-- Sending the received transcription text to Open AI or (new) GroqCloud server (with user specified LLM models for CHAT and WEB SEARCH)
-- Receiving AI response, printing in Serial Monitor, answering with a 'human' like (multi-lingual) Open AI voice
+- Sending the received transcription to Open AI or (new) GroqCloud server (with user specified LLM models for CHAT and WEB SEARCH)
+- Receiving AI response, printing in Serial Monitor, speaking with a 'human' like (multi-lingual) Open AI voice
 - RGB led indicating status: GREEN=Ready -> RED=Recording -> CYAN=STT -> BLUE=LLM AI CHAT -> PINK=Open AI WEB -> YELLOW=Audio pending -> PINK=TTS Speaking. Short WHITE flashes indicate success, RED flashes indicate keyword detection. _New: double RED flashes on waking up another FRIEND_
 - BUTTON: PRESS & HOLD for recording + _short_ PRESS interrupts TTS/Audio (when speaking) - OR - repeats last answer (when silent)
 - Pressing button again to proceed in loop for ongoing chat.
@@ -52,7 +52,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - Insert your credentials (ssid, password) and 3 API KEYS in header of main sketch _KALO_ESP32_Voice_AI_Friends.ino_
 - Update your hardware pin assignments (pcb template) in main sketch _KALO_ESP32_Voice_AI_Friends.ino_
 - Update your hardware microphone pins and audio storage settings (PSRAM a/o SD Card) in header of _lib_audio_recording.ino_
-- Create 1-N 'AI Friends' character' in header of new _lib_OpenAI_Chat.ino_
+- Create your own 1-N 'AI Friends' character' in header of new _lib_OpenAI_Chat.ino_
 - Optional: Review default settings in header of each .ino (e.g. DEBUG toggle in main.ino, recording parameter in 'lib_audio_recording.ino')
 - Optional: Copy Audio file 'Welcome.wav' to ESP32 SD card, played on Power On ('gong' sound)
 - In case of COMPILER ERROR on _audio_play.openai_speech()_: Check/update the last line of code in main sketch. Background: the amount of openai_speech() parameter changed with latest AUDIO.H versions.
@@ -62,8 +62,8 @@ Explore the details in the .ino libraries, summary in a nutshell:
 
 # New features since August 2025
 - Supporting multiple custom chatbots/FRIENDS, activating any friend by call his/her name
-- Assigning TTS parameter (voice characteristics) as part of the FRIENDS[] Agent structure
-- Faster LLM AI response due supporting fast GroqCloud server API websockets (~ 2x faster than Open AI)
+- Each chatbot can be assigned with different TTS parameter (voice characteristics) as part of the FRIENDS[] Agent structure
+- Faster LLM AI response since supporting fast GroqCloud server API websockets (~ 2x faster than Open AI)
 - GroqCloud server API allows to use LLM models from various provider (e.g. Meta, OpenAI, DeepSeek, PlayAI, Alibaba etc.), more details here: [models](https://console.groq.com/docs/models). Posted code (default settings): using Meta "llama-3.1-8b-instant" as CHAT model (low costs, high performance), for WEBSEARCH using Open AI 'gpt-4o..search' models
 - New Commands, e.g. “DEBUG ON|OFF” to toggle print details, speaking "HASHTAG" to trigger "#" command
 - Several minor bug fixes, e.g.: Sending LLM AI payload in chunks, keeping websockets open only on ESP32 with PSRAM
