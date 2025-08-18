@@ -74,7 +74,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 # New features since June 2025
 - **PSRAM supported** for audio recording and transcription. SD Card no longer needed for ESP32 with PSRAM (tested with **ESP32**-WROVER and **ESP32-S3**). User defined #define settings for audio processing (#define RECORD_PSRAM & RECORD_SDCARD)
 - Additional **parameter added** to Recording and transcription functions: 'Recording_Stop()' and 'SpeechToText_xy()'
-- Additional STT added: supporting **ElevenLabs Scribe v1 SpeechToText** API (as alternative to Deepgram STT). Multilingual support (also mixed languages in same record supported), country codes no longer needed. Registration for API KEY needed [link](https://elevenlabs.io/de/pricing#pricing-table), cost free account supported 
+- Additional STT added: supporting **ElevenLabs Scribe v1 SpeechToText** API (as alternative to Deepgram STT). Multilingual support (also mixed languages in same record supported), country codes no longer needed Registration for API KEY needed [link](https://elevenlabs.io/de/pricing#pricing-table), cost free account supported 
 - **Speed of SpeechToText significantly improved** (using ElevenLabs STT), in particular on **long sentences!**. Example: Short user voice recordings (e.g. 5 secs) are transcribed in ~ 0.5-2 secs (compared to ~5 sec with Deepgram), long user records (e.g. 20 secs!) transcribed in ~3 secs (compared to ~ 15 secs with Deepgram)  
 - SpeechToText is **multi lingual**, detecting your spoken language automatically (~ 100 languages supported). As longer your spoken sentence (audio), as better the correct language detection 
 - New Key word '**GOOGLE**': Activates Open AI **web search model** for Live Information requests 
@@ -116,7 +116,7 @@ Video 02 (June 19, 2025) – Faster STT (SpeechToText via ElevenLabs) & Open AI 
 
 _3:30 minute dialog, using latest code with default settings. Same system prompt (role of a 'good old friend'). <br>
 STT: Faster (multilingual) ElevenLabs scribe v1, TTS: Open AI voice 'onyx'. Open AI LLM: web search included._
-- Hardware: Using the battery powered [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/) with ESP32 & SD card. Mounted on a Lasercut Acryl chassis (3.7V Li-Po battery placed inside double bottom), added a metal control (fixed steel button) as TOUCH button (connected to GPIO-12).
+- Hardware: Using the battery powered [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/) with ESP32 & SD card. Mounted on a Lasercut Acryl chassis (3.7V Li-Po battery placed inside double bottom), added a metal control (fixed steel button) as TOUCH button (connected to GPIO-12)
 - Details of interest: Playing gong audio (welcome.wav on SD card), then real-time created (German) TTS welcome voice. Multilingual: Requesting Open AI to jump from (my) default 'German' to English language (min:sec 0:25). Recording long sentences, STT transcription still  < 2 secs (confirmed with short white led flashes). Live Information request: Key word 'Google' (min:sec 1:55) activates Open AI web search model _once_ (weather forecast 'today', June 19), embedded into the follow up dialog until end of session. Detail (min:sec 2:32) short record touch 'interrupts' TTS (2nd touch would 'repeat' last TTS again).
 
 #
@@ -126,7 +126,7 @@ _**NEW**_ Video 03 (August 15, 2025) – **AI Friends** update (_multiple_ chatb
 
 _6:13 minute dialog, latest August code with multiple AI friends on an ESP32S3 Elato device (default code settings)._ <br>
 - Hardware: Using a battery powered [older version](https://github.com/StarmoonAI/Starmoon/blob/main/usecases.png) of the [Elato AI](https://www.elatoai.com) device, ESP32S3 with PSRAM (no SD card). Hint: Mounted a tiny metal screw as TOUCH record button (original side btn on side is used for audio volume)
-- Demo: Chatting with 3 of my friends (Onyx, Veggi, Fred), waking up the buddies with calling by name, web search included. Using PSRAM and latest AUDIO.H allows to create voices with emotions.
+- Demo: Chatting with 3 of my friends (Onyx, Veggi, Fred), waking up the buddies with calling by name, web search included. Using PSRAM and latest AUDIO.H allows to create voices with emotions
 - Details of interest: Jumping from 'good old default friend' ONYX to the 'food specialist' VEGGI (min:sec 0:28), interrupting VEGGI on demand (1:57), waking-up FRED (the annoyed and aggressive buddy with an aggressive voice (2:00), listen to his emotions in voice! e.g. on 3:30 (hint: PSRAM is mandatory), waking up my earlier friendly ONYX again (fails on 3:50, no big deal: just calling him again on 4:09), and finally starting Google Search by request (4:18) to request latest data from TODAY (August 15!). Also might be of interest: Google websearch is embedded into Chat (ONYX himself speaks about Google on 5:30).
 - RGB color (recap):  STT (cyan) -> LLM AI (blue) -> TTS (yellow>pink, looks white in video).  WHITE flash = Success. _NEW_: Double RED flash = waking up another _FRIEND_.
 
