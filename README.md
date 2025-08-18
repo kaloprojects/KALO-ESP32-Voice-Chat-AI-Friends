@@ -42,7 +42,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - GroqCloud LLM (fast): **GroqCloud** API KEY needed, registration: [groqcloud](https://console.groq.com/login) (using free account, token limited).
 
 # Library Dependencies
-- KALO-ESP32-Voice-ChatGPT does _not_ need any 3rd party libraries _zip files_ to be installed (_except AUDIO.H!_), all functions in all lib_xy.ino’s are self-coded (WiFiClientSecure.h / i2s_std.h / SD.h are part of esp32 core libraries). AUDIO.H in main.ino is used for TTS playing audio (not needed for audio recording & transcription), no AUDIO.H needed in 'lib_xy.ino' libraries
+- KALO-ESP32-Voice-Chat-AI-Friends does _not_ need any 3rd party libraries _zip files_ to be installed (_except AUDIO.H!_), all functions in all lib_xy.ino’s are self-coded (WiFiClientSecure.h / i2s_std.h / SD.h are part of esp32 core libraries). AUDIO.H in main.ino is used for TTS playing audio (not needed for audio recording & transcription), no AUDIO.H needed in 'lib_xy.ino' libraries
 - ESP32 core library (Arduino DIE): use latest [arduino-esp32](https://github.com/espressif/arduino-esp32) e.g. 3.2.0 (based on ESP-IDF 5.4.1) or later 
 - AUDIO.H library / ESP32 **with** PSRAM: Install latest [ESP32-audioIS](https://github.com/schreibfaul1/ESP32-audioI2S) zip, version 3.3.0 or later
 - AUDIO.H library / ESP32 **without** PSRAM: IMPORTANT! - Actual AUDIO.H libraries require PSRAM, ESP32 without PSRAM are no longer supported!. So you need to install last version which did not require PSRAM. Recommended version is **3.0.11g** (from July 18, 2024)!. Mirror link to 3.0.11g version [here]( https://github.com/kaloprojects/KALO-ESP32-Voice-ChatGPT/tree/main/libray_archive)
