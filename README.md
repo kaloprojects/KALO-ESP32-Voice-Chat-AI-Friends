@@ -18,13 +18,13 @@ The included chatbot friends serve as template for your own custom chatbots, cod
 
 # Workflow
 Explore the details in the .ino libraries, summary in a nutshell:
-- Recording user Voice with variable length (holding a btn), storing as .wav file (with 44 byte header) in PSRAM or SD card
+- Recording user Voice with variable length (holding a btn), storing as .wav (with 44 byte header) in PSRAM or SD
 - User can enter LLM AI request also via text in Serial Monitor Input line or COM: Terminal Apps e.g. PuTTY)  
 - Sending recorded WAV file to STT (SpeechToText) server, using fast ElevenLabs API (or slower Deepgram)
-- Sending the transcription to Open AI or GroqCloud server (with user specified LLM models) for CHAT and WEB SEARCH
+- Sending transcription to Open AI or GroqCloud server (with user specified LLM models) for CHAT and WEB SEARCH
 - Receiving AI response, printing in Serial Monitor, speaking with a 'human' like (multi-lingual) Open AI voice
 - RGB led indicating status: GREEN=Ready -> RED=Recording -> CYAN=STT -> BLUE=LLM AI CHAT -> PINK=Open AI WEB -> YELLOW=Audio pending -> PINK=TTS Speaking. Short WHITE flashes indicate success, RED flashes indicate keyword detection. _New: double RED flashes on waking up another FRIEND_
-- Button: PRESS & HOLD for recording + _short_ PRESS interrupts TTS/Audio speaking OR repeats last answer (when silent)
+- Button: PRESS & HOLD for recording + _short_ PRESS interrupts TTS/Audio OR repeats last answer (when silent)
 - Pressing button again to proceed in loop for ongoing chat.
 
 # Hardware requirements
@@ -49,7 +49,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - Last-not-least: Sending a big THANK YOU shout out to @Schreibfaul1 for his great AUDIO.H library and his support!. 
  
 # Installation & Customizing
-- Libraries see above. Use latest esp32 core for Arduino IDE: [arduino-esp32](https://github.com/espressif/arduino-esp32). AUDIO.H: Download the correct library zip file (with PSRAM [here](https://github.com/schreibfaul1/ESP32-audioI2S), without PSRAM [3.0.11g here]( https://github.com/kaloprojects/KALO-ESP32-Voice-ChatGPT/tree/main/libray_archive)), add it in Arduino IDE via Sketch -> Include Library -> Add .ZIP Library 
+- Libraries see above. Use latest esp32 core for Arduino IDE: [arduino-esp32](https://github.com/espressif/arduino-esp32). AUDIO.H: Download the library zip file (with PSRAM [here](https://github.com/schreibfaul1/ESP32-audioI2S), without PSRAM [3.0.11g here]( https://github.com/kaloprojects/KALO-ESP32-Voice-ChatGPT/tree/main/libray_archive)), install in Arduino IDE via Sketch -> Include Library -> Add .ZIP 
 - Copy all .ino files of into same folder (it is one sketch, split into multiple Arduino IDE tabs)
 - Insert your credentials (ssid, password) and 3 API KEYS in header of main sketch _KALO_ESP32_Voice_AI_Friends.ino_
 - Update your hardware pin assignments (pcb template) in main sketch _KALO_ESP32_Voice_AI_Friends.ino_
@@ -68,7 +68,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - Faster LLM AI response since supporting fast GroqCloud server API websockets (~ 2x faster than Open AI)
 - GroqCloud server API allows to use LLM models from various provider (e.g. Meta, OpenAI, DeepSeek, PlayAI, Alibaba etc.), more details here: [models](https://console.groq.com/docs/models). Posted code (default settings): using Meta "llama-3.1-8b-instant" as CHAT model (low costs, high performance), for WEBSEARCH using Open AI 'gpt-4o..search' models
 - New Commands, e.g. “DEBUG ON|OFF” to toggle print details, speaking "HASHTAG" to trigger "#" command
-- Several minor bug fixes, e.g.: Sending LLM AI payload in chunks, keeping websockets open only on ESP32 with PSRAM
+- Several minor bug fixes, e.g.: Sending LLM AI payload in chunks, keeping websockets open on ESP32 with PSRAM
 - Cleaning up user specific settings in header of .ino files
 
 # New features since June 2025
