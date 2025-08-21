@@ -21,7 +21,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - Recording user Voice with variable length (holding a btn), storing as .wav (with 44 byte header) in PSRAM or SD
 - User can enter LLM AI request also via text in Serial Monitor Input line or COM: Terminal Apps e.g. PuTTY)  
 - Sending recorded WAV file to STT (SpeechToText) server, using fast ElevenLabs API (or slower Deepgram)
-- Sending transcription to Open AI or GroqCloud server (with user specified LLM models) for CHAT and WEB SEARCH
+- Sending transcription to Open AI or Groq server (with user specified LLM models) for CHAT and WEB SEARCH
 - Receiving AI response, printing in Serial Monitor, speaking with a 'human' like (multi-lingual) Open AI voice
 - RGB led indicating status: GREEN=Ready -> RED=Recording -> CYAN=STT -> BLUE=LLM AI CHAT -> PINK=Open AI WEB -> YELLOW=Audio pending -> PINK=TTS Speaking. Short WHITE flashes indicate success, RED flashes indicate keyword detection. _New: double RED flashes on waking up another FRIEND_
 - Button: PRESS & HOLD for recording + _short_ PRESS interrupts TTS/Audio OR repeats last answer (when silent)
