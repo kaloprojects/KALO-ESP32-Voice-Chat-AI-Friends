@@ -64,7 +64,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 
 # New features since August 2025
 - Supporting multiple custom chatbots/FRIENDS, activating any friend by call his/her name
-- Each chatbot can be assigned with different TTS parameter (voice characteristics) in the FRIENDS[] Agent structure
+- Each chatbot can be assigned with different TTS parameter (voice characteristics) via FRIENDS[] Agent structure
 - Faster LLM AI response since supporting fast GroqCloud server API websockets (~ 2x faster than Open AI)
 - GroqCloud server API allows to use LLM models from various provider (e.g. Meta, OpenAI, DeepSeek, PlayAI, Alibaba etc.), more details here: [models](https://console.groq.com/docs/models). Posted code (default settings): using Meta "llama-3.1-8b-instant" as CHAT model (low costs, high performance), for WEBSEARCH using Open AI 'gpt-4o..search' models
 - New Commands, e.g. “DEBUG ON|OFF” to toggle print details, speaking "HASHTAG" to trigger "#" command
