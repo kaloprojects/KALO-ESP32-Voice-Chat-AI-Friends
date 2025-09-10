@@ -37,7 +37,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - Ready to Go devices (examples) with ESP32-S3 (PSRAM): [Elato AI DIY](https://github.com/akdeb/ElatoAI), [Elato AI devices](https://www.elatoai.com).
 
 # API Keys (Registration needed)
-- STT (fast): **ElevenLabs** API KEY, Links: [ElevenLabs](https://elevenlabs.io/pricing#pricing-table) (free STT includes 2.5h/month). <br>Alternative (slower STT): **Deepgram** API KEY [Deepgram](https://console.deepgram.com/signup) (200$ free)
+- STT (fast): **ElevenLabs** API KEY, Links: [ElevenLabs](https://elevenlabs.io/pricing#pricing-table) (free STT includes 2.5h/month). Alternative (slower STT): **Deepgram** API KEY [Deepgram](https://console.deepgram.com/signup) (200$ free)
 - LLM & TTS: **Open AI** API KEY needed (same API KEY for LLM & TTS), registration: [Open AI account](https://platform.openai.com) (5$ free)
 - GroqCloud LLM (fast): **GroqCloud** API KEY needed, registration: [groqcloud](https://console.groq.com/login) (using free account, token limited).
 
