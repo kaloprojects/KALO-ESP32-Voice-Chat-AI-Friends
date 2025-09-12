@@ -69,7 +69,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - GroqCloud server API allows to use LLM models from various provider (e.g. Meta, OpenAI, DeepSeek, PlayAI, Alibaba etc.), more details here: [models](https://console.groq.com/docs/models). Posted code (default settings): using Meta "llama-3.1-8b-instant" as CHAT model (low costs, high performance), for WEBSEARCH using Open AI 'gpt-4o..search' models
 - New Commands, e.g. “DEBUG ON|OFF” to toggle print details, speaking "HASHTAG" to trigger "#" command
 - Several minor bug fixes, e.g.: Sending LLM AI payload in chunks, keeping websockets open on ESP32 with PSRAM
-- Cleaning up user specific settings in header of .ino files
+- Cleaning up user specific settings in header of .ino files.
 
 # New features since June 2025
 - **PSRAM supported** for audio recording and transcription. SD Card no longer needed for ESP32 with PSRAM (tested with **ESP32**-WROVER and **ESP32-S3**). User #define settings for audio processing (#define RECORD_PSRAM / SDCARD)
