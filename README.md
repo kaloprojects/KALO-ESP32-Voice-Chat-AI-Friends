@@ -6,7 +6,7 @@ User can ask questions and following conversation via microphone _(pressing a bu
 
 The device works _multi-lingual_ by default, i.e. each chatbot/FRIEND can automatically _understand and speak multiple languages_. No changes in code (or system prompts) needed. Also mixed usage is supported (changing language in same dialog session). List of supported languages (Aug. 2025): 99 languages in [STT](https://elevenlabs.io/docs/capabilities/speech-to-text#supported-languages), 57 languages for [TTS](https://platform.openai.com/docs/guides/text-to-speech#supported-languages).
 
-**New since September 2025**: Interesting dialogs can be _sent by email_ to personal (predefined) email accounts. Purpose: Archiving chats from (non-connected) mobile AI devices (similar to copy/paste from Serial Monitor on connected devices).
+**New since September 2025**: Chat history can be _sent as email_ to any user email accounts. Purpose: Archiving of interesting chats, in particular for mobile AI devices (similar to manual copy/paste from Serial Monitor on cable connected devices).
 
 **New since August 2025**: supporting _1-N chatbots/FRIENDS_ with user defined personality (System Prompts), custom defined TTS voice parameter allow to assign _different voices_ to each friend. The LLM AI response latency significantly improved (about _2x faster than before)_, using _GroqCloud_ API services. Groq sever API also allow to use LLM models from different sources (e.g. Meta, DeepSeek, Open AI). Project name changed from KALO-ESP32-Voice-**ChatGPT** (supporting Open AI only) to KALO-ESP32-Voice-**AI_Friends** (multiple models, multiple custom chatbots).
 
@@ -42,7 +42,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - STT (fast): **ElevenLabs** API KEY, Links: [ElevenLabs](https://elevenlabs.io/pricing#pricing-table) (free STT includes 2.5h/month). Alternative (slower STT): **Deepgram** API KEY [Deepgram](https://console.deepgram.com/signup) (200$ free)
 - LLM & TTS: **Open AI** API KEY needed (same API KEY for LLM & TTS), registration: [Open AI account](https://platform.openai.com) (5$ free)
 - GroqCloud LLM (fast): **GroqCloud** API KEY needed, registration: [groqcloud](https://console.groq.com/login) (using free account, token limited)
-- [NEW since Sept. 2025]: Additional **GMAIL** account for ESP32 device with App password (only needed if EMAIL feature used).
+- [NEW since Sept. 2025]: Additional **GMAIL** account for ESP32 device with App password recommended (only needed if EMAIL feature used).
 
 # Library Dependencies
 - KALO-ESP32-Voice-Chat-AI-Friends does _not_ need any 3rd party libraries _zip files_ to be installed (except _AUDIO.H_ and new: _ReadyMail.H_), all functions in all lib_xy.ino’s are self-coded (WiFiClientSecure.h / i2s_std.h / SD.h are part of esp32 core libraries). AUDIO.H is needed for TTS playing audio (not needed for recording & transcription), no AUDIO.H needed in 'lib_xy.ino' libraries
@@ -90,7 +90,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - minor bugs resolved, added more detailed comments into sketch, code cleaned up.
 
 # Github Updates
-- **2025-09-22:** Email smtp send feature added, purpose: archiving interesting CHAT dialogs. Updated .ino files: lib_openai_groq_chat.ino and main.ino (KALO_ESP32_Voice_Chat_AI_Friends_20250922.ino), no changes in other .ino files
+- **2025-09-22:** **Email smtp send** feature added, purpose: archiving interesting CHAT dialogs. Updated .ino files: lib_openai_groq_chat.ino and main.ino (KALO_ESP32_Voice_Chat_AI_Friends_20250922.ino), no changes in other .ino files
 - **2025-08-11:** Major update (see above). Supporting **custom chatbots/FRIENDS**, LLM AI response **2x faster (Groq)**
 - **2025-06-28:** Hardware **pin assignments** cleaned up (3 PCB templates), Techiesms [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/) supported by default (#define TECHIESMS_PCB removed). Added audio **VOL_BTN** to all devices without POTI
 - **2025-06-19:** Supporting **ESP32-S3** I2S audio recording, supporting **Elato AI devices** [DIY pcb](https://github.com/akdeb/ElatoAI), [Elato AI products](https://www.elatoai.com)
