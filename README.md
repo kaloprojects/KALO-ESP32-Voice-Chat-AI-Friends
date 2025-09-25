@@ -6,6 +6,8 @@ User can ask questions and following conversation via microphone _(pressing a bu
 
 The device works _multi-lingual_ by default, i.e. each chatbot/FRIEND can automatically _understand and speak multiple languages_. No changes in code (or system prompts) needed. Also mixed usage is supported (changing language in same dialog session). List of supported languages (Aug. 2025): 99 languages in [STT](https://elevenlabs.io/docs/capabilities/speech-to-text#supported-languages), 57 languages for [TTS](https://platform.openai.com/docs/guides/text-to-speech#supported-languages).
 
+**New since September 2025**: Interesting dialogs can be _sent by email_ to personal (predefined) email accounts. Purpose: Archiving chats from (non-connected) mobile AI devices (similar to copy/paste from Serial Monitor on connected devices).
+
 **New since August 2025**: supporting _1-N chatbots/FRIENDS_ with user defined personality (System Prompts), custom defined TTS voice parameter allow to assign _different voices_ to each friend. The LLM AI response latency significantly improved (about _2x faster than before)_, using _GroqCloud_ API services. Groq sever API also allow to use LLM models from different sources (e.g. Meta, DeepSeek, Open AI). Project name changed from KALO-ESP32-Voice-**ChatGPT** (supporting Open AI only) to KALO-ESP32-Voice-**AI_Friends** (multiple models, multiple custom chatbots).
 
 The included chatbot friends serve as template for your own custom chatbots, coded examples: _ONYX_ (role of a 'good old friend'), _FRED_ (a constantly annoyed guy), _GlaDOS_ (the aggressive egocentric bot), or _VEGGI_ (best friend of vegan and healthy food). You could start a virtual conversation e.g. with a human warm up question: _"Hi my friend, tell me, how was your week, any exiting stories?"_. or waking up another friend with a statement like _"Hi FRED, are you online?"_ 
@@ -39,10 +41,12 @@ Explore the details in the .ino libraries, summary in a nutshell:
 # API Keys (Registration needed)
 - STT (fast): **ElevenLabs** API KEY, Links: [ElevenLabs](https://elevenlabs.io/pricing#pricing-table) (free STT includes 2.5h/month). Alternative (slower STT): **Deepgram** API KEY [Deepgram](https://console.deepgram.com/signup) (200$ free)
 - LLM & TTS: **Open AI** API KEY needed (same API KEY for LLM & TTS), registration: [Open AI account](https://platform.openai.com) (5$ free)
-- GroqCloud LLM (fast): **GroqCloud** API KEY needed, registration: [groqcloud](https://console.groq.com/login) (using free account, token limited).
+- GroqCloud LLM (fast): **GroqCloud** API KEY needed, registration: [groqcloud](https://console.groq.com/login) (using free account, token limited)
+- [NEW since Sept. 2025]: Additional **GMAIL** account for ESP32 device with App password (only needed if EMAIL feature used).
 
 # Library Dependencies
-- KALO-ESP32-Voice-Chat-AI-Friends does _not_ need any 3rd party libraries _zip files_ to be installed (_except AUDIO.H!_), all functions in all lib_xy.ino’s are self-coded (WiFiClientSecure.h / i2s_std.h / SD.h are part of esp32 core libraries). AUDIO.H is needed for TTS playing audio (not needed for recording & transcription), no AUDIO.H needed in 'lib_xy.ino' libraries
+- KALO-ESP32-Voice-Chat-AI-Friends does _not_ need any 3rd party libraries _zip files_ to be installed (except _AUDIO.H_ and new: _ReadyMail.H_), all functions in all lib_xy.ino’s are self-coded (WiFiClientSecure.h / i2s_std.h / SD.h are part of esp32 core libraries). AUDIO.H is needed for TTS playing audio (not needed for recording & transcription), no AUDIO.H needed in 'lib_xy.ino' libraries
+- _NEW (with 2025-09-22 update)_: <ReadyMail.h> library needed. Download and install latest zip file. Mandatory for the new command EMAIL (sending current CHAT history) via new function _Send_Chat_Email()_ in lib_openai_groq_chat.ino 
 - ESP32 core library (Arduino DIE): use latest [arduino-esp32](https://github.com/espressif/arduino-esp32) e.g. 3.2.0 (based on ESP-IDF 5.4.1) or later 
 - AUDIO.H library / ESP32 **with** PSRAM: Install latest [ESP32-audioIS](https://github.com/schreibfaul1/ESP32-audioI2S) zip, version 3.3.0 or later
 - AUDIO.H library / ESP32 **without** PSRAM: IMPORTANT! - Actual AUDIO.H libraries require PSRAM, ESP32 without PSRAM are no longer supported!. So you need to install last version which did not require PSRAM. Recommended version is **3.0.11g** (from July 18, 2024)!. Mirror link to 3.0.11g version [here]( https://github.com/kaloprojects/KALO-ESP32-Voice-ChatGPT/tree/main/libray_archive)
@@ -57,7 +61,8 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - Create your own 1-N 'AI Friends' character' in header of new _lib_OpenAI_Chat.ino_
 - Optional: Review default settings in header of each .ino (e.g. DEBUG toggle in main.ino, recording parameter in 'lib_audio_recording.ino')
 - Optional: Copy Audio file 'Welcome.wav' to ESP32 SD card, played on Power On ('gong' sound)
-- In case of COMPILER ERROR on _audio_play.openai_speech()_: Check/update the last line of code in main sketch. Background: the amount of openai_speech() parameter changed with latest AUDIO.H versions.
+- In case of COMPILER ERROR on _audio_play.openai_speech()_: Check/update the last line of code in main sketch. Background: the amount of openai_speech() parameter changed with latest AUDIO.H versions
+- [NEW since Sept. 2025]: Download and install latest mobizt ReadyMail library [zip file](https://github.com/mobizt/ReadyMail). Create a GMAIL account (with App password) for the ESP32 device (How-to see: [here](https://theorycircuit.com/esp32-projects/simple-way-to-send-email-using-esp32/)), enter your personal credentials in header of lib_openai_groq_chat.ino.
 
 # Known issues
 - ESP32 without PSRAM are limited (because older AUDIO.H stress the HEAP). Well known limitations: Open AI TTS voice instruction not supported, LED response delayed, audio streaming (Radio) won't work always. Open AI TTS audio output is sometimes missed (workaround for missed TTS: short press on record btn / repeats TTS). 
@@ -85,6 +90,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - minor bugs resolved, added more detailed comments into sketch, code cleaned up.
 
 # Github Updates
+- **2025-09-22:** Email smtp send feature added, purpose: archiving interesting CHAT dialogs. Updated .ino files: lib_openai_groq_chat.ino and main.ino (KALO_ESP32_Voice_Chat_AI_Friends_20250922.ino), no changes in other .ino files
 - **2025-08-11:** Major update (see above). Supporting **custom chatbots/FRIENDS**, LLM AI response **2x faster (Groq)**
 - **2025-06-28:** Hardware **pin assignments** cleaned up (3 PCB templates), Techiesms [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/) supported by default (#define TECHIESMS_PCB removed). Added audio **VOL_BTN** to all devices without POTI
 - **2025-06-19:** Supporting **ESP32-S3** I2S audio recording, supporting **Elato AI devices** [DIY pcb](https://github.com/akdeb/ElatoAI), [Elato AI products](https://www.elatoai.com)
