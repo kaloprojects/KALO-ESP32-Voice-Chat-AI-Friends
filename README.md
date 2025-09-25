@@ -90,7 +90,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - minor bugs resolved, added more detailed comments into sketch, code cleaned up.
 
 # Github Updates
-- **2025-09-22:** **Email smtp send** feature added, purpose: archiving interesting CHAT dialogs. Updated .ino files: lib_openai_groq_chat.ino and main.ino (KALO_ESP32_Voice_Chat_AI_Friends_20250922.ino), no changes in other .ino files
+- **2025-09-22:** **Email smtp send** feature added, purpose: archiving interesting CHAT dialogs. Updated 2 .ino files: lib_openai_groq_chat.ino and main.ino (KALO_ESP32_Voice..ino), no changes in other .ino files
 - **2025-08-11:** Major update (see above). Supporting **custom chatbots/FRIENDS**, LLM AI response **2x faster (Groq)**
 - **2025-06-28:** Hardware **pin assignments** cleaned up (3 PCB templates), Techiesms [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/) supported by default (#define TECHIESMS_PCB removed). Added audio **VOL_BTN** to all devices without POTI
 - **2025-06-19:** Supporting **ESP32-S3** I2S audio recording, supporting **Elato AI devices** [DIY pcb](https://github.com/akdeb/ElatoAI), [Elato AI products](https://www.elatoai.com)
