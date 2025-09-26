@@ -58,7 +58,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - Optional: Review default settings in header of each .ino (e.g. DEBUG toggle in main.ino, recording parameter in 'lib_audio_recording.ino')
 - Optional: Copy Audio file 'Welcome.wav' to ESP32 SD card, played on Power On ('gong' sound)
 - In case of COMPILER ERROR on _audio_play.openai_speech()_: Check/update the last line of code in main sketch. Background: the amount of openai_speech() parameter changed with latest AUDIO.H versions
-- [NEW since Sept. 2025]: Download and install latest mobizt ReadyMail library [zip file](https://github.com/mobizt/ReadyMail). Create a GMAIL account (with App password) for the ESP32 device (How-to see: [here](https://theorycircuit.com/esp32-projects/simple-way-to-send-email-using-esp32/)), enter your personal credentials in header of lib_openai_groq_chat.ino.
+- [NEW since Sept. 2025]: Download and install latest mobizt ReadyMail library [zip file](https://github.com/mobizt/ReadyMail). Create a GMAIL account _with App password_ for the ESP32 device (How-to see: [here](https://theorycircuit.com/esp32-projects/simple-way-to-send-email-using-esp32/)), enter your personal credentials in header of lib_openai_groq_chat.ino.
 
 # Known issues
 - ESP32 without PSRAM are limited (because older AUDIO.H stress the HEAP). Well known limitations: Open AI TTS voice instruction not supported, LED response delayed, audio streaming (Radio) won't work always. Open AI TTS audio output is sometimes missed (workaround for missed TTS: short press on record btn / repeats TTS). 
