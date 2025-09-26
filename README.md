@@ -96,7 +96,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - **2025-01-26:** First drop, already working, not finally cleaned up (just posted this drop on some folks request).
 
 # Next steps
-- Next upgrade will add some additional AI features. Done with latest August 11 release.
+- N/A (Nothing is currently planned).
 
 . . .
 
