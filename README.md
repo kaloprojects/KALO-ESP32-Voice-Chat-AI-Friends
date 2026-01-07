@@ -6,6 +6,8 @@ User can ask questions and following conversation via microphone _(pressing a bu
 
 The device works _multi-lingual_ by default, i.e. each chatbot/FRIEND can automatically _understand and speak multiple languages_. No changes in code (or system prompts) needed. Also mixed usage is supported (changing language in same dialog session). List of supported languages (Aug. 2025): 99 languages in [STT](https://elevenlabs.io/docs/capabilities/speech-to-text#supported-languages), 57 languages for [TTS](https://platform.openai.com/docs/guides/text-to-speech#supported-languages).
 
+**NEW since January 2026: Hardware DIY template (PCB Source and Gerber files) published**. Latest code update (20260106) supports the GPIO pin assignments on PCB by default. 
+
 **New since September 2025**: Chat history can be _sent as email_ to any user email accounts. Purpose: Archiving of interesting chats, in particular for mobile AI devices (similar to manual copy/paste from Serial Monitor on cable connected devices). Example, just say _"Hey, can you send me all via email?"_, the complete chat will pop up immediately in your Inbox. 
 
 **New since August 2025**: supporting _1-N chatbots/FRIENDS_ with user defined personality (System Prompts), custom defined TTS voice parameter allow to assign _different voices_ to each friend. The LLM AI response latency significantly improved (about _2x faster than before)_, using _GroqCloud_ API services. Groq sever API also allow to use LLM models from different sources (e.g. Meta, DeepSeek, Open AI). Project name changed from KALO-ESP32-Voice-**ChatGPT** (supporting Open AI only) to KALO-ESP32-Voice-**AI_Friends** (multiple models, multiple custom chatbots). The included chatbot friends serve as template for your own custom chatbots, coded examples: _ONYX_ (role of a 'good old friend'), _FRED_ (a constantly annoyed guy), _GlaDOS_ (the aggressive egocentric bot), or _VEGGI_ (best friend of vegan and healthy food). You could start a virtual conversation e.g. with a human warm up question: _"Hi my friend, tell me, how was your week, any exiting stories?"_. or waking up another friend with a statement like _"Hi FRED, are you online?"_ 
@@ -29,7 +31,6 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - Libraries see above. Use latest esp32 core for Arduino IDE: [arduino-esp32](https://github.com/espressif/arduino-esp32). AUDIO.H: Download the library zip file (with PSRAM [here](https://github.com/schreibfaul1/ESP32-audioI2S), without PSRAM [3.0.11g here]( https://github.com/kaloprojects/KALO-ESP32-Voice-ChatGPT/tree/main/libray_archive)), install in Arduino IDE via Sketch -> Include Library -> Add .ZIP 
 - Copy all .ino files of into same folder (it is one sketch, split into multiple Arduino IDE tabs)
 - Insert your credentials (ssid, password) and 3 API KEYS in header of main sketch _KALO_ESP32_Voice_AI_Friends.ino_
-- Update your hardware pin assignments (pcb template) in main sketch _KALO_ESP32_Voice_AI_Friends.ino_
 - Update your hardware microphone pins and audio storage settings (PSRAM a/o SD Card) in _lib_audio_recording.ino_
 - Create your own 1-N 'AI Friends' character' in header of new _lib_OpenAI_Chat.ino_
 - Optional: Review default settings in header of each .ino (e.g. DEBUG toggle in main.ino, recording parameter in 'lib_audio_recording.ino')
@@ -38,13 +39,13 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - [NEW since Sept. 2025]: Download and install latest mobizt ReadyMail library [zip file](https://github.com/mobizt/ReadyMail). Create a GMAIL account _with App password_ for the ESP32 device (How-to see: [here](https://theorycircuit.com/esp32-projects/simple-way-to-send-email-using-esp32/)), enter your personal credentials in header of lib_openai_groq_chat.ino.
 
 # Hardware requirements
-- _Recommended:_ ESP32 with (!)  PSRAM (tested with ESP32-WROVER and ESP32-S3), no SD Card needed
-- Alternatively ESP32 (e.g. ESP32-WROOM-32) with connected Micro SD Card (VSPI Default pins 5,18,19,23)
-- I2S digital microphone, e.g. INMP441 [I2S pins 22, 33, 35]          
-- I2S audio amplifier, e.g. MAX98357A [I2S pins 25,26,27] with speaker
+- Recommended: ESP32 or ESP32-S3 with (!)  PSRAM (tested with ESP32-WROVER and ESP32-S3), no SD Card needed
+- Alternatively (partially working) ESP32 without PSRAM (e.g. ESP32-WROOM-32), SD Card Module mandatory
+- I2S digital microphone (e.g. INMP441) & I2S audio amplifier (e.g. MAX98357A) with speaker
 - RGB status LED and optionally (recommended) an Analog Poti (for audio volume)
 - Ready to Go devices (examples) with ESP32 & SD card reader: [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/)
-- Ready to Go devices (examples) with ESP32-S3 (PSRAM): [Elato AI DIY](https://github.com/akdeb/ElatoAI), [Elato AI devices](https://www.elatoai.com).
+- Ready to Go devices (examples) with ESP32-S3 (PSRAM): [Elato AI DIY](https://github.com/akdeb/ElatoAI), [Elato AI devices](https://www.elatoai.com)
+- **NEW (2026-01-06)**: **Publishing self-made PCB (Printed Circuit Board) with all Source and Gerber files as template for user DIY projects**. Feel free to use the files for own manufactoring orders or for own modifications. See Github folder [KALO AI Board](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/hardware_pcb).
 
 # API Keys (Registration needed)
 - STT (fast): **ElevenLabs** API KEY, Links: [ElevenLabs](https://elevenlabs.io/pricing#pricing-table) (free STT includes 2.5h/month). Alternative (slower STT): **Deepgram** API KEY [Deepgram](https://console.deepgram.com/signup) (200$ free)
@@ -86,12 +87,13 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - minor bugs resolved, added more detailed comments into sketch, code cleaned up.
 
 # Github Updates
+- **2026-01-06:** GPIO pin assignments for DFRobot ESP32-S3 (FireBeetle 2) added in main.ino -> supporting the published [KALO AI Board](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/hardware_pcb) PCB by default. Latest code supports SD modules with user custom pin assignments (beyond VSPI/HSPI defaults). Also moved all _I2S microphone_ pin assignments from _lib_audio_recording.ino_ to the _main.ino_ (KALO_ESP32_Voice_Chat_AI_Friends_20260106.ino) to collect ALL GPIO pin assignments AND user credentials on one central place in code
 - **2025-09-22:** **Email smtp send** feature added, purpose: archiving interesting CHAT dialogs. Updated 2 .ino files: lib_openai_groq_chat.ino and main.ino (KALO_ESP32_Voice..ino), no changes in other .ino files
 - **2025-08-11:** Major update (see above). Supporting **custom chatbots/FRIENDS**, LLM AI response **2x faster (Groq)**
 - **2025-06-28:** Hardware **pin assignments** cleaned up (3 PCB templates), Techiesms [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/) supported by default (#define TECHIESMS_PCB removed). Added audio **VOL_BTN** to all devices without POTI
 - **2025-06-19:** Supporting **ESP32-S3** I2S audio recording, supporting **Elato AI devices** [DIY pcb](https://github.com/akdeb/ElatoAI), [Elato AI products](https://www.elatoai.com)
 - **2025-06-05:** Major update, detail see above (**PSRAM** support, **ElevenLabs Scribe v1 STT** added, **faster STT**)
-- **2025-04-04:** Live Information Request capabilities added (supporting new **Open AI web search features**). Mixed support of chat model and web search model. User queries with a user defined keyword initiate a web search and embed the result in the ongoing chat. Minor changes: all user specific credits are moved to header of main.ino sketch (KALO_ESP32_Voice_ChatGPT_20250404.ino), additional parameter added to function Open_AI(..) and SpeechToText_Deepgram(..). Code further cleaned up, detailed comments added in 'lib_OpenAI_Chat.ino'
+- **2025-04-04:** Live Information Request capabilities added (supporting new **Open AI web search features**). Mixed usage of chat model and web search model supported. User queries with a user defined keyword initiate a web search and embed the result in the ongoing chat. Minor changes: all user specific credits are moved to header of main.ino sketch (KALO_ESP32_Voice_ChatGPT_20250404.ino), additional parameter added to function Open_AI(..) and SpeechToText_Deepgram(..). Code further cleaned up, detailed comments added in 'lib_OpenAI_Chat.ino'
 - **2025-03-14:** Major enhancements: **Supporting techiesms hardware/pcb** [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/). Code Insights: New toggle '#define TECHIESMS_PCB true' assigns all specific pins automatically (no user code changes needed). Minor enhancements: Welcome Voice (Open AI) added, RGB led colors updated, code clean up done
 - **2025-01-26:** First drop, already working, not finally cleaned up (just posted this drop on some folks request).
 
