@@ -2,7 +2,7 @@
 
 Sharing a self constructed PCB (printed circuit board) as a DIY template for your projects, based on an ESP32-S3 (DFRobot FireBeetle 2).
 
-Why this DFRobot ESP32-S3?: The FireBeetle 2 full fills all needs for my mobile ESP32-AI-Device: ESP32-S3 performance (not ESP32 only), 16 MB PSRAM (flawless audio recording & and STT, SD card no longer needed, latest libraries supported), lot of GPIO pins, USB-C connector, 2 versions available (with internal & external wlan antenna), camera and display port (not needed for my project, but might be of interest for other projects) and last not least: the onboard LiPo battery charger & connector allows standalone (mobile) devices.
+Why this DFRobot ESP32-S3?: The [FireBeetle 2](https://wiki.dfrobot.com/SKU_DFR0975_FireBeetle_2_Board_ESP32_S3) full fills all needs for my mobile ESP32-AI-Device: ESP32-S3 performance (not ESP32 only), 16 MB PSRAM (flawless audio recording & and STT, SD card no longer needed, latest libraries supported), lot of GPIO pins, USB-C connector, 2 versions available (with internal & external wlan antenna), camera and display port (not needed for my project, but might be of interest for other projects) and last not least: the onboard LiPo battery charger & connector allows standalone (mobile) devices.
 
 Sharing Gerber data (for production requests) and my PCB CAD (.lay6) source file (for user made custom modifications). Gerber data (.zip) allow ordering production from any PCB vendor (e.g. [PCBWay](https://www.pcbway.com/orderonline.aspx), [JLCPCB](https://cart.jlcpcb.com/quote)). PCB size is 100 x 100 mm (for low production costs). Detail: Left third of the PCB is constructed as perforated 2.54 matrix grid board, allowing to add additional components (or alternatively as carrier for a internal speaker). The optional cutting line reduces the PCB size to 100 x 62 mm (in case a smaller PCB with separate speaker preferred). I also kept a SD Card module slot on my PCB, not mandatory (as audio recording and STT is using PSRAM), just added for on top user ideas (e.g. for playing .mp3 files).   
 
@@ -23,7 +23,7 @@ The PCB was constructed with the PCB Design application [Sprint Layout 6.0](http
 # BOM
 |Component|BOM id# link|
 |:---|:---|
-|ESP32-S3 DFRobot FireBeetle2 (DFR0975/ DFR0975-U) | [id#](https://www.digikey.de/de/products/filter/evaluierungsboards/evaluierungsboards-hf-rfid-und-wireless/1165?s=N4IgTCBcDaICIDEBKAGAnAdgKwgLoF8g)|
+|ESP32-S3 DFRobot FireBeetle2 (DFR0975/ DFR0975-U) - [WIKI](https://wiki.dfrobot.com/SKU_DFR0975_FireBeetle_2_Board_ESP32_S3) | [id#](https://www.digikey.de/de/products/filter/evaluierungsboards/evaluierungsboards-hf-rfid-und-wireless/1165?s=N4IgTCBcDaICIDEBKAGAnAdgKwgLoF8g)|
 |I2S Microphone INMP441	| [id#](https://www.amazon.co.uk/s?k=INMP441)|
 |I2S Amplifier Module MAX 98357	| [id#](https://www.amazon.co.uk/s?k=I2S+MAX98357)|
 |LiPo 3.7V battery, e.g. 350mAh (PH2.0 connector)	| [id#](https://www.amazon.co.uk/s?k=Lipo+3.7v+350mA+PH2.0)|
