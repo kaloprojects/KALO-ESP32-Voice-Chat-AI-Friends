@@ -1,4 +1,4 @@
-# Summary
+# KALO AI Board Summary
 
 Sharing a self constructed PCB (printed circuit board) as a DIY template for your projects, based on an ESP32-S3 (DFRobot FireBeetle 2).
 
