@@ -9,7 +9,7 @@ Sharing Gerber data (for production requests) and my PCB CAD (.lay6) source file
 The PCB was constructed with the PCB Design application [Sprint Layout 6.0](https://www.electronic-software-shop.com/lng/en/electronic-software/sprint-layout-60.html). 
 <br>I publish my **.lay6** source file too, so any interested user can modify or extend the layout and circuits to their needs.
 
-![2026-01 KALO AI Board - IMG_0375 FINAL Power ON](https://github.com/user-attachments/assets/961dd6b3-5534-40f6-99b5-85fa7553e829)
+![2026-01 KALO AI Board - IMG_0375 Power ON](https://github.com/user-attachments/assets/d51bb915-bc10-47a9-b8d9-039f197fa445)
 
 
 .
