@@ -31,6 +31,7 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - Libraries see above. Use latest esp32 core for Arduino IDE: [arduino-esp32](https://github.com/espressif/arduino-esp32). AUDIO.H: Download the library zip file (with PSRAM [here](https://github.com/schreibfaul1/ESP32-audioI2S), without PSRAM [3.0.11g here]( https://github.com/kaloprojects/KALO-ESP32-Voice-ChatGPT/tree/main/libray_archive)), install in Arduino IDE via Sketch -> Include Library -> Add .ZIP 
 - Copy all .ino files of into same folder (it is one sketch, split into multiple Arduino IDE tabs)
 - Insert your credentials (ssid, password) and 3 API KEYS in header of main sketch _KALO_ESP32_Voice_AI_Friends.ino_
+- Update your hardware pin assignments (pcb template) in main sketch _KALO_ESP32_Voice_AI_Friends.ino_ and define the audio recording settings (PSRAM a/o SD Card) in _lib_audio_recording.ino_
 - Create your own 1-N 'AI Friends' character' in header of new _lib_OpenAI_Chat.ino_
 - Optional: Review default settings in header of each .ino (e.g. DEBUG toggle in main.ino, recording parameter in 'lib_audio_recording.ino')
 - Optional: Copy Audio file 'Welcome.wav' to ESP32 SD card, played on Power On ('gong' sound)
