@@ -3,7 +3,7 @@
 // ------------------                            KALO_ESP32_Voice_Chat_AI_Friends                              ------------------
 // ------------------        ESP32 voice dialog device to chat with Multiple AI characters (FRIENDS)           ------------------
 // ------------------                      [Update to previous KALO_ESP32_Voice_ChatGPT]                       ------------------
-// ------------------                             Latest Update: Jan. 6, 2026                                  ------------------
+// ------------------                            Latest Update: Jan. 18, 2026                                  ------------------
 // ------------------                                   Coded by KALO                                          ------------------
 // ------------------                                                                                          ------------------
 // ------------------     Self coded libs: Voice Recording, Transcription, Chat with LLM, TTS via AUDIO.H      ------------------
@@ -271,7 +271,8 @@ void setup()
   bool flg_SD_found;   // check if SD Cards Reader with SD Card available (supporting custom pins)       
   if (SD_SCK != NO_PIN && SD_MISO != NO_PIN && SD_MOSI != NO_PIN && SD_CS != NO_PIN)    
   {  SPI.begin( SD_SCK, SD_MISO, SD_MOSI, SD_CS );       // using predefined SPI instance (VSPI bus): no 'var SPIClass' needed   
-     flg_SD_found = SD.begin( SD_CS, SPI, 40000000 );    // using 40 MHz (more stable than 80)   
+     delay(100);                                         // ## NEW 2026-01-18: waiting until Vcc 100% stable on SD card module
+     flg_SD_found = SD.begin( SD_CS, SPI, 10000000 );    // ## NEW 2026-01-18: using 10 Mhz instead (40 or 80 MHz)   
      /* Alternative: using 2nd SPI controller (HSPI bus) for SD card in case VSPI needed for e.g. display connctor): 
         .. SPIClass spiSD(HSPI) ... spiSD.begin(SD_SCK, SD_MISO, SD_MOSI, SD_CS) ... SD.begin(SD_CS, spiSD, 40000000)  
         Info link:  https://randomnerdtutorials.com/esp32-microsd-card-arduino/#sdcardcustompins 
@@ -752,3 +753,4 @@ void TextToSpeech( String p_request )
 /* audio_play.openai_speech( OPENAI_KEY, model, p_request,              voice, "aac", vspeed);  // <- use this for 3.0.11g ! */
  
 }
+
