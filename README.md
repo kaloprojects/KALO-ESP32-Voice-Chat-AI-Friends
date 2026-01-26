@@ -6,7 +6,7 @@ User can ask questions and following conversation via microphone _(pressing a bu
 
 The device works _multi-lingual_ by default, i.e. each chatbot/FRIEND can automatically _understand and speak multiple languages_. No changes in code (or system prompts) needed. Also mixed usage is supported (changing language in same dialog session). List of supported languages (Aug. 2025): 99 languages in [STT](https://elevenlabs.io/docs/capabilities/speech-to-text#supported-languages), 57 languages for [TTS](https://platform.openai.com/docs/guides/text-to-speech#supported-languages).
 
-**NEW since January 2026: Hardware DIY template (PCB Source and Gerber files) published**. Latest code update (20260106) supports the GPIO pin assignments on PCB by default. 
+**NEW since January 2026: Hardware DIY template (PCB Source and Gerber files) published**. Latest code updates (20260106 and later) support the GPIO pin assignments on PCB by default. 
 
 **New since September 2025**: Chat history can be _sent as email_ to any user email accounts. Purpose: Archiving of interesting chats, in particular for mobile AI devices (similar to manual copy/paste from Serial Monitor on cable connected devices). Example, just say _"Hey, can you send me all via email?"_, the complete chat will pop up immediately in your Inbox. 
 
