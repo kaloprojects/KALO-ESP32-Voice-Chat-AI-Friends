@@ -465,7 +465,7 @@ void loop()
 
   // ------ [NEW] #REALTIME# USER INPUT Option (3) [INPUT_REALTIME_MODE] - Open AI Realtime (no BTN needed) - FAST & EMOTIONAL
   // ------ Using new library lib_openai_realtime - Coded by @Palahis92 [** Huge SHOUT-OUT and THANK YOU to @Palahis92 !! **]
-  // ------ Toggling between previous INPUT_BUTTON_MODE and new INPUT_REALTIME_MODE via keyword "REALTIME ON|OFF"
+  // ------ Toggling between previous INPUT_BUTTON_MODE and new INPUT_REALTIME_MODE via keyword "REALTIME"
 
   if (assistantInputMode == INPUT_REALTIME_MODE)
   {  if (!audio_play.isRunning())                   // special case: do not start REALTIME microfone if Audio.H is playing music
