@@ -102,7 +102,7 @@ _I will share an example code next (link: TBD)_.
 
 # Github Updates
 - **2026-09-12:** Major update. Continuous (button-less) Audio Recording & **Streaming to Open AI Realtime API** added (model: gpt-realtime-2.1-mini), embedded in Main.ino via new **INPUT_REALTIME_MODE** toggle (alternative previous INPUT_BUTTON_MODE still available). <br> 
-_Library (NEW)_ **<lib_openai_realtime.ino>**: handling all new RealtimeAPI functions (SST, LLM, TTS) <br>
+_Library (NEW)_ **<lib_openai_realtime.ino>**: handling all new RealtimeAPI functions (STT, LLM, TTS) <br>
 _Library (NEW)_ **<lib_friends.ino>**: Collecting all user defined FRIEND personalities. <br> 
 _Library <lib_openai_groq_chat.ino>_: Added versatile **Web Search Integration**, embedding in REALTIME conversations too. **LLM models updated**, using 'GROQ openai/gpt-oss-20b', 'Open AI gpt-5-search-api'. <br> 
 _Main sketch <KALO_ESP32_Voice_Chat_AI_Friends_RT_20260908>_: **loop() restructured** into smaller logical sections (supporting earlier INPUT_BUTTON_MODE - and - new INPUT_REALTIME_MODE). New **commands, e.g. Jukebox** (searching & playing a song from SD card via voice request). **Updated PCB templates**, additional devices supported. Bugfixes (VOL Poti, RGB LED updates, RealtimeAPI calls, and more)
