@@ -144,7 +144,7 @@ STT: Faster (multilingual) ElevenLabs scribe v1, TTS: Open AI voice 'onyx'. Open
 - Details of interest: Playing gong audio (welcome.wav on SD card), then real-time created (German) TTS welcome voice. Multilingual: Requesting Open AI to jump from (my) default 'German' to English language (min:sec 0:25). Recording long sentences, STT transcription still  < 2 secs (confirmed with short white led flashes). Live Information request: Key word 'Google' (min:sec 1:55) activates Open AI web search model _once_ (weather forecast 'today', June 19), embedded into the follow up dialog until end of session. Detail (min:sec 2:32) short record touch 'interrupts' TTS (2nd touch would 'repeat' last TTS again).
 
 #
-_**NEW**_ Video 03 (August 15, 2025) – **AI Friends** update (_multiple_ chatbots) & LLM AI speed improved (Groq API):
+Video 03 (August 15, 2025) – **AI Friends** update (_multiple_ chatbots) & LLM AI speed improved (Groq API):
 
 [![2025-08-15 Video - KALO-ESP32-Voice-AI-Friends (Elato ESP32S3)](https://github.com/user-attachments/assets/340eb127-321d-4918-ad55-a041cb0d44e2)](https://dark-controller.com/wp-content/uploads/2025/08/2025-08-15-Video-KALO-ESP32-Voice-AI-Friends-Elato-ESP32S3.mp4)
 
