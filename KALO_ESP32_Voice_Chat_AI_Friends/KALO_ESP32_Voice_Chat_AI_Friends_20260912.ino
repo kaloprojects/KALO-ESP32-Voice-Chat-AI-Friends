@@ -369,7 +369,7 @@ void setup()
   Serial.println( "> Hold or Touch button during recording voice -OR- enter request in Serial Monitor" );
   Serial.println( "> -OR- [NEW]: key word [REALTIME, German UNTERHALTUNG] toggles BUTTON <-> REALTIME mode" );
   Serial.println( "> Select another AI FRIEND by calling his NAME, example: \"Hi FRED, are you online?\"" );
-  Serial.println( "> Key word [GOOGLE | INTERNET] inside request: toggle LLM to Open AI web search model" );
+  Serial.println( "> Key word [GOOGLE | INTERNET | WEATHER] inside request: launch Open AI web search model" );
   Serial.println( "> Key word [RADIO | DAILY NEWS | TAGESSCHAU] inside request: start audio url streaming" );
   Serial.println( "> Key word [PLAY|SONG|MUSIC|MUSIK|TRACK|LIED|JUKEBOX]..xy: Play file *xy* from SD card" );
   Serial.println( "> Command  [RESET]: reset (initialize and reboot) ESP32" );
