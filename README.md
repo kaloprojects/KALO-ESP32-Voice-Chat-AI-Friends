@@ -1,16 +1,18 @@
 # Summary
 
-ESP32 based voice chat dialog device, successor of the earlier project KALO-ESP32-Voice-_ChatGPT_. With latest August 2025 update the ESP32 device allows to create _multiple custom chatbots/FRIENDS (similar to Open AI's Custom GPT's or Google's Gems)_. Just call any FRIEND by name, the device will activate the AI personality (custom system prompt) and answer with friend’s assigned voice. 
+ESP32 based voice chat dialog device, successor of the earlier project KALO-ESP32-Voice-_ChatGPT_. Chatting with _multiple custom chatbot FRIENDS_ (similar to Open AI's Custom GPT's or Google's Gems). Just call any FRIEND by name, the device will activate the AI personality (custom system prompt) and answer with friend’s assigned voice. 
 
-User can ask questions and following conversation via microphone _(pressing a button or touch pin as long speaking, no length limit, dynamic duration)_. Code supports ongoing dialog sessions, keeping & sending the complete chat history. 'Chat Completions' workflow allows 'human-like' ongoing dialogs, supporting chat history & follow up questions. Example: Q1: _"who was Albert Einstein?"_ - and later (after LLM response) - Q2: _"was he also a musician and _did he_ have kids?"_. Live Information requests (Real-time web searches, e.g weather forecast, political news etc.) supported.
+User can ask questions and following conversation via microphone _(pressing a button or touch pin as long speaking, no length limit, dynamic duration)_ - or **NEW** -  _without pressing any button_. Code supports ongoing dialog sessions, keeping & sending the complete chat history. 'Chat Completions' workflow allows 'human-like' ongoing dialogs, supporting chat history & follow up questions. Example: Q1: _"who was Albert Einstein?"_ - and later (after LLM response) - Q2: _"was he also a musician and _did he_ have kids?"_. Live Information requests (Real-time web searches, e.g weather forecast, political news etc.) supported.
 
 The device works _multi-lingual_ by default, i.e. each chatbot/FRIEND can automatically _understand and speak multiple languages_. No changes in code (or system prompts) needed. Also mixed usage is supported (changing language in same dialog session). List of supported languages (Aug. 2025): 99 languages in [STT](https://elevenlabs.io/docs/capabilities/speech-to-text#supported-languages), 57 languages for [TTS](https://platform.openai.com/docs/guides/text-to-speech#supported-languages).
 
-NEW since January 2026: **Hardware DIY template (PCB Source and Gerber files) published**. Latest code updates (20260106 and later) support the GPIO pin assignments on PCB by default. 
+NEW since Sept. 2026: **Open AI Realtime mode** (voice-to-voice) added. _Automated user voice detection, no longer necessary to press a record button while speaking_. Fast response (low latency), emotional feedback, calling another friend's name on the fly. Already existing **features** (e.g. key commands, friend switch, url/music streaming, internet web-search request etc.) are **embedded and supported** in REALTIME_MODE too !.
+
+NEW since January 2026: **Hardware DIY template (PCB Source and Gerber files) published**. Additional PCB templates added.
 
 New since September 2025: **Chat history can be sent as email** to any user email accounts. Purpose: Archiving of interesting chats, in particular for mobile AI devices (similar to manual copy/paste from Serial Monitor on cable connected devices). Example, just say _"Hey, can you send me all via email?"_, the complete chat will pop up immediately in your Inbox. 
 
-New since August 2025: **supporting 1-N chatbots/FRIENDS with user defined personality and voice** (System Prompts), custom defined TTS voice parameter allow to assign _different voices_ to each friend. The LLM AI response latency significantly improved (about **2x faster** than before), using **GroqCloud** API services. Groq sever API also allow to use LLM models from different sources (e.g. Meta, DeepSeek, Open AI). Project name changed from KALO-ESP32-Voice-**ChatGPT** (supporting Open AI only) to KALO-ESP32-Voice-**AI_Friends** (multiple models, multiple custom chatbots). Just **say a FRIEND's name** during a conversation to activate the character. The included chatbot friends serve as template for your own custom chatbots, coded examples: _ONYX_ (role of a 'good old friend'), _FRED_ (a constantly annoyed guy), _GlaDOS_ (the aggressive egocentric bot), or _VEGGI_ (best friend of vegan and healthy food). You could start a virtual conversation e.g. with a human warm up question: _"Hi my friend, tell me, how was your week, any exiting stories?"_. or **waking up another friend calling his name**, e.g. with a statement like _"Hi_ **FRED**, _are you online?"_ 
+New since August 2025: **supporting 1-N chatbots/FRIENDS with user defined personality and voice** (System Prompts), custom defined TTS voice parameter allow to assign _different voices_ to each friend. The LLM AI response latency significantly improved (using **GroqCloud** API services). Just **say a FRIEND's name** during a conversation to activate the character. The included chatbot friends serve as template for your own custom chatbots, coded examples: _ONYX_ (role of a 'good old friend'), _FRED_ (a constantly annoyed guy), _GlaDOS_ (the aggressive egocentric bot), or _VEGGI_ (best friend of vegan and healthy food). You could start a virtual conversation e.g. with a human warm up question: _"Hi my friend, tell me, how was your week, any exiting stories?"_. or **waking up another friend calling his name**, e.g. with a statement like _"Hi_ **FRED**, _are you online?"_ 
 
 Since June 2025: Added **PSRAM support** (as alternative to SD Card). **ESP32-S3** support and **ElevenLabs STT for 5-10x faster STT** (SpeechToText) transcription. **Live Information requests (Real-time web searches)** supported. User defined key word (e.g. **GOOGLE**) toggles LLM to web search models as part of the memorized chat dialog. Example: _"will it rain in my region tomorrow?, please ask Google! "_, or _"Please check with Google, what are the latest projections for the elections tomorrow?"_. **Mixed model usage of both models supported** (web searches are part of the chat history), allowing follow up requests (e.g. _"Please summarize the search in few sentences, skip any boring details!"_) also to previous web searches. Key word GOOGLE works with all AI chatbots/FRIENDS.
 
@@ -18,51 +20,63 @@ Since June 2025: Added **PSRAM support** (as alternative to SD Card). **ESP32-S3
 
 # Workflow
 Explore the details in the .ino libraries, summary in a nutshell:
+
+INPUT_REALTIME_MODE (_NEW_):
+- Auto Recording (detection) of user voice (no length limitation, continuous background streaming to Open AI server)
+- Auto silence detection, LLM starting after user speaking finished (user defined silence duration, e.g. after 600ms)
+- Voice-to-Voice chat, printing transcription in Serial Monitor, emotional 'human' like (multi-lingual) Open AI voices
+- User can enter LLM AI request alternatively also via text in Serial Monitor (or via any COM: Terminal Apps e.g. PuTTY)  
+- RGB led indicating status: WHITE=Ready/Waiting -> RED=UserVoiceAutoRecording -> BLUE=Open AI Speaking. <br>CYAN=WEBSEARCH. RED flashes indicate e.g. keyword detection or friend changes
+- Pressing (previous record) button allows to STOP (interupt) Open AI voice at any time.
+  
+INPUT_BUTTON_MODE:
 - Recording user Voice with variable length (holding a btn), storing as .wav (with 44 byte header) in PSRAM or SD
-- User can enter LLM AI request also via text in Serial Monitor Input line or COM: Terminal Apps e.g. PuTTY)  
 - Sending recorded WAV file to STT (SpeechToText) server, using fast ElevenLabs API (or slower Deepgram)
 - Sending transcription to Open AI or Groq server (with user specified LLM models) for CHAT and WEB SEARCH
 - Receiving AI response, printing in Serial Monitor, speaking with a 'human' like (multi-lingual) Open AI voice
-- RGB led indicating status: GREEN=Ready -> RED=Recording -> CYAN=STT -> BLUE=LLM AI CHAT -> PINK=Open AI WEB -> YELLOW=Audio pending -> PINK=TTS Speaking. Short WHITE flashes indicate success, RED flashes indicate keyword detection. _New: double RED flashes on waking up another FRIEND_
-- Button: PRESS & HOLD for recording + _short_ PRESS interrupts TTS/Audio OR repeats last answer (when silent)
-- Pressing button again to proceed in loop for ongoing chat.
+- User can enter LLM AI request alternatively also via text in Serial Monitor (or via any COM: Terminal Apps e.g. PuTTY) 
+- RGB led indicating status: GREEN=Ready -> RED=Recording -> CYAN=STT -> BLUE=LLM AI CHAT -> PINK=Open AI WEB -> YELLOW=Audio pending -> PINK=TTS Speaking. Short WHITE flashes indicate success, RED flashes indicate keyword detection, double RED flashes on waking up another FRIEND
+- Button: PRESS & HOLD for recording + _short_ PRESS interrupts TTS/Audio OR repeats last answer (when silent).
  
 # Installation & Customizing
-- Libraries see above. Use latest esp32 core for Arduino IDE: [arduino-esp32](https://github.com/espressif/arduino-esp32). AUDIO.H: Download the library zip file (with PSRAM [here](https://github.com/schreibfaul1/ESP32-audioI2S), without PSRAM [3.0.11g here]( https://github.com/kaloprojects/KALO-ESP32-Voice-ChatGPT/tree/main/libray_archive)), install in Arduino IDE via Sketch -> Include Library -> Add .ZIP 
 - Copy all .ino files of into same folder (it is one sketch, split into multiple Arduino IDE tabs)
-- Insert your credentials (ssid, password) and 3 API KEYS in header of main sketch _KALO_ESP32_Voice_AI_Friends.ino_
-- Update your hardware pin assignments (pcb template) in main sketch _KALO_ESP32_Voice_AI_Friends.ino_ and define the audio recording settings (PSRAM a/o SD Card) in _lib_audio_recording.ino_
-- Create your own 1-N 'AI Friends' character' in header of new _lib_OpenAI_Chat.ino_
-- Optional: Review default settings in header of each .ino (e.g. DEBUG toggle in main.ino, recording parameter in 'lib_audio_recording.ino')
+- Insert your credentials (ssid, password) and user settings in header of main sketch <KALO_ESP32_Voice_AI_Friends.ino>
+- Select one of the PCB templates or insert your own hardware pin assignments in main sketch <KALO_ESP32_Voice_AI_Friends.ino>
+- Create your own 1-N 'AI Friends' character' in _new_ file <lib_friends.ino>
+- Optional: Review default settings in header of each .ino, e.g. DEBUG toggle in <KALO_ESP32_Voice_AI_Friends.ino>
 - Optional: Copy Audio file 'Welcome.wav' to ESP32 SD card, played on Power On ('gong' sound)
-- In case of COMPILER ERROR on _audio_play.openai_speech()_: Check/update the last line of code in main sketch. Background: the amount of openai_speech() parameter changed with latest AUDIO.H versions
-- [NEW since Sept. 2025]: Download and install latest mobizt ReadyMail library [zip file](https://github.com/mobizt/ReadyMail). Create a GMAIL account _with App password_ for the ESP32 device (How-to see: [here](https://theorycircuit.com/esp32-projects/simple-way-to-send-email-using-esp32/)), enter your personal credentials in header of lib_openai_groq_chat.ino.
+- Library <AUDIO.H>: Needed for music or url streaming (via key commands), mandatory for INPUT_BUTTON_MODE (TTS), optional (for music streaming) in new REALTIME_MODE. Download the library zip file (with PSRAM [here](https://github.com/schreibfaul1/ESP32-audioI2S). Install in Arduino IDE via Sketch -> Include Library. IMPORTANT hint for **ESP32 without PSRAM** (see 'Known Issues'): using older AUDIO.H version [3.0.11g here]( https://github.com/kaloprojects/KALO-ESP32-Voice-ChatGPT/tree/main/libray_archive)) 
+- Library <ReadyMail.h> optional, just used to archive INPUT_BUTTON_MODE conversations (sending CHAT history via EMail). Download and install latest mobizt ReadyMail library [zip file](https://github.com/mobizt/ReadyMail). Create a GMAIL account _with App password_ for the ESP32 device (How-to see: [here](https://theorycircuit.com/esp32-projects/simple-way-to-send-email-using-esp32/)), enter your personal credentials in header of <lib_openai_groq_chat.ino>.
 
 # Hardware requirements
-- Recommended: ESP32 or ESP32-S3 with (!)  PSRAM (tested with ESP32-WROVER and ESP32-S3), no SD Card needed
+- Recommended: ESP32 or ESP32-S3 with (!) PSRAM (tested with ESP32-WROVER and ESP32-S3), no SD Card needed
 - Alternatively (partially working) ESP32 without PSRAM (e.g. ESP32-WROOM-32), SD Card Module mandatory
+- Older ESP32 (without PSRAM, no S3, no SD card) still working flawless in pure REALTIME_MODE (without music streaming). <br>
+_Example code snippet will come next (TBD)_
 - I2S digital microphone (e.g. INMP441) & I2S audio amplifier (e.g. MAX98357A) with speaker
 - RGB status LED and optionally (recommended) an Analog Poti (for audio volume)
 - Ready to Go devices (examples) with ESP32 & SD card reader: [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/)
 - Ready to Go devices (examples) with ESP32-S3 (PSRAM): [Elato AI DIY](https://github.com/akdeb/ElatoAI), [Elato AI devices](https://www.elatoai.com)
-- **NEW (2026-01-06)**: **Publishing self-made PCB (Printed Circuit Board) with all Source and Gerber files as template for user DIY projects**. Feel free to use the files for own manufactoring orders or for own modifications. See Github folder [KALO AI Board](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/hardware_pcb).
+- NEW (2026-01-06): **Published self-made PCB (Printed Circuit Board) with all Source and Gerber files as template for user DIY projects**. Feel free to use the files for own manufactoring orders or for own modifications. See Github folder [KALO AI Board](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/hardware_pcb).
 
 # API Keys (Registration needed)
-- STT (fast): **ElevenLabs** API KEY, Links: [ElevenLabs](https://elevenlabs.io/pricing#pricing-table) (free STT includes 2.5h/month). Alternative (slower STT): **Deepgram** API KEY [Deepgram](https://console.deepgram.com/signup) (200$ free)
-- LLM & TTS: **Open AI** API KEY needed (same API KEY for LLM & TTS), registration: [Open AI account](https://platform.openai.com) (5$ free)
-- GroqCloud LLM (fast): **GroqCloud** API KEY needed, registration: [groqcloud](https://console.groq.com/login) (using free account, token limited)
-- [NEW since Sept. 2025]: Additional **GMAIL** account for ESP32 device with App password recommended (only needed if EMAIL feature used).
+- LLM & TTS: **Open AI** API KEY needed (for BUTTON and REALTIME mode), registration: [Open AI account](https://platform.openai.com) (5$ free)
+- INPUT_BUTTON_MODE only: GroqCloud LLM (fast): **GroqCloud** API KEY needed, registration: [groqcloud](https://console.groq.com/login) (using free account, token limited)
+- INPUT_BUTTON_MODE only: STT (fast): **ElevenLabs** API KEY or STT (slow) **Deepgram** API KEY needed
+- INPUT_BUTTON_MODE only: Optional **GMAIL** account for ESP32 device with App password (sending chat conversation via EMAIL).
 
-# Library Dependencies
-- KALO-ESP32-Voice-Chat-AI-Friends does _not_ need any 3rd party libraries _zip files_ to be installed (except _AUDIO.H_ and new: _ReadyMail.H_), all functions in all lib_xy.ino’s are self-coded (WiFiClientSecure.h / i2s_std.h / SD.h are part of esp32 core libraries). AUDIO.H is needed for TTS playing audio (not needed for recording & transcription), no AUDIO.H needed in 'lib_xy.ino' libraries
-- _NEW (with 2025-09-22 update)_: <ReadyMail.h> library needed. Download and install latest zip file. Mandatory for the new command EMAIL (sending current CHAT history) via new function _Send_Chat_Email()_ in lib_openai_groq_chat.ino 
-- ESP32 core library (Arduino DIE): use latest [arduino-esp32](https://github.com/espressif/arduino-esp32) e.g. 3.2.0 (based on ESP-IDF 5.4.1) or later 
-- AUDIO.H library / ESP32 **with** PSRAM: Install latest [ESP32-audioIS](https://github.com/schreibfaul1/ESP32-audioI2S) zip, version 3.3.0 or later
-- AUDIO.H library / ESP32 **without** PSRAM: IMPORTANT! - Actual AUDIO.H libraries require PSRAM, ESP32 without PSRAM are no longer supported!. So you need to install last version which did not require PSRAM. Recommended version is **3.0.11g** (from July 18, 2024)!. Mirror link to 3.0.11g version [here]( https://github.com/kaloprojects/KALO-ESP32-Voice-ChatGPT/tree/main/libray_audioH_archive)
-- Last-not-least: Sending a big THANK YOU shout out to @Schreibfaul1 for his great AUDIO.H library and his support!. 
+# Known issues (PSRAM)
+- _<AUDIO.H>_ library issue: ESP32 **without** PSRAM are no longer supported from current [AUDIO.H](https://github.com/schreibfaul1/ESP32-audioI2S) library (due limited heap), so the posted complete code won't work completelly on those ESP32 (e.g. Open AI voice response missed). <br>
+Info: <Audio.h> is included just for 3 reasons: (1) music or url streaming, (2) playing music from SD card and (3) most important: Open AI TTS voice in INPUT_BUTTON_MODE. **Good news**: AUDIO.H library is NO LONGER needed for Open AI conversations in new REALTIME_MODE (reason: Audio I/O handling is completely native coded in <lib_openai_realtime.ino>).
+- Solution for ESP32 without PSRAM: Option (A) - _using last (old) Audio.h library with NO-PSRAM support_: Version **3.0.11g** from July 18, 2024. Mirror link to 3.0.11g version [here]( https://github.com/kaloprojects/KALO-ESP32-Voice-ChatGPT/tree/main/libray_audioH_archive). Be aware: INPUT_BUTTON-MODE with Open AI friends working well (_but_ music streaming still won't work!). Option (B) - my recommendation for older ESP32 - _using new INPUT_REALTIME_MODE only_ (remove AUDIO.H library, no BUTTON_MODE, no music streaming). Benefit: Most reliable, elegant and compact code (any ESP32, no PSRAM or SD card needed at all). <br>
+_I will share an example code next (link: TBD)_.  
 
-# Known issues
-- ESP32 without PSRAM are limited (because older AUDIO.H stress the HEAP). Well known limitations: Open AI TTS voice instruction not supported, LED response delayed, audio streaming (Radio) won't work always. Open AI TTS audio output is sometimes missed (workaround for missed TTS: short press on record btn / repeats TTS). 
+# New features since Sept. 2026 (Major Update)
+- Added new **Open AI REALTIME_MODE** -> Chatting with Open AI Realtime Server (Audio To Audio) **without pressing any Recording Button**, benefits: (+) faster AI response (low latency), (+) user emotion detection with emotional voice response, (+) context sensitive and significantly improved speech recognition quality, (+) lower demands on hardware, (+) easy to use (just speak & listen).
+- **INPUT_REALTIME_MODE** architecture: Streaming User Request Audio to Open AI server & receiving LLM Respond AUDIO continuously via websockets stream. No PSRAM, neither SD Card or Audio.H library needed for this new INPUT_REALTIME_MODE.
+- Using Palahis awesome library **<lib_openai_realtime.ino>**, _SHOUT-OUT and THANK YOU_ **@Palahis92** _for this great library!_. 
+- Previous workflow (Recording via button, SST via ElevenLabs, LLM & TTS via OpenAI/Groq) still supported, labeled as **INPUT_BUTTON_MODE**
+- Known **main features** from INPUT_BUTTON_MODE (e.g. calling/waking up other friends by name, local action key commands, url and music streaming, web-search on request) are **supported /embedded in new REALTIME_MODE too**. 
 
 # New features since August 2025
 - Supporting multiple custom chatbots/FRIENDS, activating any friend by call his/her name
@@ -87,6 +101,12 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - minor bugs resolved, added more detailed comments into sketch, code cleaned up.
 
 # Github Updates
+- **2026-09-12:** Major update. Continuous (button-less) Audio Recording & **Streaming to Open AI Realtime API** added (model: gpt-realtime-2.1-mini), embedded in Main.ino via new **INPUT_REALTIME_MODE** toggle (alternative previous INPUT_BUTTON_MODE still available). <br> 
+_Library (NEW)_ **<lib_openai_realtime.ino>**: handling all new RealtimeAPI functions (SST, LLM, TTS) <br>
+_Library (NEW)_ **<lib_friends.ino>**: Collecting all user defined FRIEND personalities. <br> 
+_Library <lib_openai_groq_chat.ino>_: Added versatile **Web Search Integration**, embedding in REALTIME conversations too. **LLM models updated**, using 'GROQ openai/gpt-oss-20b', 'Open AI gpt-5-search-api'. <br> 
+_Main sketch <KALO_ESP32_Voice_Chat_AI_Friends_RT_20260908>_: **loop() restructured** into smaller logical sections (supporting earlier INPUT_BUTTON_MODE - and - new INPUT_REALTIME_MODE). New **commands, e.g. Jukebox** (searching & playing a song from SD card via voice request). **Updated PCB templates**, additional devices supported. Bugfixes (VOL Poti, RGB LED updates, RealtimeAPI calls, and more)
+
 - **2026-01-06:** GPIO pin assignments for **DFRobot ESP32-S3** (FireBeetle 2) added in main.ino -> supporting the **new PCB** [KALO AI Board](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/hardware_pcb) by default. Latest code supports SD modules with user custom pin assignments (beyond VSPI/HSPI defaults). Also moved all _I2S microphone_ pin assignments from _lib_audio_recording.ino_ to the _main.ino_ (KALO_ESP32_Voice_Chat_AI_Friends_20260106.ino) to collect ALL GPIO pin assignments AND user credentials on one central place in code. Addon (2026-01-06 to **2026-01-18** changes): SD modul bug fixed
 - **2025-09-22:** **Email smtp send** feature added, purpose: archiving interesting CHAT dialogs. Updated 2 .ino files: lib_openai_groq_chat.ino and main.ino (KALO_ESP32_Voice..ino), no changes in other .ino files
 - **2025-08-11:** Major update (see above). Supporting **custom chatbots/FRIENDS**, LLM AI response **2x faster (Groq)**
@@ -97,8 +117,8 @@ Explore the details in the .ino libraries, summary in a nutshell:
 - **2025-03-14:** Major enhancements: **Supporting techiesms hardware/pcb** [Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/). Code Insights: New toggle '#define TECHIESMS_PCB true' assigns all specific pins automatically (no user code changes needed). Minor enhancements: Welcome Voice (Open AI) added, RGB led colors updated, code clean up done
 - **2025-01-26:** First drop, already working, not finally cleaned up (just posted this drop on some folks request).
 
-# Next steps
-- N/A (Nothing is currently planned).
+# 
+ 
 
 . . .
 
