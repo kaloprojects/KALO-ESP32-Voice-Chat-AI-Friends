@@ -6,7 +6,7 @@ User can ask questions and following conversation via microphone _(pressing a bu
 
 The device works _multi-lingual_ by default, i.e. each chatbot/FRIEND can automatically _understand and speak multiple languages_. No changes in code (or system prompts) needed. Also mixed usage is supported (changing language in same dialog session). List of supported languages (Aug. 2025): 99 languages in [STT](https://elevenlabs.io/docs/capabilities/speech-to-text#supported-languages), 57 languages for [TTS](https://platform.openai.com/docs/guides/text-to-speech#supported-languages).
 
-**NEW** since Sept. 2026: **Open AI Realtime mode** (voice-to-voice) added. _Automated user voice detection, no longer necessary to press a record button while speaking_. Fast response (low latency), emotional feedback, calling another friend's name on the fly. Already existing **features** (e.g. key commands, friend switch, url/music streaming, internet web-search request etc.) are **embedded and supported** in REALTIME_MODE too !.
+**NEW** since Sept. 2026: **Open AI Realtime mode** (voice-to-voice) added. _Automated user voice detection, no longer necessary to press a record button while speaking_. Fast response (low latency), emotional feedback, calling another friend's name on the fly. Already existing **features** (e.g. key commands, friend switch, url/music streaming, internet web-search request etc.) are **embedded and supported** in REALTIME_MODE too.
 
 NEW since January 2026: **Hardware DIY template (PCB Source and Gerber files) published**. Additional PCB templates added.
 
