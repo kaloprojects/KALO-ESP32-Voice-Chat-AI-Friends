@@ -1,6 +1,7 @@
 
 // ------------------------------------------------------------------------------------------------------------------------------
 // ----------------            KALO Library - RECORDING audio (variable sample/bit rate, gain booster)           ----------------
+// ----------------                       [library only needed for INPUT_BUTTON_MODE]                            ----------------
 // ----------------                  and storing as .wav file (with header) on PSRAM or SD Card                  ----------------
 // ----------------                              Latest Update: Sept. 12, 2026                                   ----------------
 // ----------------                                      Coded by KALO                                           ----------------
