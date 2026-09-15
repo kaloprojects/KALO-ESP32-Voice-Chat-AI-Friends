@@ -62,7 +62,6 @@ const char* OPENAI_KEY =         "...";         // ### INSERT your OpenAI API KE
 #define I2S_SD          35
 #define I2S_SCK         33
 #define I2S_LR          HIGH     // HIGH (L/R pin Vcc, RIGHT channel)
-// -- optional controls:
 #define NO_PIN          -1       // [mandatory] ALIAS for 'not used' on optional control pins (3xLED, Buttons/Touch/Poti)
 #define flg_LED_DIGITAL false    // [mandatory] false (!) -> [TECHIESMS]: no Serial Resistor + common GND (Analog Pin)
 #define pin_LED_RED     15       // [optional] Use NO_PIN (if not available)
@@ -82,7 +81,6 @@ const char* OPENAI_KEY =         "...";         // ### INSERT your OpenAI API KE
 #define I2S_SD          6
 #define I2S_SCK         5
 #define I2S_LR          LOW      // LOW (L/R pin GND, default LEFT channel)
-// -- optional controls:
 #define NO_PIN          -1       // ALIAS definition for 'not used', supported on all optional control pins
 #define flg_LED_DIGITAL false    // [mandatory] false (!) -> [TECHIESMS]: no Serial Resistor + common GND (Analog Pin)
 #define pin_LED_RED     8        // [optional] 3 x Status LED R-G-B pins (rule in code: LOW switches led color ON)
@@ -103,7 +101,6 @@ const char* OPENAI_KEY =         "...";         // ### INSERT your OpenAI API KE
 #define I2S_SD          11
 #define I2S_SCK         10
 #define I2S_LR          LOW      // LOW (L/R pin GND, default LEFT channel)
-// -- optional controls:
 #define NO_PIN          -1       // [mandatory] ALIAS for 'not used' on optional control pins (3xLED, Buttons/Touch/Poti)
 #define flg_LED_DIGITAL true     // [mandatory] true [default] -> Serial Resistor, common Vcc (Digital Pin)
 #define pin_LED_RED     0        // [optional] Use NO_PIN (if not available)
