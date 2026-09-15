@@ -6,7 +6,7 @@ User can ask questions and following conversation via microphone _(pressing a bu
 
 The device works _multi-lingual_ by default, i.e. each chatbot/FRIEND can automatically _understand and speak multiple languages_. No changes in code (or system prompts) needed. Also mixed usage is supported (changing language in same dialog session). List of supported languages (Aug. 2025): 99 languages in [STT](https://elevenlabs.io/docs/capabilities/speech-to-text#supported-languages), 57 languages for [TTS](https://platform.openai.com/docs/guides/text-to-speech#supported-languages).
 
-**NEW** since Sept. 2026: **Open AI Realtime mode** (voice-to-voice) added. _Automated user voice detection, no longer necessary to press a record button while speaking_. Fast response (low latency), emotional feedback, calling another friend's name on the fly. Already existing **features** (e.g. key commands, friend switch, url/music streaming, internet web-search request etc.) are **embedded and supported** in REALTIME_MODE too. Published complete code [<KALO_ESP32_Voice_Chat_AI-Friends>](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/KALO_ESP32_Voice_Chat_AI_Friends) with all features (earlier BUTTON mode & new REALTIME mode) and a slim compact code alternative [<KALO_Realtime_AI_friends_LIGHT>](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/KALO_Realtime_AI_friends_LIGHT)  without music features (REALTIME mode only). 
+**NEW** since Sept. 2026: **Open AI Realtime mode** (voice-to-voice) added. _Automated user voice detection, no longer necessary to press a record button while speaking_. Fast response (low latency), emotional feedback, calling another friend's name on the fly. Already existing **features** (e.g. key commands, friend switch, url/music streaming, internet web-search request etc.) are **embedded and supported** in REALTIME_MODE too. Published complete code [<KALO_ESP32_Voice_Chat_AI-Friends>](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/KALO_ESP32_Voice_Chat_AI_Friends) with all features (earlier BUTTON mode & new REALTIME mode) and a slim compact code alternative [<KALO_Realtime_AI_friends_LIGHT>](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/KALO_Realtime_AI_Friends_LIGHT)  without music features (REALTIME mode only). 
 
 NEW since January 2026: **Hardware DIY template (PCB Source and Gerber files) published**. Additional PCB templates added.
 
@@ -40,7 +40,7 @@ INPUT_BUTTON_MODE:
 
 # Hardware requirements (NEW)
 - [<KALO_ESP32_Voice_Chat_AI-Friends>](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/KALO_ESP32_Voice_Chat_AI_Friends) requires ESP32/ESP32-S3 with PSRAM, optional SD card supported
-- [<KALO_Realtime_AI_friends_LIGHT>](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/KALO_Realtime_AI_friends_LIGHT) does NOT require PSRAM or SD card (AUDIO.H features and INPUT_BUTTON_MODE removed)
+- [<KALO_Realtime_AI_friends_LIGHT>](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/KALO_Realtime_AI_Friends_LIGHT) does NOT require PSRAM or SD card (AUDIO.H features and INPUT_BUTTON_MODE removed)
 - I2S digital microphone (e.g. INMP441) & I2S audio amplifier (e.g. MAX98357A) with speaker
 - RGB status LED and optionally (recommended) an Analog Poti (for audio volume)
 - Ready to Go devices (examples) with ESP32 & SD card reader: [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/)
@@ -70,7 +70,7 @@ Recommendation _(for No-PSRAM ESP32)_: just use the **new LIGHT version** (AUDIO
 - Using Palahis awesome library **<lib_openai_realtime.ino>**, _SHOUT-OUT and THANK YOU_ **@Palahis92** _for this great library!_. 
 - Previous workflow (Recording via button, SST via ElevenLabs, LLM & TTS via OpenAI/Groq) still supported, labeled as **INPUT_BUTTON_MODE**
 - Known **main features** from INPUT_BUTTON_MODE (e.g. calling/waking up other friends by name, local action key commands, url and music streaming, web-search on request) are **supported /embedded in new REALTIME_MODE too**.
-- **NEW** alternative **LIGHT** version [<KALO_Realtime_AI_friends_LIGHT>](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/KALO_Realtime_AI_friends_LIGHT) published: for most slim & compact code (REALTIME mode only).
+- **NEW** alternative **LIGHT** version [<KALO_Realtime_AI_friends_LIGHT>](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/KALO_Realtime_AI_Friends_LIGHT) published: for most slim & compact code (REALTIME mode only).
 
 # New features since August 2025
 - Supporting multiple custom chatbots/FRIENDS, activating any friend by call his/her name
