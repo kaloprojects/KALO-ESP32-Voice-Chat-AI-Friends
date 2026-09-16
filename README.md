@@ -8,7 +8,7 @@ The device works _multi-lingual_ by default, i.e. each chatbot/FRIEND can automa
 
 **NEW** since Sept. 2026: **Open AI Realtime mode** (voice-to-voice) added. _Automated user voice detection, no longer necessary to press a record button while speaking_. Fast response (low latency), emotional feedback, calling another friend's name on the fly. Already existing **features** (e.g. key commands, friend switch, url/music streaming, **internet web-search** request etc.) are **embedded and supported** in REALTIME_MODE too. Published complete code [<KALO_ESP32_Voice_Chat_AI-Friends>](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/KALO_ESP32_Voice_Chat_AI_Friends) with all features (earlier BUTTON mode & new REALTIME mode) and a slim compact code alternative [<KALO_Realtime_AI_friends_LIGHT>](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/KALO_Realtime_AI_Friends_LIGHT)  without music features (REALTIME mode only). 
 
-NEW since Jan. 2026: **Hardware DIY template (PCB Source and Gerber files) published**. Additional PCB templates added.
+NEW since Jan. 2026: **Hardware DIY template (PCB Source & Gerber files) published**. More PCB templates added.
 
 New since September 2025: **Chat history can be sent as email** to any user email accounts. Purpose: Archiving of interesting chats, in particular for mobile AI devices (similar to manual copy/paste from Serial Monitor on cable connected devices). Example, just say _"Hey, can you send me all via email?"_, the complete chat will pop up immediately in your Inbox. 
 
@@ -22,10 +22,10 @@ Since June 2025: Added **PSRAM support** (as alternative to SD Card). **ESP32-S3
 Explore the details in the .ino libraries, summary in a nutshell:
 
 INPUT_REALTIME_MODE (**NEW**):
-- Auto Recording (detection) of user voice (no length limitation, continuous background streaming to Open AI server)
+- Auto Recording (detection) of user voice (no length limitation, continuous streaming to Open AI server)
 - Auto silence detection, LLM starting after user speaking finished (user defined silence duration, e.g. after 600ms)
 - Voice-to-Voice chat, printing transcription in Serial Monitor, emotional 'human' like (multi-lingual) Open AI voices
-- User can enter LLM AI request alternatively also via text in Serial Monitor (or via any COM: Terminal Apps e.g. PuTTY)  
+- User can enter LLM AI request also via text in Serial Monitor (or via any COM: Terminal Apps e.g. PuTTY)  
 - RGB led indicating status: WHITE=Ready/Waiting -> RED=UserVoiceAutoRecording -> BLUE=Open AI Speaking. <br>CYAN=WEBSEARCH. RED flashes indicate e.g. keyword detection or friend changes
 - Pressing (previous record) button allows to STOP (interrupt) Open AI voice at any time.
   
@@ -34,13 +34,13 @@ INPUT_BUTTON_MODE:
 - Sending recorded WAV file to STT (SpeechToText) server, using fast ElevenLabs API (or slower Deepgram)
 - Sending transcription to Open AI or Groq server (with user specified LLM models) for CHAT and WEB SEARCH
 - Receiving AI response, printing in Serial Monitor, speaking with a 'human' like (multi-lingual) Open AI voice
-- User can enter LLM AI request alternatively also via text in Serial Monitor (or via any COM: Terminal Apps e.g. PuTTY) 
+- User can enter LLM AI request also via text in Serial Monitor (or via any COM: Terminal Apps e.g. PuTTY) 
 - RGB led indicating status: GREEN=Ready -> RED=Recording -> CYAN=STT -> BLUE=LLM AI CHAT -> PINK=Open AI WEB -> YELLOW=Audio pending -> PINK=TTS Speaking. Short WHITE flashes indicate success, RED flashes indicate keyword detection, double RED flashes on waking up another FRIEND
 - Button: PRESS & HOLD for recording + _short_ PRESS interrupts TTS/Audio OR repeats last answer (when silent).
 
 # Hardware requirements (NEW)
 - [<KALO_ESP32_Voice_Chat_AI-Friends>](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/KALO_ESP32_Voice_Chat_AI_Friends) requires ESP32/ESP32-S3 with PSRAM, optional SD card supported
-- [<KALO_Realtime_AI_friends_LIGHT>](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/KALO_Realtime_AI_Friends_LIGHT) does NOT require PSRAM or SD (AUDIO.H and INPUT_BUTTON_MODE removed)
+- [<KALO_Realtime_AI_friends_LIGHT>](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/KALO_Realtime_AI_Friends_LIGHT) does NOT require PSRAM or SD (no AUDIO.H, no INPUT_BUTTON_MODE)
 - I2S digital microphone (e.g. INMP441) & I2S audio amplifier (e.g. MAX98357A) with speaker
 - RGB status LED and optionally (recommended) an Analog Poti (for audio volume)
 - Ready to Go devices (examples) with ESP32 & SD card reader: [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/)
@@ -65,9 +65,9 @@ INPUT_BUTTON_MODE:
 # New features since Sept. 2026 (Major Update)
 - Added new **Open AI INPUT_REALTIME_MODE** -> Chatting with Open AI Realtime Server (Audio To Audio) **without pressing any Recording Button**, benefits: (+) faster AI response (low latency), (+) user emotion detection with emotional voice response, (+) context sensitive and significantly improved speech recognition quality, (+) lower demands on hardware, (+) easy to use (just speak & listen).
 - INPUT_REALTIME_MODE architecture: **Streaming User Request Audio** to Open AI server & receiving LLM Respond AUDIO **continuously** via web sockets. No PSRAM, neither SD Card or Audio.H library needed for this new INPUT_REALTIME_MODE.
-- Using Palahis awesome **<lib_openai_realtime.ino>**, _SHOUT-OUT and THANK YOU_ **@Palahis92** _for this great library!_. 
+- Using Palahis awesome **<lib_openai_realtime.ino>**, _SHOUT-OUT & THANK YOU_ **@Palahis92** _for this great work!_. 
 - Previous workflow (Recording via button, SST via ElevenLabs, LLM & TTS via OpenAI/Groq) still supported, labeled as **INPUT_BUTTON_MODE**
-- Known **main features** from INPUT_BUTTON_MODE (e.g. calling/waking up other friends by name, local action key commands, url/music streaming, web-search on request) are **supported /embedded in new REALTIME_MODE too**.
+- Known **features** from INPUT_BUTTON_MODE (e.g. calling/waking up other friends by name, local action key commands, url/music streaming, web-search requests) are **supported /embedded in new REALTIME_MODE too**.
 - **NEW** alternative **LIGHT** version [<KALO_Realtime_AI_friends_LIGHT>](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/KALO_Realtime_AI_Friends_LIGHT): slim & compact code (REALTIME mode only).
 
 # New features since August 2025
@@ -93,7 +93,7 @@ INPUT_BUTTON_MODE:
 - minor bugs resolved, added more detailed comments into sketch, code cleaned up.
 
 # Github Updates
-- **2026-09-15:** Alternative LIGHT version <KALO_Realtime_AI_friends_LIGHT> published, using INPUT_REALTIME_MODE only (INPUT_BUTTON-MODE and music/SD/url/AUDIO.H features removed), intended use: slim & compact code for easier user customizing, supporting older ESP32 (without PSRAM or SD card).
+- **2026-09-15:** Alternative **LIGHT version** <KALO_Realtime_AI_friends_LIGHT> **published**, using INPUT_REALTIME_MODE only (INPUT_BUTTON-MODE and music/SD/url/AUDIO.H features removed), intended use: slim & compact code for easier user customizing, supporting older ESP32 (without PSRAM or SD card).
 - **2026-09-12:** Major update. Continuous (button-less) Audio Recording & **Streaming to Open AI Realtime API** added (model: gpt-realtime-2.1-mini), embedded in Main.ino via new **INPUT_REALTIME_MODE** toggle (alternative previous INPUT_BUTTON_MODE still available). <br> 
 _Library (NEW)_ **<lib_openai_realtime.ino>**: handling all new RealtimeAPI functions (STT, LLM, TTS) <br>
 _Library (NEW)_ **<lib_friends.ino>**: Collecting all user defined FRIEND personalities. <br> 
