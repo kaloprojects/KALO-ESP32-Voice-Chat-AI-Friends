@@ -7,9 +7,7 @@
 
 
 int gl_CURR_FRIEND = 0;         // Current active FRIEND[n], DEFAULT user on Power On. <== globally used (BUTTON & REALTIME mode)
-                                // Button mode: Use [default] -1 for user by RANDOM !
-                                // Examples: use -1 for 'surprise', or e.g. 2 if you always want to start with FRIEND[2]
-                                // [NEW]: moved from <lib_openai_groq_chat.ino> to this .ino TAB
+                                // Example 'gl_CURR_FRIEND = 0' -> let's start on Power ON with ONYX
 
 struct  Agents                  // General Structure of each Chat Bot (friend) - DO NOT TOUCH !
 { const char* character_name;   // Primary unique name (upper or lower case supported)
