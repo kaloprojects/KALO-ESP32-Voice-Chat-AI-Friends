@@ -15,7 +15,7 @@ struct  Agents                  // General Structure of each Chat Bot (friend) -
 { const char* character_name;   // Primary unique name (upper or lower case supported)
   const char* aliases;          // supporting multiple names for same guy (1-N synonyms, ' ' as limiter) - always UPPER CASE !!
   const char* realtime_voice;   // REALTIME voice (Realtime ONLY): Open AI Realtime voice (no param for: model, speed, instruct)
-
+                                // 5 TTS vars below are ONLY for INPUT_BUTTON_MODE (not for REALTIME or LIGHT version):  
   const char* tts_voice;        // Open AI TTS voice parameter: voice name
   const char* tts_model;        // Open AI TTS voice model: e.g. "gpt-4o-mini-tts" | fast "tts-1" | keywords "SPEECHGEN","GOOGLE"
   const char* tts_speed;        // Open AI TTS voice parameter: voice speed [default 1]
