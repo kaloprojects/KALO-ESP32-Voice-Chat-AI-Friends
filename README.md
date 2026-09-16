@@ -40,7 +40,7 @@ INPUT_BUTTON_MODE:
 
 # Hardware requirements (NEW)
 - [<KALO_ESP32_Voice_Chat_AI-Friends>](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/KALO_ESP32_Voice_Chat_AI_Friends) requires ESP32/ESP32-S3 with PSRAM, optional SD card supported
-- [<KALO_Realtime_AI_friends_LIGHT>](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/KALO_Realtime_AI_Friends_LIGHT) does NOT require PSRAM or SD card (AUDIO.H features and INPUT_BUTTON_MODE removed)
+- [<KALO_Realtime_AI_friends_LIGHT>](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/KALO_Realtime_AI_Friends_LIGHT) does NOT require PSRAM or SD (AUDIO.H and INPUT_BUTTON_MODE removed)
 - I2S digital microphone (e.g. INMP441) & I2S audio amplifier (e.g. MAX98357A) with speaker
 - RGB status LED and optionally (recommended) an Analog Poti (for audio volume)
 - Ready to Go devices (examples) with ESP32 & SD card reader: [Techiesms Portable AI Voice Assistant](https://techiesms.com/product/portable-ai-voice-assistant/)
