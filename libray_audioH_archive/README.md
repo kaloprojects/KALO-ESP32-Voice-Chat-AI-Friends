@@ -7,5 +7,5 @@ Do NOT rely on the displayed INSTALLED version in Arduino IDE > Library manager!
 
 _Add-on (Sept. 2026):_
 - AUDIO.H is only needed for [<KALO_ESP32_Voice_Chat_AI-Friends>](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/KALO_ESP32_Voice_Chat_AI_Friends),
-- the **NEW** [<KALO_Realtime_AI_friends_**LIGHT**>](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/KALO_Realtime_AI_Friends_LIGHT) does NOT need (#include) any AUDIO.H library. _So my preferred recommendation to user with ESP32 (without PSRAM): Just use the LIGHT code (no 3.0.1g workarounds needed at all ;-)_.
+- the **NEW** [<KALO_Realtime_AI_friends_**LIGHT**>](https://github.com/kaloprojects/KALO-ESP32-Voice-Chat-AI-Friends/tree/main/KALO_Realtime_AI_Friends_LIGHT) does NOT need (#include) any AUDIO.H library. _So my preferred recommendation to user with ESP32 (without PSRAM): Just use the LIGHT code (no 3.0.11g workarounds needed at all ;-)_.
 
