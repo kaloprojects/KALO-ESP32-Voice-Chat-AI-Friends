@@ -7,7 +7,7 @@
 // ------------------                             Latest Update: Sept. 15, 2026                                ------------------
 // ------------------                                     Coded by KALO                                        ------------------
 // ------------------                                                                                          ------------------
-// ------------------         > LIGHT Restrictions (compared to 'KALO_ESP32_Voice_Chat_AI_Friends') <          ------------------
+// ------------------          > LIGHT Limitations (compared to 'KALO_ESP32_Voice_Chat_AI_Friends') <          ------------------
 // ------------------   - INPUT_BUTTON_MODE (recording by button) removed, starting directly in REALTIME       ------------------
 // ------------------   - AUDIO.H library & features removed (no music, no url/radio streaming, no SD card)    ------------------
 // ------------------   - web search feature optional: just add <lib_openai_groq_chat.ino> to AUTO activate    ------------------
